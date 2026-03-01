@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — CA Policy Analyzer | SumikkoLab</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #1e3a5f; border-left: 3px solid #3b82f6; padding-left: 10px; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #3b82f6; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <h1>プライバシーポリシー</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab｜最終更新日: 2026-03-01</p>
+
+    <h2>1. データの収集</h2>
+    <p>CA Policy Analyzer は、ユーザーのポリシーデータを一切収集しません。すべてのデータはローカルデバイス上でのみ処理・保存されます。</p>
+
+    <h2>2. 外部通信</h2>
+    <p>本アプリは以下の場合にのみネットワーク通信を行います:</p>
+    <ul>
+      <li><strong>Microsoft Store API</strong> — ライセンス確認および購入処理</li>
+    </ul>
+    <p>これ以外の外部サーバーへのデータ送信は一切行いません。ポリシーの分析処理はすべてローカルで実行されます。</p>
+
+    <h2>3. ローカルデータ</h2>
+    <p>以下のデータがローカルに保存されます:</p>
+    <ul>
+      <li>ポリシー JSON ファイル (<code>%LocalAppData%\CAPolicyAnalyzer\Data\</code>)</li>
+      <li>分析設定（管理者グループ・ゲストグループの名前）</li>
+      <li>変更履歴（監査ログ）</li>
+      <li>EULA 同意状態</li>
+      <li>表示言語設定</li>
+      <li>試用状態（非 Store 環境のみ）</li>
+    </ul>
+
+    <h2>4. 第三者への提供</h2>
+    <p>ユーザーデータを第三者に提供・販売・共有することはありません。</p>
+
+    <h2>5. サポート時のデータ取り扱い</h2>
+    <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに（原則 30 日以内）破棄します。機密情報を含むデータをそのまま送付しないでください。必ずアプリ内の匿名化機能（診断バンドル作成）をご利用ください。</p>
+
+    <h2>6. お子様のプライバシー</h2>
+    <p>本アプリは IT 管理者向けの業務ツールであり、13 歳未満のお子様を対象としていません。お子様から意図的に個人情報を収集することはありません。</p>
+
+    <h2>7. ポリシーの変更</h2>
+    <p>本プライバシーポリシーを変更する場合は、本ページを更新し、最終更新日を改定します。</p>
+
+    <h2>8. お問い合わせ</h2>
+    <p>プライバシーに関するお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab | Last updated: March 1, 2026</p>
+
+    <h2>1. Data Collection</h2>
+    <p>CA Policy Analyzer does not collect any user policy data. All data is processed and stored exclusively on the local device.</p>
+
+    <h2>2. Network Communication</h2>
+    <p>This app only communicates over the network in the following case:</p>
+    <ul>
+      <li><strong>Microsoft Store API</strong> — License verification and purchase processing</li>
+    </ul>
+    <p>No data is ever sent to any other external servers. All policy analysis is performed locally.</p>
+
+    <h2>3. Local Data</h2>
+    <p>The following data is stored locally:</p>
+    <ul>
+      <li>Policy JSON files (<code>%LocalAppData%\CAPolicyAnalyzer\Data\</code>)</li>
+      <li>Analysis settings (admin group and guest group names)</li>
+      <li>Change history (audit log)</li>
+      <li>EULA consent status</li>
+      <li>Display language preference</li>
+      <li>Trial status (non-Store environments only)</li>
+    </ul>
+
+    <h2>4. Third-Party Sharing</h2>
+    <p>We do not provide, sell, or share user data with any third parties.</p>
+
+    <h2>5. Data Handling During Support</h2>
+    <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly destroyed (within 30 days) after investigation is complete. Please do not send data containing confidential information directly. Always use the in-app anonymization feature (diagnostic bundle creation).</p>
+
+    <h2>6. Children's Privacy</h2>
+    <p>This app is a business tool designed for IT administrators and is not intended for children under 13. We do not knowingly collect personal information from children.</p>
+
+    <h2>7. Changes to This Policy</h2>
+    <p>If we make changes to this privacy policy, we will update this page and revise the last updated date.</p>
+
+    <h2>8. Contact</h2>
+    <p>For privacy-related inquiries, please contact us at:</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
