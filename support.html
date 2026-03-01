@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer サポート情報・お問い合わせ">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #1e3a5f; border-left: 3px solid #3b82f6; padding-left: 10px; }
+  h3 { font-size: 1rem; margin: 16px 0 6px; color: #334155; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #3b82f6; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .contact-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .contact-card p { margin-bottom: 4px; }
+  .contact-card a { color: #3b82f6; text-decoration: none; }
+  .contact-card a:hover { text-decoration: underline; }
+  .faq-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 10px 0; }
+  .faq-item strong { display: block; margin-bottom: 4px; color: #1e3a5f; }
+  .faq-item p { font-size: 0.9rem; color: #475569; margin-bottom: 0; }
+  .info-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .info-box p { font-size: 0.9rem; color: #1e40af; margin-bottom: 0; }
+  .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
+  .nav-links a { color: #3b82f6; text-decoration: none; margin-right: 16px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">製品情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+    </div>
+
+    <h1>サポート</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab</p>
+
+    <h2>お問い合わせ</h2>
+    <div class="contact-card">
+      <p><strong>メール:</strong> <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></p>
+      <p><strong>対応時間:</strong> 平日 10:00 - 18:00（JST）</p>
+      <p><strong>対応言語:</strong> 日本語・英語</p>
+    </div>
+
+    <div class="info-box">
+      <p>お問い合わせの際は、アプリの About 画面に表示される<strong>バージョン番号</strong>と<strong>機体識別子 (HWID)</strong> をお知らせください。迅速な対応に役立ちます。</p>
+    </div>
+
+    <h2>不具合の報告</h2>
+    <p>不具合を報告する際は、以下の手順で<strong>診断バンドル</strong>を作成してお送りください。診断バンドルにはポリシーデータが匿名化された状態で含まれるため、安全にお送りいただけます。</p>
+    <ol>
+      <li>About 画面を開き、バージョン番号を 5 回クリックして<strong>開発者ツール</strong>を有効化</li>
+      <li>DevTools タブで「診断バンドルを作成」をクリック</li>
+      <li>生成された ZIP ファイルをメールに添付して送信</li>
+    </ol>
+
+    <div class="info-box">
+      <p><strong>機密情報について:</strong> 診断バンドルに含まれるポリシーデータはすべて匿名化されています（グループ名・ユーザー ID 等は RedactId に変換済み）。元のデータをそのまま送付しないでください。</p>
+    </div>
+
+    <h2>よくある質問 (FAQ)</h2>
+
+    <div class="faq-item">
+      <strong>Q. データは外部に送信されますか？</strong>
+      <p>いいえ。すべてのポリシー分析はローカルで実行されます。ネットワーク通信は Microsoft Store のライセンス確認のみです。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. 試用期間が終了しました。どうすればよいですか？</strong>
+      <p>Microsoft Store からアプリを購入してください。購入後、すべての基本機能が引き続き利用できます。Pro アドオンを追加すると、Excel/PDF エクスポートやシミュレーション機能も利用できます。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. ポリシー JSON はどこから取得できますか？</strong>
+      <p>Microsoft Entra 管理センター、または PowerShell（Microsoft Graph API）を使用してエクスポートできます。詳しくはアプリ内の説明をご覧ください。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. 対応している OS は？</strong>
+      <p>Windows 10 バージョン 2004 (19041) 以降、および Windows 11 に対応しています。WebView2 Runtime が必要です（通常は Windows に同梱）。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. 組織で複数ライセンスを購入できますか？</strong>
+      <p>Microsoft Store のボリュームライセンス（ビジネス向け Microsoft Store）をご利用いただけます。詳しくはお問い合わせください。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. セキュリティ監査のためにソースコードを確認できますか？</strong>
+      <p>法人利用において、セキュリティ監査等の理由でソースコードの確認が必要な場合は、秘密保持契約（NDA）の下で開示を検討可能です。お問い合わせください。</p>
+    </div>
+
+    <h2>セキュリティに関する報告</h2>
+    <p>本アプリにセキュリティ上の脆弱性を発見された場合は、以下のアドレスまでご報告ください。報告を受けた際は速やかに修正版をリリースする体制を整えています。</p>
+    <div class="contact-card">
+      <p><strong>セキュリティ報告:</strong> <a href="mailto:security@sumikkolab.com">security@sumikkolab.com</a></p>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Product Info</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+    <h1>Support</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab</p>
+
+    <h2>Contact Us</h2>
+    <div class="contact-card">
+      <p><strong>Email:</strong> <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></p>
+      <p><strong>Hours:</strong> Weekdays 10:00 - 18:00 (JST / UTC+9)</p>
+      <p><strong>Languages:</strong> Japanese, English</p>
+    </div>
+
+    <div class="info-box">
+      <p>When contacting support, please include the <strong>version number</strong> and <strong>hardware ID (HWID)</strong> shown in the app's About screen. This helps us assist you more quickly.</p>
+    </div>
+
+    <h2>Reporting Issues</h2>
+    <p>When reporting a bug, please create a <strong>diagnostic bundle</strong> using the following steps. The diagnostic bundle contains anonymized policy data, so it is safe to share.</p>
+    <ol>
+      <li>Open the About screen and click the version number 5 times to enable <strong>Developer Tools</strong></li>
+      <li>In the DevTools tab, click "Create Diagnostic Bundle"</li>
+      <li>Attach the generated ZIP file to your email</li>
+    </ol>
+
+    <div class="info-box">
+      <p><strong>Regarding confidential data:</strong> All policy data in the diagnostic bundle is anonymized (group names, user IDs, etc. are converted to RedactId). Please do not send raw data directly.</p>
+    </div>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+
+    <div class="faq-item">
+      <strong>Q. Is any data sent externally?</strong>
+      <p>No. All policy analysis is performed locally. Network communication is limited to Microsoft Store license verification only.</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. My trial period has expired. What should I do?</strong>
+      <p>Please purchase the app from the Microsoft Store. After purchase, all basic features remain available. Adding the Pro add-on enables Excel/PDF export and simulation features.</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. Where can I get the policy JSON?</strong>
+      <p>You can export it from the Microsoft Entra admin center or via PowerShell (Microsoft Graph API). See the in-app instructions for details.</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. What operating systems are supported?</strong>
+      <p>Windows 10 version 2004 (19041) or later, and Windows 11. WebView2 Runtime is required (typically bundled with Windows).</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. Can I purchase multiple licenses for my organization?</strong>
+      <p>You can use Microsoft Store volume licensing (Microsoft Store for Business). Please contact us for details.</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q. Can I review the source code for a security audit?</strong>
+      <p>For enterprise use, source code review for security audit purposes can be arranged under a non-disclosure agreement (NDA). Please contact us.</p>
+    </div>
+
+    <h2>Security Vulnerability Reporting</h2>
+    <p>If you discover a security vulnerability in this app, please report it to the address below. We are committed to releasing patches promptly upon receiving reports.</p>
+    <div class="contact-card">
+      <p><strong>Security Reports:</strong> <a href="mailto:security@sumikkolab.com">security@sumikkolab.com</a></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com" style="color:#64748b;">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
