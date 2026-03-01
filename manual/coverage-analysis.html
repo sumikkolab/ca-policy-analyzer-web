@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カバレッジ分析 — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer のカバレッジ分析機能。ポリシー全体の設計カバレッジを評価し、保護されていないシナリオを検出します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第5章: カバレッジ分析</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>カバレッジ分析とは</h2>
+    <p>ギャップ分析の結果を踏まえて、ポリシー全体の「設計カバレッジ」を評価する機能です。</p>
+    <p>個々の推奨項目の適合状況だけでなく、ポリシーの組み合わせで保護されていないシナリオ（設計上の隙間）を検出します。これにより、個別のポリシーは正しく構成されていても、全体として見たときに残るセキュリティリスクを可視化できます。</p>
+
+    <h2>設計不備の検出（Design Flaw Detection）</h2>
+    <p>ポリシーが個別には正しくても、組み合わせによって保護されないケースを特定します。</p>
+    <p>例:</p>
+    <ul>
+      <li>一般ユーザー向けの MFA ポリシーが管理者を除外しており、管理者専用ポリシーが存在しない</li>
+      <li>レガシー認証ブロックポリシーが特定のアプリを除外しており、そのアプリに別の保護が無い</li>
+    </ul>
+    <p>検出された設計不備は、ステータス <span class="badge-designflaw">Design Flaw</span> として表示されます。</p>
+
+    <h2>管理者除外分析</h2>
+    <p>多くの組織では、管理者グループをセキュリティポリシーから除外しています。この分析では、以下の観点から管理者の保護状況を評価します:</p>
+    <ul>
+      <li>管理者が除外されているポリシーの数</li>
+      <li>そのうち、管理者専用の代替ポリシーでカバーされているものの数</li>
+      <li>カバーされていない（保護が不足している）ものの数</li>
+      <li>管理者保護を追加した場合の準拠率の改善見込み</li>
+    </ul>
+    <div class="info-box">
+      <p>管理者グループ名は「分析設定」で登録してください。正確な分析にはグループ名の設定が必要です。</p>
+    </div>
+
+    <h2>改善見込みの読み方</h2>
+    <p>「管理者保護を追加した場合」のセクションでは、以下の指標が表示されます:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>指標</th>
+          <th>現在</th>
+          <th>改善後</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>管理者除外ポリシー数</td>
+          <td>5</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>専用ポリシーでカバー済み</td>
+          <td>2</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>保護不足</td>
+          <td>3</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>推定準拠率</td>
+          <td>65%</td>
+          <td>82%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>これにより、管理者保護の強化がどの程度セキュリティ向上につながるかを定量的に把握できます。改善後の数値は、管理者専用ポリシーをすべて追加した場合のシミュレーション値です。</p>
+
+    <div class="chapter-nav">
+      <span><a href="gap-analysis.html">&larr; 乖離チェック</a></span>
+      <span><a href="diagnostics.html">診断 &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 5: Coverage Analysis</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What is Coverage Analysis?</h2>
+    <p>Coverage Analysis evaluates the overall "design coverage" of your policies, building on the results of the Gap Analysis.</p>
+    <p>Rather than only checking compliance of individual recommendations, it detects scenarios that are not protected by any combination of policies (design gaps). This allows you to visualize security risks that remain when looking at your policies as a whole, even if each individual policy is correctly configured.</p>
+
+    <h2>Design Flaw Detection</h2>
+    <p>Identifies cases where policies are individually correct but fail to provide protection when combined.</p>
+    <p>Examples:</p>
+    <ul>
+      <li>An MFA policy for general users excludes administrators, but no administrator-specific policy exists</li>
+      <li>A legacy authentication block policy excludes certain apps, and those apps have no alternative protection</li>
+    </ul>
+    <p>Detected design flaws are displayed with the status <span class="badge-designflaw">Design Flaw</span>.</p>
+
+    <h2>Administrator Exclusion Analysis</h2>
+    <p>Many organizations exclude administrator groups from security policies. This analysis evaluates the protection status of administrators from the following perspectives:</p>
+    <ul>
+      <li>Number of policies that exclude administrators</li>
+      <li>Of those, how many are covered by dedicated administrator-specific policies</li>
+      <li>How many are not covered (insufficient protection)</li>
+      <li>Projected compliance rate improvement if administrator protection is added</li>
+    </ul>
+    <div class="info-box">
+      <p>Register your administrator group name in "Analysis Settings." Accurate analysis requires the group name to be configured.</p>
+    </div>
+
+    <h2>Understanding the Improvement Projection</h2>
+    <p>The "If administrator protection is added" section displays the following metrics:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Current</th>
+          <th>After Improvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Policies excluding admins</td>
+          <td>5</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Covered by dedicated policy</td>
+          <td>2</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Insufficient protection</td>
+          <td>3</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Estimated compliance rate</td>
+          <td>65%</td>
+          <td>82%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>This allows you to quantitatively understand how much strengthening administrator protection will improve your overall security posture. The "After Improvement" values are simulated figures assuming all dedicated administrator policies are added.</p>
+
+    <div class="chapter-nav">
+      <span><a href="gap-analysis.html?lang=en">&larr; Gap Analysis</a></span>
+      <span><a href="diagnostics.html?lang=en">Diagnostics &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

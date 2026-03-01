@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Manual — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer ユーザーマニュアル — 目次">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="../index.html">製品情報</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>ユーザーマニュアル</h1>
+    <p class="subtitle">CA Policy Analyzer v1.0 — SumikkoLab</p>
+
+    <ul class="toc-list">
+      <li><a href="getting-started.html">
+        <span class="toc-num">1.</span>はじめに
+        <span class="toc-desc">インストール・初回起動・利用規約への同意・ポリシー JSON のエクスポート方法</span>
+      </a></li>
+      <li><a href="policy-management.html">
+        <span class="toc-num">2.</span>ポリシー管理
+        <span class="toc-desc">JSON 読み込み・手動登録・編集・削除・コピー・エクスポート</span>
+      </a></li>
+      <li><a href="simulation.html">
+        <span class="toc-num">3.</span>シミュレーション
+        <span class="toc-desc">シナリオ入力・BLOCK/GRANT 判定・比較モード・適用根拠の読み方</span>
+      </a></li>
+      <li><a href="gap-analysis.html">
+        <span class="toc-num">4.</span>乖離チェック（ギャップ分析）
+        <span class="toc-desc">推奨構成との比較・ステータスの見方・準拠率と総合判定</span>
+      </a></li>
+      <li><a href="coverage-analysis.html">
+        <span class="toc-num">5.</span>カバレッジ分析
+        <span class="toc-desc">環境全体の設計不備検出・管理者除外分析・改善見込みの読み方</span>
+      </a></li>
+      <li><a href="diagnostics.html">
+        <span class="toc-num">6.</span>診断
+        <span class="toc-desc">ロックアウトリスク・レガシー認証・管理者保護不備・ポリシー競合</span>
+      </a></li>
+      <li><a href="change-history.html">
+        <span class="toc-num">7.</span>変更履歴
+        <span class="toc-desc">監査ログの見方・変更者と理由の記録・差分の確認</span>
+      </a></li>
+      <li><a href="design-document-export.html">
+        <span class="toc-num">8.</span>設計書エクスポート
+        <span class="toc-desc">Excel 8 シート構成・PDF エクスポート・メタデータ設定</span>
+      </a></li>
+      <li><a href="named-locations.html">
+        <span class="toc-num">9.</span>ネームドロケーション
+        <span class="toc-desc">IP 範囲・国の登録と管理・ポリシーやシミュレーションでの利用</span>
+      </a></li>
+      <li><a href="analysis-settings.html">
+        <span class="toc-num">10.</span>分析設定
+        <span class="toc-desc">管理者グループ名・ゲストグループ名の設定と分析への影響</span>
+      </a></li>
+      <li><a href="licensing.html">
+        <span class="toc-num">11.</span>ライセンス
+        <span class="toc-desc">Trial・Standard・Pro の各プランと機能比較・購入方法</span>
+      </a></li>
+      <li><a href="troubleshooting.html">
+        <span class="toc-num">12.</span>FAQ・トラブルシューティング
+        <span class="toc-desc">よくある質問・データ保存先・リセット方法</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="../index.html">Product Info</a>
+      <a href="../support.html">Support</a>
+    </div>
+
+    <h1>User Manual</h1>
+    <p class="subtitle">CA Policy Analyzer v1.0 — SumikkoLab</p>
+
+    <ul class="toc-list">
+      <li><a href="getting-started.html?lang=en">
+        <span class="toc-num">1.</span>Getting Started
+        <span class="toc-desc">Installation, first launch, EULA agreement, and exporting policy JSON</span>
+      </a></li>
+      <li><a href="policy-management.html?lang=en">
+        <span class="toc-num">2.</span>Policy Management
+        <span class="toc-desc">JSON import, manual registration, edit, delete, copy, and export</span>
+      </a></li>
+      <li><a href="simulation.html?lang=en">
+        <span class="toc-num">3.</span>Simulation
+        <span class="toc-desc">Scenario input, BLOCK/GRANT evaluation, compare mode, and policy rationale</span>
+      </a></li>
+      <li><a href="gap-analysis.html?lang=en">
+        <span class="toc-num">4.</span>Gap Analysis
+        <span class="toc-desc">Comparison with recommended presets, status definitions, compliance rate and verdict</span>
+      </a></li>
+      <li><a href="coverage-analysis.html?lang=en">
+        <span class="toc-num">5.</span>Coverage Analysis
+        <span class="toc-desc">Design flaw detection, admin exclusion analysis, and improvement estimates</span>
+      </a></li>
+      <li><a href="diagnostics.html?lang=en">
+        <span class="toc-num">6.</span>Diagnostics
+        <span class="toc-desc">Lock-out risk, legacy auth, admin protection gaps, policy conflicts</span>
+      </a></li>
+      <li><a href="change-history.html?lang=en">
+        <span class="toc-num">7.</span>Change History
+        <span class="toc-desc">Audit log, change records with user and reason, diff comparison</span>
+      </a></li>
+      <li><a href="design-document-export.html?lang=en">
+        <span class="toc-num">8.</span>Design Document Export
+        <span class="toc-desc">Excel 8-sheet workbook, PDF export, and metadata settings</span>
+      </a></li>
+      <li><a href="named-locations.html?lang=en">
+        <span class="toc-num">9.</span>Named Locations
+        <span class="toc-desc">IP range and country registration, usage in policies and simulations</span>
+      </a></li>
+      <li><a href="analysis-settings.html?lang=en">
+        <span class="toc-num">10.</span>Analysis Settings
+        <span class="toc-desc">Admin group names, guest group names, and their impact on analysis</span>
+      </a></li>
+      <li><a href="licensing.html?lang=en">
+        <span class="toc-num">11.</span>Licensing
+        <span class="toc-desc">Trial, Standard, and Pro plans — feature comparison and purchase</span>
+      </a></li>
+      <li><a href="troubleshooting.html?lang=en">
+        <span class="toc-num">12.</span>FAQ &amp; Troubleshooting
+        <span class="toc-desc">Common questions, data locations, and reset procedures</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>
