@@ -13,6 +13,9 @@
   h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #1e3a5f; border-left: 3px solid #3b82f6; padding-left: 10px; }
   p, li { font-size: 0.95rem; margin-bottom: 8px; }
   ul { padding-left: 20px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
+  th, td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+  th { background: #f1f5f9; font-weight: 600; }
   .lang-toggle { text-align: right; margin-bottom: 20px; }
   .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
   .lang-toggle button.active { background: #3b82f6; color: #fff; }
@@ -34,7 +37,7 @@
   <div class="section-ja visible" id="content-ja">
     <a href="index.html" class="back-link">&larr; トップページに戻る</a>
     <h1>利用規約</h1>
-    <p class="subtitle">CA Policy Analyzer — SumikkoLab｜最終更新日: 2026-03-03</p>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab｜最終更新日: 2026-03-25</p>
 
     <h2>第1条（免責事項）</h2>
     <p>本ツール（CA Policy Analyzer）の使用によって生じたいかなる損害（データ消失、業務中断、セキュリティ被害等を含む）についても、開発者は一切の責任を負いません。</p>
@@ -68,7 +71,25 @@
     <p>本ソフトウェアを使用して作成されたレポート、設計書、診断結果を第三者（顧客等）へ販売、譲渡、またはコンサルティング業務の一部として提供する場合、別途「Pro ライセンス」の取得が必要です。</p>
     <p>前項に違反して商用利用が行われた場合、開発者は利用停止措置および損害賠償を請求できるものとします。</p>
 
-    <h2>第11条（利用条件）</h2>
+    <h2>第11条（オープンソースソフトウェアの帰属表示）</h2>
+    <p>本ツールは以下のオープンソースソフトウェアを使用しています。各ソフトウェアの著作権およびライセンス条件は、それぞれの原著作者に帰属します。</p>
+    <table>
+      <tr><th>ソフトウェア</th><th>ライセンス</th><th>著作権者</th></tr>
+      <tr><td>ClosedXML</td><td>MIT</td><td>ClosedXML Contributors</td></tr>
+      <tr><td>QuestPDF</td><td>MIT (Community)</td><td>QuestPDF Contributors</td></tr>
+      <tr><td>Microsoft.Web.WebView2</td><td>BSD-3-Clause</td><td>Microsoft Corporation</td></tr>
+      <tr><td>System.Text.Json</td><td>MIT</td><td>.NET Foundation</td></tr>
+      <tr><td>Obfuscar</td><td>MIT</td><td>Obfuscar Contributors</td></tr>
+    </table>
+    <p>各ライセンスの全文は、それぞれのプロジェクトの公式リポジトリで確認できます。</p>
+
+    <h2>第12条（規約の変更）</h2>
+    <p>開発者は、必要に応じて本利用規約を変更することがあります。重要な変更がある場合は、アプリのアップデート時またはWeb サイトにて通知します。変更後のアプリの継続使用をもって、変更後の規約に同意したものとみなします。</p>
+
+    <h2>第13条（準拠法および管轄裁判所）</h2>
+    <p>本利用規約は日本法に準拠し、解釈されます。本規約に関する紛争は、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+
+    <h2>第14条（利用条件）</h2>
     <p>本ツールを使用することにより、上記の条件に同意したものとみなされます。同意いただけない場合は、ツールの使用を中止してください。</p>
 
     <h2>お問い合わせ</h2>
@@ -80,7 +101,7 @@
   <div class="section-en" id="content-en">
     <a href="index.html" class="back-link">&larr; Back to Home</a>
     <h1>Terms of Use</h1>
-    <p class="subtitle">CA Policy Analyzer — SumikkoLab | Last updated: March 3, 2026</p>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab | Last updated: March 25, 2026</p>
 
     <h2>Article 1 (Disclaimer)</h2>
     <p>The developer assumes no liability for any damages arising from the use of this tool (CA Policy Analyzer), including but not limited to data loss, business interruption, or security incidents.</p>
@@ -104,17 +125,35 @@
     <p>Data provided for investigation will not be used for purposes other than investigation and will be promptly destroyed (within 30 days) after completion. Do not send data containing confidential information directly. Always use the in-app anonymization feature (diagnostic bundle creation).</p>
 
     <h2>Article 8 (Proprietary Rights)</h2>
-    <p>The copyright of the analysis algorithms, user interface design, and related documentation of this tool (CA Policy Analyzer) belongs to the developer (SumikkoLab). Reverse engineering, decompilation, or extraction/reuse of analysis logic is prohibited.</p>
+    <p>The copyright of the analysis algorithms, user interface design, and related documentation of this tool belongs to the developer (SumikkoLab). Reverse engineering, decompilation, or extraction/reuse of analysis logic is prohibited.</p>
 
     <h2>Article 9 (User Entitlement)</h2>
     <p>Reports (Excel/PDF), diagnostic results, gap analysis results, simulation data, and other analysis artifacts output using this tool are the property of the user. Users may freely use, distribute, and modify these artifacts. The developer claims no rights over user artifacts.</p>
 
     <h2>Article 10 (Commercial Use Restrictions)</h2>
-    <p>The Standard edition of this software may be used free of charge only for non-commercial purposes within the user's own organization (e.g., internal operational audits).</p>
-    <p>If reports, design documents, or diagnostic results created using this software are sold, transferred, or provided to third parties (such as clients) as part of consulting services, a separate "Pro License" is required.</p>
+    <p>The Standard edition may be used free of charge only for non-commercial purposes within the user's own organization (e.g., internal operational audits).</p>
+    <p>If reports, design documents, or diagnostic results created using this software are sold, transferred, or provided to third parties as part of consulting services, a separate "Pro License" is required.</p>
     <p>If commercial use is conducted in violation of the foregoing, the developer reserves the right to suspend the license and seek damages.</p>
 
-    <h2>Article 11 (Terms of Use)</h2>
+    <h2>Article 11 (Open Source Software Attribution)</h2>
+    <p>This tool uses the following open source software. The copyright and license terms of each are attributed to their respective authors.</p>
+    <table>
+      <tr><th>Software</th><th>License</th><th>Copyright Holder</th></tr>
+      <tr><td>ClosedXML</td><td>MIT</td><td>ClosedXML Contributors</td></tr>
+      <tr><td>QuestPDF</td><td>MIT (Community)</td><td>QuestPDF Contributors</td></tr>
+      <tr><td>Microsoft.Web.WebView2</td><td>BSD-3-Clause</td><td>Microsoft Corporation</td></tr>
+      <tr><td>System.Text.Json</td><td>MIT</td><td>.NET Foundation</td></tr>
+      <tr><td>Obfuscar</td><td>MIT</td><td>Obfuscar Contributors</td></tr>
+    </table>
+    <p>Full license texts are available at the official repositories of each project.</p>
+
+    <h2>Article 12 (Changes to Terms)</h2>
+    <p>The developer may modify these terms as necessary. For significant changes, users will be notified through app updates or the website. Continued use of the app after changes constitutes acceptance of the updated terms.</p>
+
+    <h2>Article 13 (Governing Law & Jurisdiction)</h2>
+    <p>These terms shall be governed by and construed in accordance with the laws of Japan. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance.</p>
+
+    <h2>Article 14 (Acceptance)</h2>
     <p>By using this tool, you agree to the above terms. If you do not agree, please discontinue use of the tool.</p>
 
     <h2>Contact</h2>
