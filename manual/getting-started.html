@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はじめに — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer のインストール方法、システム要件、初回起動手順、画面構成の概要を説明します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第1章: はじめに</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>インストール</h2>
+
+    <h3>Microsoft Store からのインストール</h3>
+    <p>Microsoft Store を利用すると、最も簡単にインストールできます。</p>
+    <ol class="steps">
+      <li>Microsoft Store を開き、検索バーに「CA Policy Analyzer」と入力して検索します。</li>
+      <li>検索結果から「CA Policy Analyzer」を選択し、「入手」ボタンをクリックしてインストールを開始します。</li>
+      <li>インストールが完了すると、スタートメニューにアプリが追加されます。</li>
+    </ol>
+    <div class="tip-box">
+      <p>Microsoft Store からインストールした場合、アプリの自動更新が有効になります。常に最新バージョンが自動的に適用されるため、手動でのアップデート作業は不要です。</p>
+    </div>
+
+    <h3>サイドロード（手動インストール）</h3>
+    <p>企業環境や Store へのアクセスが制限されている場合は、MSIX パッケージを使用して手動でインストールできます。</p>
+    <ol class="steps">
+      <li>配布元から MSIX パッケージファイルをダウンロードします。</li>
+      <li>ダウンロードした <code>.msix</code> ファイルをダブルクリックしてインストーラーを起動します。</li>
+      <li>証明書の信頼確認ダイアログが表示されたら、内容を確認し「インストール」をクリックして同意します。</li>
+    </ol>
+    <div class="info-box">
+      <p>サイドロードの場合、自動更新は行われません。新しいバージョンがリリースされた際は、最新の MSIX パッケージをダウンロードして手動でインストールしてください。</p>
+    </div>
+
+    <h2>システム要件</h2>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>要件</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OS</td>
+          <td>Windows 10 バージョン 2004 (19041) 以降 / Windows 11</td>
+        </tr>
+        <tr>
+          <td>ランタイム</td>
+          <td>WebView2 Runtime（通常 Windows に同梱されています）</td>
+        </tr>
+        <tr>
+          <td>ディスク</td>
+          <td>約 100 MB</td>
+        </tr>
+        <tr>
+          <td>メモリ</td>
+          <td>512 MB 以上</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>初回起動と利用規約</h2>
+    <img src="images/ja/eula.png" alt="利用規約画面" class="screenshot">
+    <p>アプリを初めて起動すると、利用規約（EULA: エンドユーザー使用許諾契約）が表示されます。</p>
+    <ol class="steps">
+      <li>利用規約の内容をよく読み、確認します。</li>
+      <li>内容に同意する場合は、「同意する」ボタンをクリックします。</li>
+      <li>アプリのメイン画面が表示され、利用を開始できます。</li>
+    </ol>
+    <p>同意しない場合、アプリは使用できません。同意状態はローカルに保存され、次回以降の起動時には表示されません。</p>
+    <div class="info-box">
+      <p>同意状態は <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code> に保存されます。このファイルを削除すると、次回起動時に再度利用規約が表示されます。</p>
+    </div>
+
+    <h2>CA ポリシー JSON のエクスポート方法</h2>
+    <p>CA Policy Analyzer でポリシーを分析するには、Microsoft Entra 管理センターから条件付きアクセスポリシーを JSON 形式でエクスポートする必要があります。</p>
+
+    <h3>Microsoft Entra 管理センターからエクスポートする手順</h3>
+    <ol class="steps">
+      <li>Microsoft Entra 管理センター (<code>https://entra.microsoft.com</code>) にサインインします。</li>
+      <li>左メニューから「保護」→「条件付きアクセス」→「ポリシー」に移動します。</li>
+      <li>対象のポリシーを選択し、JSON 形式でエクスポートします。</li>
+      <li>エクスポートした JSON ファイルを CA Policy Analyzer の「ポリシー読み込み」機能で読み込みます。</li>
+    </ol>
+    <div class="tip-box">
+      <p>複数のポリシーを一括でエクスポートするには、Microsoft Graph API の <code>GET /identity/conditionalAccess/policies</code> エンドポイントを利用すると便利です。</p>
+    </div>
+    <p>このアプリにはサンプルの JSON ファイルが同梱されています。まず動作を試したい場合は、サンプルファイルを使って操作を確認できます。</p>
+
+    <h2>画面構成の概要</h2>
+    <p>メイン画面は以下の 4 つのタブで構成されています。</p>
+    <ol>
+      <li><strong>ポリシー管理</strong> — ポリシーの読み込み・編集・管理を行います。</li>
+      <li><strong>シミュレーション</strong> — What-If シナリオ（仮定の条件での検証）を実行します。</li>
+      <li><strong>分析</strong> — ギャップ分析（推奨構成との比較）と準拠状況を確認します。</li>
+      <li><strong>変更履歴</strong> — ポリシーの変更に関する監査ログを閲覧します。</li>
+    </ol>
+    <p>左サイドバーには「ポリシー読み込み」ボタンと「分析設定」があり、どのタブからでもアクセスできます。</p>
+
+    <div class="chapter-nav">
+      <span></span>
+      <span><a href="policy-management.html">ポリシー管理 &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 1: Getting Started</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>Installation</h2>
+
+    <h3>Installing from the Microsoft Store</h3>
+    <p>The Microsoft Store provides the easiest way to install the application.</p>
+    <ol class="steps">
+      <li>Open the Microsoft Store and search for "CA Policy Analyzer" in the search bar.</li>
+      <li>Select "CA Policy Analyzer" from the search results and click the "Get" button to begin installation.</li>
+      <li>Once installation is complete, the app will be added to your Start menu.</li>
+    </ol>
+    <div class="tip-box">
+      <p>When installed from the Microsoft Store, automatic updates are enabled. The latest version will be applied automatically, so no manual update steps are required.</p>
+    </div>
+
+    <h3>Sideloading (Manual Installation)</h3>
+    <p>For enterprise environments or situations where Store access is restricted, you can install manually using an MSIX package.</p>
+    <ol class="steps">
+      <li>Download the MSIX package file from the distribution source.</li>
+      <li>Double-click the downloaded <code>.msix</code> file to launch the installer.</li>
+      <li>When the certificate trust confirmation dialog appears, review the details and click "Install" to proceed.</li>
+    </ol>
+    <div class="info-box">
+      <p>When sideloading, automatic updates are not available. When a new version is released, you will need to download and install the latest MSIX package manually.</p>
+    </div>
+
+    <h2>System Requirements</h2>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OS</td>
+          <td>Windows 10 version 2004 (19041) or later / Windows 11</td>
+        </tr>
+        <tr>
+          <td>Runtime</td>
+          <td>WebView2 Runtime (typically bundled with Windows)</td>
+        </tr>
+        <tr>
+          <td>Disk</td>
+          <td>Approximately 100 MB</td>
+        </tr>
+        <tr>
+          <td>Memory</td>
+          <td>512 MB or more</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>First Launch and Terms of Use</h2>
+    <img src="images/en/eula.png" alt="EULA Screen" class="screenshot">
+    <p>When you launch the application for the first time, the End User License Agreement (EULA) will be displayed.</p>
+    <ol class="steps">
+      <li>Read and review the terms of use carefully.</li>
+      <li>If you agree to the terms, click the "Accept" button.</li>
+      <li>The main application screen will appear, and you can begin using the app.</li>
+    </ol>
+    <p>If you do not agree, the application cannot be used. Your acceptance is saved locally and will not be shown again on subsequent launches.</p>
+    <div class="info-box">
+      <p>The acceptance state is stored at <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code>. Deleting this file will cause the EULA to be displayed again on the next launch.</p>
+    </div>
+
+    <h2>How to Export CA Policy JSON</h2>
+    <p>To analyze policies with CA Policy Analyzer, you need to export your Conditional Access policies from the Microsoft Entra admin center in JSON format.</p>
+
+    <h3>Exporting from the Microsoft Entra Admin Center</h3>
+    <ol class="steps">
+      <li>Sign in to the Microsoft Entra admin center (<code>https://entra.microsoft.com</code>).</li>
+      <li>Navigate to "Protection" &rarr; "Conditional Access" &rarr; "Policies" from the left menu.</li>
+      <li>Select the target policy and export it in JSON format.</li>
+      <li>Load the exported JSON file into CA Policy Analyzer using the "Load Policies" feature.</li>
+    </ol>
+    <div class="tip-box">
+      <p>To export multiple policies at once, you can use the Microsoft Graph API endpoint <code>GET /identity/conditionalAccess/policies</code> for bulk export.</p>
+    </div>
+    <p>The application includes sample JSON files. If you want to try out the features first, you can use the sample files to explore the application's functionality.</p>
+
+    <h2>Screen Layout Overview</h2>
+    <p>The main screen consists of the following four tabs:</p>
+    <ol>
+      <li><strong>Policy Management</strong> &mdash; Load, edit, and manage your policies.</li>
+      <li><strong>Simulation</strong> &mdash; Run What-If scenarios to test hypothetical access conditions.</li>
+      <li><strong>Analysis</strong> &mdash; Perform gap analysis against recommended configurations and review compliance status.</li>
+      <li><strong>Change History</strong> &mdash; View audit logs of policy changes.</li>
+    </ol>
+    <p>The left sidebar contains the "Load Policies" button and "Analysis Settings", accessible from any tab.</p>
+
+    <div class="chapter-nav">
+      <span></span>
+      <span><a href="policy-management.html?lang=en">Policy Management &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

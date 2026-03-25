@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ネームドロケーション — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer のネームドロケーション（名前付きの場所）機能の使い方。IP アドレス範囲や国・地域を登録してポリシー条件やシミュレーションで活用する方法を解説します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第9章: ネームドロケーション</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>ネームドロケーションとは</h2>
+    <p>ネームドロケーション（名前付きの場所）は、IP アドレスの範囲や国・地域に名前を付けて管理する機能です。</p>
+    <p>登録した場所は、ポリシーの条件設定やシミュレーションのシナリオで「場所」として指定できます。</p>
+    <p>例: 「本社ネットワーク」「海外拠点」「信頼できない国」などの名前を付けて管理できます。</p>
+
+    <h2>IP ベースの場所を登録する</h2>
+    <ol class="steps">
+      <li>「ネームドロケーション管理」画面を開く</li>
+      <li>「新規作成」をクリック</li>
+      <li>場所の名前を入力（例: 本社ネットワーク）</li>
+      <li>IP 範囲を CIDR 表記で入力（例: <code>203.0.113.0/24</code>）</li>
+      <li>複数の範囲はカンマ区切りで指定可能（例: <code>203.0.113.0/24, 198.51.100.0/24</code>）</li>
+      <li>「保存」をクリック</li>
+    </ol>
+    <div class="info-box">
+      <p>IP 範囲は CIDR 表記（例: <code>203.0.113.0/24</code>）で入力してください。個別の IP アドレスの場合は <code>/32</code> を使用します（例: <code>203.0.113.1/32</code>）。</p>
+    </div>
+
+    <h2>国ベースの場所を登録する</h2>
+    <ol class="steps">
+      <li>「ネームドロケーション管理」画面を開く</li>
+      <li>「新規作成」をクリック</li>
+      <li>場所の名前を入力（例: 許可された国）</li>
+      <li>国コードを ISO 3166 形式で入力（例: <code>JP</code>, <code>US</code>, <code>GB</code>）</li>
+      <li>複数の国はカンマ区切りで指定可能</li>
+      <li>「保存」をクリック</li>
+    </ol>
+
+    <h2>場所の編集・削除</h2>
+    <p>登録済みの場所を選択して、名前や IP 範囲 / 国コードを変更できます。</p>
+    <p>不要になった場所は削除できます。</p>
+    <div class="warning-box">
+      <p>ポリシーやシミュレーションで使用中の場所を削除すると、その参照が無効になります。削除前に使用状況を確認してください。</p>
+    </div>
+
+    <h2>ポリシー・シミュレーションでの利用</h2>
+    <p>ポリシー編集画面の「条件」→「場所」で、登録したネームドロケーションを指定できます。</p>
+    <p>シミュレーション画面の「場所」フィールドでも選択できます。</p>
+    <p>「含む」と「除外」の両方で指定可能です。</p>
+    <div class="tip-box">
+      <p>Microsoft Entra 管理センターのネームドロケーションと同じ概念です。Entra から JSON エクスポートしたポリシーに含まれる場所名と一致させると、分析の精度が向上します。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="design-document-export.html">&larr; 設計書エクスポート</a></span>
+      <span><a href="analysis-settings.html">分析設定 &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 9: Named Locations</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What Are Named Locations?</h2>
+    <p>Named locations are a feature that lets you assign names to IP address ranges or countries/regions for easier management.</p>
+    <p>Registered locations can be specified as "locations" in policy conditions and simulation scenarios.</p>
+    <p>Examples: You can manage locations with names such as "Head Office Network," "Overseas Offices," or "Untrusted Countries."</p>
+
+    <h2>Register an IP-Based Location</h2>
+    <ol class="steps">
+      <li>Open the "Named Location Management" screen</li>
+      <li>Click "Create New"</li>
+      <li>Enter a name for the location (e.g., Head Office Network)</li>
+      <li>Enter the IP range in CIDR notation (e.g., <code>203.0.113.0/24</code>)</li>
+      <li>Multiple ranges can be specified with commas (e.g., <code>203.0.113.0/24, 198.51.100.0/24</code>)</li>
+      <li>Click "Save"</li>
+    </ol>
+    <div class="info-box">
+      <p>IP ranges must be entered in CIDR notation (e.g., <code>203.0.113.0/24</code>). For individual IP addresses, use <code>/32</code> (e.g., <code>203.0.113.1/32</code>).</p>
+    </div>
+
+    <h2>Register a Country-Based Location</h2>
+    <ol class="steps">
+      <li>Open the "Named Location Management" screen</li>
+      <li>Click "Create New"</li>
+      <li>Enter a name for the location (e.g., Allowed Countries)</li>
+      <li>Enter country codes in ISO 3166 format (e.g., <code>JP</code>, <code>US</code>, <code>GB</code>)</li>
+      <li>Multiple countries can be specified with commas</li>
+      <li>Click "Save"</li>
+    </ol>
+
+    <h2>Edit or Delete Locations</h2>
+    <p>Select a registered location to modify its name, IP ranges, or country codes.</p>
+    <p>Locations that are no longer needed can be deleted.</p>
+    <div class="warning-box">
+      <p>Deleting a location that is currently used in policies or simulations will invalidate those references. Check usage before deleting.</p>
+    </div>
+
+    <h2>Using Locations in Policies and Simulations</h2>
+    <p>In the policy editor, go to "Conditions" &rarr; "Locations" to specify registered named locations.</p>
+    <p>Named locations can also be selected in the "Location" field on the simulation screen.</p>
+    <p>Both "Include" and "Exclude" options are available.</p>
+    <div class="tip-box">
+      <p>This is the same concept as named locations in the Microsoft Entra admin center. Matching location names with those contained in JSON-exported policies from Entra will improve analysis accuracy.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="design-document-export.html?lang=en">&larr; Design Document Export</a></span>
+      <span><a href="analysis-settings.html?lang=en">Analysis Settings &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

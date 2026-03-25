@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>診断 — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer の診断機能。ポリシー構成に潜むリスクを自動検出し、ロックアウトリスクやレガシー認証の露出を警告します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第6章: 診断</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>診断機能とは</h2>
+    <p>ポリシーの構成に潜むリスクを自動的に検出する機能です。</p>
+    <p>ギャップ分析の実行時に診断も同時に行われ、結果は設計書エクスポートにも含まれます。診断結果は重要度別に分類され、対処の優先順位を判断しやすくなっています。</p>
+
+    <h2>ロックアウトリスク（Critical）</h2>
+    <p>すべてのユーザーをブロックするポリシーが存在し、管理者にも適用される可能性がある場合に検出されます。</p>
+    <div class="warning-box">
+      <p>ロックアウトリスクは最も重要な診断項目です。管理者が自分自身をロックアウトすると、テナントへのアクセスが不可能になる場合があります。必ず「緊急アクセスアカウント（Break Glass Account）」を除外してください。</p>
+    </div>
+    <p>確認ポイント:</p>
+    <ul>
+      <li>ブロックポリシーに緊急アクセスアカウントの除外があるか</li>
+      <li>管理者グループが適切に除外または別途保護されているか</li>
+    </ul>
+
+    <h2>レガシー認証の露出（Warning）</h2>
+    <p>レガシー認証（旧式のプロトコル）をブロックするポリシーが存在しないか、不完全な場合に検出されます。</p>
+    <p>レガシー認証は MFA をバイパスできるため、ブロックが強く推奨されます。レガシー認証プロトコルには IMAP、POP3、SMTP などが含まれ、これらは多要素認証に対応していないため、攻撃者に悪用されるリスクがあります。</p>
+    <p><strong>推奨対応:</strong> 「その他のクライアント（レガシー）」を対象に含むブロックポリシーを作成してください。</p>
+
+    <h2>管理者保護不備（Warning）</h2>
+    <p>管理者グループがセキュリティポリシーから除外されているが、管理者専用の代替ポリシーが存在しない場合に検出されます。</p>
+    <p>管理者アカウントは攻撃対象になりやすいため、一般ユーザーと同等以上の保護が必要です。特に、グローバル管理者や特権ロール管理者などの高権限アカウントは、最も厳格なポリシーで保護すべきです。</p>
+    <p><strong>推奨対応:</strong> 管理者専用の MFA + 準拠デバイスポリシーを作成してください。</p>
+
+    <h2>ポリシー競合・重複（Info）</h2>
+    <p>同じ条件に対して矛盾する制御を設定しているポリシーの組み合わせを検出します。</p>
+    <p>例: 同じユーザーグループに対して、あるポリシーは MFA を要求し、別のポリシーはブロックしている場合。</p>
+    <p>また、実質的に同じ効果を持つ重複ポリシーも検出します。重複ポリシーは管理の複雑さを増し、意図しない変更の原因になります。</p>
+    <div class="info-box">
+      <p>ポリシーの競合は、意図しないアクセス許可やブロックの原因になります。検出された場合は、ポリシーの優先順位と意図を確認してください。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="coverage-analysis.html">&larr; カバレッジ分析</a></span>
+      <span><a href="change-history.html">変更履歴 &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 6: Diagnostics</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What is Diagnostics?</h2>
+    <p>The Diagnostics feature automatically detects risks hidden in your policy configurations.</p>
+    <p>Diagnostics run simultaneously with the Gap Analysis, and results are also included in the design document export. Diagnostic results are categorized by severity, making it easier to prioritize remediation efforts.</p>
+
+    <h2>Lockout Risk (Critical)</h2>
+    <p>Detected when a policy exists that blocks all users and may also apply to administrators.</p>
+    <div class="warning-box">
+      <p>Lockout risk is the most critical diagnostic item. If administrators lock themselves out, access to the tenant may become impossible. Always ensure that a "Break Glass Account" (emergency access account) is excluded from block policies.</p>
+    </div>
+    <p>Verification points:</p>
+    <ul>
+      <li>Does the block policy have an exclusion for emergency access accounts?</li>
+      <li>Are administrator groups appropriately excluded or separately protected?</li>
+    </ul>
+
+    <h2>Legacy Authentication Exposure (Warning)</h2>
+    <p>Detected when no policy exists to block legacy authentication (older protocols), or when such a policy is incomplete.</p>
+    <p>Legacy authentication can bypass MFA, so blocking it is strongly recommended. Legacy authentication protocols include IMAP, POP3, SMTP, and others that do not support multi-factor authentication, making them vulnerable to exploitation by attackers.</p>
+    <p><strong>Recommended action:</strong> Create a block policy that targets "Other clients (legacy)".</p>
+
+    <h2>Insufficient Administrator Protection (Warning)</h2>
+    <p>Detected when administrator groups are excluded from security policies but no dedicated administrator-specific alternative policy exists.</p>
+    <p>Administrator accounts are prime targets for attacks and require protection equal to or greater than that of regular users. In particular, high-privilege accounts such as Global Administrators and Privileged Role Administrators should be protected by the strictest policies.</p>
+    <p><strong>Recommended action:</strong> Create a dedicated MFA + compliant device policy for administrators.</p>
+
+    <h2>Policy Conflicts and Overlaps (Info)</h2>
+    <p>Detects combinations of policies that set contradictory controls for the same conditions.</p>
+    <p>Example: One policy requires MFA for a user group while another policy blocks the same group entirely.</p>
+    <p>It also detects duplicate policies that effectively have the same result. Duplicate policies increase management complexity and can cause unintended changes.</p>
+    <div class="info-box">
+      <p>Policy conflicts can cause unintended access grants or blocks. When detected, review the priority and intent of the affected policies.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="coverage-analysis.html?lang=en">&larr; Coverage Analysis</a></span>
+      <span><a href="change-history.html?lang=en">Change History &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

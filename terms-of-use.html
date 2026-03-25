@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — CA Policy Analyzer | SumikkoLab</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #1e3a5f; border-left: 3px solid #3b82f6; padding-left: 10px; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #3b82f6; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: #3b82f6; text-decoration: none; font-size: 0.9rem; }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <a href="index.html" class="back-link">&larr; トップページに戻る</a>
+    <h1>利用規約</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab｜最終更新日: 2026-03-03</p>
+
+    <h2>第1条（免責事項）</h2>
+    <p>本ツール（CA Policy Analyzer）の使用によって生じたいかなる損害（データ消失、業務中断、セキュリティ被害等を含む）についても、開発者は一切の責任を負いません。</p>
+
+    <h2>第2条（保証の否認）</h2>
+    <p>本ツールはセキュリティポリシーの分析を支援するものであり、セキュリティを100%保証するものではありません。分析結果は参考情報として提供されるものであり、最終的な判断・対策はご利用者様の責任において行ってください。</p>
+
+    <h2>第3条（データの取り扱い）</h2>
+    <p>本ツールはすべてのポリシーデータをローカル環境でのみ処理します。外部サーバーへのデータ送信は一切行いません。</p>
+
+    <h2>第4条（分析基準）</h2>
+    <p>推奨構成の判定には NIST SP 800-53、Microsoft Security Baselines、DISA STIG の公開情報を参考にしていますが、各フレームワークの公式認証を取得したものではありません。</p>
+
+    <h2>第5条（サポート・保守）</h2>
+    <p>開発者は本ソフトウェアの不具合修正に努めますが、ユーザーの個別環境に起因する問題の解決は保証しません。お問い合わせはメールベースでの受付とし、回答まで数営業日を要する場合があります。</p>
+
+    <h2>第6条（外部サービスの仕様変更）</h2>
+    <p>Microsoft Entra ID 等の外部サービス側の仕様変更により本ソフトウェアが利用不能となった場合、開発者はその修正に努めますが、永続的な動作を保証するものではありません。</p>
+
+    <h2>第7条（サポート時のデータ取り扱い）</h2>
+    <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに（原則 30 日以内）破棄します。機密情報を含むデータをそのまま送付しないでください。必ずアプリ内の匿名化機能（診断バンドル作成）をご利用ください。</p>
+
+    <h2>第8条（開発者の権利）</h2>
+    <p>本ツールの分析アルゴリズム、ユーザーインターフェースデザイン、および関連ドキュメントの著作権は開発者（SumikkoLab）に帰属します。リバースエンジニアリング、逆コンパイル、または分析ロジックの抽出・再利用は禁止されます。</p>
+
+    <h2>第9条（ユーザーの権利）</h2>
+    <p>本ツールを用いて出力されたレポート（Excel・PDF）、診断結果、ギャップ分析結果、シミュレーションデータ等の分析成果物は、ユーザーの所有物です。ユーザーはこれらの成果物を自由に利用・配布・改変することができます。開発者はユーザーの成果物に対していかなる権利も主張しません。</p>
+
+    <h2>第10条（商用利用の制限）</h2>
+    <p>本ソフトウェアの Standard 版は、ユーザーが所属する組織内での非営利目的（自社運用の点検等）に限り無償で利用いただけます。</p>
+    <p>本ソフトウェアを使用して作成されたレポート、設計書、診断結果を第三者（顧客等）へ販売、譲渡、またはコンサルティング業務の一部として提供する場合、別途「Pro ライセンス」の取得が必要です。</p>
+    <p>前項に違反して商用利用が行われた場合、開発者は利用停止措置および損害賠償を請求できるものとします。</p>
+
+    <h2>第11条（利用条件）</h2>
+    <p>本ツールを使用することにより、上記の条件に同意したものとみなされます。同意いただけない場合は、ツールの使用を中止してください。</p>
+
+    <h2>お問い合わせ</h2>
+    <p>利用規約に関するお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <a href="index.html" class="back-link">&larr; Back to Home</a>
+    <h1>Terms of Use</h1>
+    <p class="subtitle">CA Policy Analyzer — SumikkoLab | Last updated: March 3, 2026</p>
+
+    <h2>Article 1 (Disclaimer)</h2>
+    <p>The developer assumes no liability for any damages arising from the use of this tool (CA Policy Analyzer), including but not limited to data loss, business interruption, or security incidents.</p>
+
+    <h2>Article 2 (Warranty Disclaimer)</h2>
+    <p>This tool assists in analyzing security policies and does not guarantee 100% security. Analysis results are provided as reference information, and final decisions and actions are the user's responsibility.</p>
+
+    <h2>Article 3 (Data Handling)</h2>
+    <p>This tool processes all policy data locally only. No data is transmitted to external servers.</p>
+
+    <h2>Article 4 (Analysis Standards)</h2>
+    <p>Recommended configuration assessments reference publicly available information from NIST SP 800-53, Microsoft Security Baselines, and DISA STIG, but this tool has not obtained official certification from any framework.</p>
+
+    <h2>Article 5 (Support & Maintenance)</h2>
+    <p>The developer strives to fix defects but does not guarantee resolution of issues caused by individual environments. Inquiries are handled via email and may take several business days.</p>
+
+    <h2>Article 6 (External Service Changes)</h2>
+    <p>If changes to external services such as Microsoft Entra ID render this software unusable, the developer will attempt to address them but does not guarantee perpetual operation.</p>
+
+    <h2>Article 7 (Data Handling During Support)</h2>
+    <p>Data provided for investigation will not be used for purposes other than investigation and will be promptly destroyed (within 30 days) after completion. Do not send data containing confidential information directly. Always use the in-app anonymization feature (diagnostic bundle creation).</p>
+
+    <h2>Article 8 (Proprietary Rights)</h2>
+    <p>The copyright of the analysis algorithms, user interface design, and related documentation of this tool (CA Policy Analyzer) belongs to the developer (SumikkoLab). Reverse engineering, decompilation, or extraction/reuse of analysis logic is prohibited.</p>
+
+    <h2>Article 9 (User Entitlement)</h2>
+    <p>Reports (Excel/PDF), diagnostic results, gap analysis results, simulation data, and other analysis artifacts output using this tool are the property of the user. Users may freely use, distribute, and modify these artifacts. The developer claims no rights over user artifacts.</p>
+
+    <h2>Article 10 (Commercial Use Restrictions)</h2>
+    <p>The Standard edition of this software may be used free of charge only for non-commercial purposes within the user's own organization (e.g., internal operational audits).</p>
+    <p>If reports, design documents, or diagnostic results created using this software are sold, transferred, or provided to third parties (such as clients) as part of consulting services, a separate "Pro License" is required.</p>
+    <p>If commercial use is conducted in violation of the foregoing, the developer reserves the right to suspend the license and seek damages.</p>
+
+    <h2>Article 11 (Terms of Use)</h2>
+    <p>By using this tool, you agree to the above terms. If you do not agree, please discontinue use of the tool.</p>
+
+    <h2>Contact</h2>
+    <p>For inquiries regarding these terms of use, please contact us at:</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ポリシー管理 — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer でのポリシーの読み込み、手動登録、編集、削除、コピー、エクスポート方法を説明します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第2章: ポリシー管理</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+    <img src="images/ja/policy-management.png" alt="ポリシー管理画面" class="screenshot">
+
+    <h2>ポリシーの読み込み（JSON インポート）</h2>
+    <p>Microsoft Entra 管理センターや Graph API からエクスポートした JSON ファイルを読み込んで、ポリシーを登録します。</p>
+    <ol class="steps">
+      <li>左サイドバーの「ポリシー読み込み」ボタンをクリックします。</li>
+      <li>ファイル選択ダイアログが開くので、JSON ファイルを選択します。</li>
+      <li>変更記録の入力画面が表示されます。以下の項目を入力してください:
+        <ul>
+          <li><strong>変更者</strong>（必須）: 誰がこのインポートを実施したかを記録します。</li>
+          <li><strong>変更理由</strong>（必須）: なぜこのインポートを行ったかの理由を記録します。</li>
+        </ul>
+      </li>
+      <li>「読み込み」ボタンをクリックすると、ポリシーが一覧に追加されます。</li>
+    </ol>
+    <div class="info-box">
+      <p>JSON ファイルは Microsoft Entra 管理センターまたは Graph API からエクスポートした形式に対応しています。単一ポリシーの JSON と、複数ポリシーを含む配列形式の JSON のどちらにも対応しています。</p>
+    </div>
+
+    <h2>ポリシーの手動登録</h2>
+    <p>JSON ファイルがない場合でも、手動でポリシーを作成・登録できます。「新規ポリシー」ボタンから以下の項目を入力してください。</p>
+
+    <h3>基本情報</h3>
+    <ul>
+      <li><strong>ポリシー名</strong>（必須）: ポリシーを識別するための名前を入力します。</li>
+      <li><strong>状態</strong>: 有効 / レポート専用 / 無効 のいずれかを選択します。</li>
+    </ul>
+
+    <h3>割り当て</h3>
+    <ul>
+      <li><strong>ユーザー</strong>: 対象に含めるユーザー、および除外するユーザーを指定します。</li>
+      <li><strong>ロール</strong>: 対象に含めるロール、および除外するロールを指定します。</li>
+      <li><strong>グループ</strong>: 対象に含めるグループ、および除外するグループを指定します。</li>
+    </ul>
+
+    <h3>対象リソース</h3>
+    <ul>
+      <li><strong>アプリケーション</strong>: 対象に含めるアプリケーション、および除外するアプリケーションを指定します。</li>
+    </ul>
+
+    <h3>条件</h3>
+    <ul>
+      <li><strong>デバイスプラットフォーム</strong>: Windows, iOS, Android, macOS, Linux など</li>
+      <li><strong>クライアントアプリ</strong>: ブラウザー、モバイルアプリ/デスクトップ、レガシー認証クライアント</li>
+      <li><strong>場所</strong>: ネームドロケーション（名前付きの場所）による条件</li>
+      <li><strong>ユーザーリスク</strong>: ユーザーアカウントの危険度レベル</li>
+      <li><strong>サインインリスク</strong>: サインイン試行の危険度レベル</li>
+      <li><strong>デバイスフィルター</strong>: デバイスの属性に基づくフィルタリング条件</li>
+    </ul>
+
+    <h3>アクセス制御</h3>
+    <ul>
+      <li><strong>ブロック</strong>: アクセスを拒否します。</li>
+      <li><strong>許可</strong>: 以下の条件付きでアクセスを許可します。
+        <ul>
+          <li>多要素認証（MFA）を要求</li>
+          <li>準拠デバイスを要求</li>
+          <li>ハイブリッド Azure AD 参加済みデバイスを要求</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>セッション</h3>
+    <ul>
+      <li><strong>監視のみ</strong>: アクセスを許可しつつ、アクティビティを監視します。</li>
+      <li><strong>ダウンロードブロック</strong>: ファイルのダウンロードを制限します。</li>
+      <li><strong>サインイン頻度</strong>: 再認証を要求する間隔を設定します。</li>
+      <li><strong>永続的ブラウザーセッション</strong>: ブラウザーを閉じてもセッションを維持するかどうかを設定します。</li>
+    </ul>
+
+    <h2>ポリシーの編集</h2>
+    <p>登録済みのポリシーを編集して、設定内容を変更できます。</p>
+    <ol class="steps">
+      <li>ポリシー一覧から編集したいポリシーを選択します。</li>
+      <li>「編集」ボタンをクリックします。</li>
+      <li>フォーム上で各項目を変更します。</li>
+      <li>「保存」ボタンをクリックして変更を確定します。</li>
+    </ol>
+    <p>変更を保存すると、変更内容は変更履歴に自動的に記録されます。いつ、誰が、どの項目を変更したかを後から確認できます。</p>
+
+    <h2>ポリシーの削除</h2>
+    <p>不要になったポリシーを一覧から削除できます。</p>
+    <ol class="steps">
+      <li>ポリシー一覧から削除したいポリシーを選択します。</li>
+      <li>「削除」ボタンをクリックします。</li>
+      <li>確認ダイアログが表示されるので、「はい」を選択して削除を確定します。</li>
+    </ol>
+    <div class="warning-box">
+      <p>削除は元に戻せません。必要に応じて、事前に JSON エクスポートでバックアップを取ってから削除してください。</p>
+    </div>
+
+    <h2>ポリシーのコピー</h2>
+    <p>既存のポリシーをベースに新しいポリシーを作成する場合、コピー機能が便利です。</p>
+    <ol class="steps">
+      <li>コピー元のポリシーを一覧から選択します。</li>
+      <li>「コピー」ボタンをクリックします。</li>
+      <li>コピーされたポリシーが「[元の名前] - コピー」という名前で一覧に追加されます。</li>
+      <li>必要に応じてコピーしたポリシーを編集し、新しいポリシーとして活用します。</li>
+    </ol>
+
+    <h2>JSON エクスポート <span class="pro-badge">PRO</span></h2>
+    <p>登録済みのポリシーを JSON ファイルとしてエクスポートできます。</p>
+    <ol class="steps">
+      <li>エクスポートしたいポリシーを一覧から選択します（複数選択可）。</li>
+      <li>「エクスポート」ボタンをクリックします。</li>
+      <li>保存先とファイル名を指定して JSON ファイルを保存します。</li>
+    </ol>
+    <p>エクスポートした JSON は、他の環境での参照やバックアップとして利用できます。また、別の CA Policy Analyzer インスタンスに再インポートすることも可能です。</p>
+    <div class="tip-box">
+      <p>この機能は Pro プランで利用できます。Free プランでは JSON エクスポート機能はご利用いただけません。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="getting-started.html">&larr; はじめに</a></span>
+      <span><a href="simulation.html">シミュレーション &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 2: Policy Management</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+    <img src="images/en/policy-management.png" alt="Policy Management Screen" class="screenshot">
+
+    <h2>Loading Policies (JSON Import)</h2>
+    <p>Import JSON files exported from the Microsoft Entra admin center or Graph API to register your policies.</p>
+    <ol class="steps">
+      <li>Click the "Load Policies" button in the left sidebar.</li>
+      <li>A file selection dialog will open. Select your JSON file.</li>
+      <li>A change record input screen will appear. Fill in the following fields:
+        <ul>
+          <li><strong>Changed By</strong> (required): Records who performed this import.</li>
+          <li><strong>Change Reason</strong> (required): Records the reason for this import.</li>
+        </ul>
+      </li>
+      <li>Click the "Load" button to add the policies to the list.</li>
+    </ol>
+    <div class="info-box">
+      <p>The application supports JSON files exported from the Microsoft Entra admin center or Graph API. Both single-policy JSON and array-format JSON containing multiple policies are supported.</p>
+    </div>
+
+    <h2>Manual Policy Registration</h2>
+    <p>Even without a JSON file, you can create and register policies manually. Click the "New Policy" button and fill in the following fields.</p>
+
+    <h3>Basic Information</h3>
+    <ul>
+      <li><strong>Policy Name</strong> (required): Enter a name to identify the policy.</li>
+      <li><strong>State</strong>: Select one of Enabled / Report-only / Disabled.</li>
+    </ul>
+
+    <h3>Assignments</h3>
+    <ul>
+      <li><strong>Users</strong>: Specify users to include and exclude from the policy scope.</li>
+      <li><strong>Roles</strong>: Specify roles to include and exclude from the policy scope.</li>
+      <li><strong>Groups</strong>: Specify groups to include and exclude from the policy scope.</li>
+    </ul>
+
+    <h3>Target Resources</h3>
+    <ul>
+      <li><strong>Applications</strong>: Specify applications to include and exclude from the policy scope.</li>
+    </ul>
+
+    <h3>Conditions</h3>
+    <ul>
+      <li><strong>Device Platforms</strong>: Windows, iOS, Android, macOS, Linux, etc.</li>
+      <li><strong>Client Apps</strong>: Browser, mobile apps/desktop clients, legacy authentication clients</li>
+      <li><strong>Locations</strong>: Conditions based on named locations</li>
+      <li><strong>User Risk</strong>: Risk level of the user account</li>
+      <li><strong>Sign-in Risk</strong>: Risk level of the sign-in attempt</li>
+      <li><strong>Device Filter</strong>: Filtering conditions based on device attributes</li>
+    </ul>
+
+    <h3>Access Controls</h3>
+    <ul>
+      <li><strong>Block</strong>: Deny access entirely.</li>
+      <li><strong>Grant</strong>: Allow access with the following conditions:
+        <ul>
+          <li>Require multi-factor authentication (MFA)</li>
+          <li>Require compliant device</li>
+          <li>Require hybrid Azure AD joined device</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Session</h3>
+    <ul>
+      <li><strong>Monitor Only</strong>: Allow access while monitoring activity.</li>
+      <li><strong>Block Download</strong>: Restrict file downloads.</li>
+      <li><strong>Sign-in Frequency</strong>: Set the interval for requiring re-authentication.</li>
+      <li><strong>Persistent Browser Session</strong>: Configure whether sessions persist after closing the browser.</li>
+    </ul>
+
+    <h2>Editing Policies</h2>
+    <p>You can edit registered policies to modify their configuration.</p>
+    <ol class="steps">
+      <li>Select the policy you want to edit from the policy list.</li>
+      <li>Click the "Edit" button.</li>
+      <li>Modify the desired fields in the form.</li>
+      <li>Click the "Save" button to confirm your changes.</li>
+    </ol>
+    <p>When you save changes, the modifications are automatically recorded in the change history. You can review who changed what and when at any time.</p>
+
+    <h2>Deleting Policies</h2>
+    <p>You can remove policies that are no longer needed from the list.</p>
+    <ol class="steps">
+      <li>Select the policy you want to delete from the policy list.</li>
+      <li>Click the "Delete" button.</li>
+      <li>A confirmation dialog will appear. Select "Yes" to confirm the deletion.</li>
+    </ol>
+    <div class="warning-box">
+      <p>Deletion cannot be undone. We recommend creating a backup via JSON export before deleting any policy.</p>
+    </div>
+
+    <h2>Copying Policies</h2>
+    <p>The copy feature is useful when you want to create a new policy based on an existing one.</p>
+    <ol class="steps">
+      <li>Select the source policy from the list.</li>
+      <li>Click the "Copy" button.</li>
+      <li>A copy of the policy will be added to the list with the name "[Original Name] - Copy".</li>
+      <li>Edit the copied policy as needed and use it as a new policy.</li>
+    </ol>
+
+    <h2>JSON Export <span class="pro-badge">PRO</span></h2>
+    <p>You can export registered policies as JSON files.</p>
+    <ol class="steps">
+      <li>Select the policies you want to export from the list (multiple selection is supported).</li>
+      <li>Click the "Export" button.</li>
+      <li>Specify the destination and file name to save the JSON file.</li>
+    </ol>
+    <p>Exported JSON files can be used for reference in other environments or as backups. They can also be re-imported into another CA Policy Analyzer instance.</p>
+    <div class="tip-box">
+      <p>This feature is available with the Pro plan. JSON export is not available in the Free plan.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="getting-started.html?lang=en">&larr; Getting Started</a></span>
+      <span><a href="simulation.html?lang=en">Simulation &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>設計書エクスポート — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer の設計書エクスポート機能。ポリシーと分析結果を Excel（8シート）または PDF で監査提出用にエクスポートします。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第8章: 設計書エクスポート</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>設計書エクスポートとは <span class="pro-badge">PRO</span></h2>
+    <p>登録済みのポリシーと分析結果を、監査提出用のドキュメントとしてエクスポートする機能です。</p>
+    <p>Excel（8 シート構成）と PDF（A4）の 2 形式に対応しています。セキュリティ監査や経営報告など、さまざまな場面で活用できる包括的な設計ドキュメントを自動生成します。</p>
+
+    <h2>エクスポートの前提条件</h2>
+    <p>エクスポートを実行するには、以下の準備が必要です:</p>
+    <ol class="steps">
+      <li>ポリシーが 1 件以上読み込まれていること</li>
+      <li>分析設定（左サイドバー）で以下のメタデータを入力:
+        <ul>
+          <li>組織名 / テナント名（必須）</li>
+          <li>テナント ID（推奨）</li>
+          <li>ドキュメントバージョン（デフォルト: 1.0）</li>
+          <li>作成者（必須）</li>
+        </ul>
+      </li>
+      <li>ギャップ分析が未実行の場合、エクスポート時に自動で実行されます</li>
+    </ol>
+
+    <h2>Excel エクスポート（8 シート構成）</h2>
+    <img src="images/ja/export-excel.png" alt="Excel エクスポート画面" class="screenshot">
+    <p>Excel エクスポートは以下の 8 シートで構成されています:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>シート番号</th>
+          <th>シート名</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>表紙</td>
+          <td>組織名、バージョン、作成者、日付</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>総合評価</td>
+          <td>エグゼクティブサマリー、準拠率、総合判定</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>設計方針</td>
+          <td>セキュリティ戦略、前提条件、スコープ</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>ポリシー設計</td>
+          <td>全ポリシーの設定一覧表</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>セキュリティ準拠・ギャップ分析</td>
+          <td>フレームワーク別の準拠マトリクス、ギャップ詳細</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>診断結果</td>
+          <td>ポリシー競合、ロックアウトリスク、レガシー認証警告</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>変更管理記録</td>
+          <td>全変更の監査ログ</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>参照フレームワーク</td>
+          <td>NIST / Microsoft / STIG への参照リンク</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box">
+      <p>Excel ファイルは書式付きテーブル、交互行の色分け、重要度別の色分けが含まれます。ポリシー設計シートは横向き印刷に最適化されています。</p>
+    </div>
+
+    <h2>PDF エクスポート</h2>
+    <img src="images/ja/export-pdf.png" alt="PDF エクスポート画面" class="screenshot">
+    <p>Excel と同じ 8 セクション構成で A4 サイズの PDF を生成します。</p>
+    <p>印刷・共有に最適化されたレイアウトです。表やステータスの色分けはそのまま反映されます。経営層への報告や外部監査人への提出など、フォーマルな用途に適しています。</p>
+
+    <h2>設計書メタデータの設定</h2>
+    <p>左サイドバーの「分析設定」を展開すると、「エクスポートメタデータ」セクションがあります。ここで以下を設定できます:</p>
+    <ul>
+      <li><strong>組織名 / テナント名:</strong> エクスポートの表紙に表示される組織名</li>
+      <li><strong>テナント ID:</strong> Microsoft Entra テナントの ID</li>
+      <li><strong>ドキュメントバージョン:</strong> 設計書のバージョン番号</li>
+      <li><strong>作成者:</strong> 設計書の作成者名</li>
+    </ul>
+    <div class="warning-box">
+      <p>組織名と作成者は必須です。未入力の場合、エクスポートを開始できません。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="change-history.html">&larr; 変更履歴</a></span>
+      <span><a href="named-locations.html">ネームドロケーション &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 8: Design Document Export</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What is Design Document Export? <span class="pro-badge">PRO</span></h2>
+    <p>This feature exports your registered policies and analysis results as audit-ready documentation.</p>
+    <p>Two formats are supported: Excel (8-sheet workbook) and PDF (A4). It automatically generates comprehensive design documents that can be used for security audits, executive reporting, and various other purposes.</p>
+
+    <h2>Export Prerequisites</h2>
+    <p>The following preparations are required before exporting:</p>
+    <ol class="steps">
+      <li>At least one policy must be loaded</li>
+      <li>Enter the following metadata in Analysis Settings (left sidebar):
+        <ul>
+          <li>Organization Name / Tenant Name (required)</li>
+          <li>Tenant ID (recommended)</li>
+          <li>Document Version (default: 1.0)</li>
+          <li>Author (required)</li>
+        </ul>
+      </li>
+      <li>If Gap Analysis has not been run, it will be executed automatically during export</li>
+    </ol>
+
+    <h2>Excel Export (8-Sheet Workbook)</h2>
+    <img src="images/en/export-excel.png" alt="Excel Export Screen" class="screenshot">
+    <p>The Excel export consists of the following 8 sheets:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Sheet #</th>
+          <th>Sheet Name</th>
+          <th>Contents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Cover Page</td>
+          <td>Organization name, version, author, date</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Overall Assessment</td>
+          <td>Executive summary, compliance rate, overall verdict</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Design Principles</td>
+          <td>Security strategy, assumptions, scope</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Policy Design</td>
+          <td>Configuration table for all policies</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Security Compliance &amp; Gap Analysis</td>
+          <td>Framework-specific compliance matrix, gap details</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Diagnostic Results</td>
+          <td>Policy conflicts, lockout risks, legacy authentication warnings</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Change Management Record</td>
+          <td>Audit log of all changes</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Reference Frameworks</td>
+          <td>Reference links to NIST / Microsoft / STIG</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box">
+      <p>The Excel file includes formatted tables, alternating row colors, and severity-based color coding. The Policy Design sheet is optimized for landscape printing.</p>
+    </div>
+
+    <h2>PDF Export</h2>
+    <img src="images/en/export-pdf.png" alt="PDF Export Screen" class="screenshot">
+    <p>Generates an A4-sized PDF with the same 8-section structure as the Excel export.</p>
+    <p>The layout is optimized for printing and sharing. Table formatting and status color coding are preserved. It is ideal for formal purposes such as executive reporting and submission to external auditors.</p>
+
+    <h2>Design Document Metadata Settings</h2>
+    <p>Expand "Analysis Settings" in the left sidebar to find the "Export Metadata" section. Here you can configure:</p>
+    <ul>
+      <li><strong>Organization Name / Tenant Name:</strong> Organization name displayed on the export cover page</li>
+      <li><strong>Tenant ID:</strong> Microsoft Entra tenant ID</li>
+      <li><strong>Document Version:</strong> Version number of the design document</li>
+      <li><strong>Author:</strong> Name of the document author</li>
+    </ul>
+    <div class="warning-box">
+      <p>Organization Name and Author are required fields. Export cannot begin if these are left empty.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="change-history.html?lang=en">&larr; Change History</a></span>
+      <span><a href="named-locations.html?lang=en">Named Locations &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

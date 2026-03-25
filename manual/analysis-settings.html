@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分析設定 — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer の分析設定の使い方。管理者グループ名やゲストグループ名の登録、エクスポートメタデータの設定方法を解説します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第10章: 分析設定</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>分析設定とは</h2>
+    <p>左サイドバーの「分析設定」セクションでは、ギャップ分析やカバレッジ分析の精度を向上させるための設定を行います。</p>
+    <p>主に、管理者グループ名とゲストグループ名を登録します。</p>
+
+    <h2>管理者グループ名の設定</h2>
+    <p>組織で使用している管理者グループの名前を登録します。</p>
+    <p>入力欄にグループ名を入力し、Enter キーで追加します。</p>
+    <p>複数のグループ名を登録できます（例: <code>Global Admins</code>, <code>IT Administrators</code>, <code>Security Admins</code>）。</p>
+    <p>この設定は以下の分析に影響します:</p>
+    <ul>
+      <li><strong>管理者除外分析</strong>: どのポリシーが管理者を除外しているかの判定</li>
+      <li><strong>管理者保護不備の検出</strong>: 管理者専用ポリシーの有無の確認</li>
+      <li><strong>設計不備の検出</strong>: 管理者が保護されていないケースの特定</li>
+    </ul>
+    <div class="info-box">
+      <p>グループ名は完全一致で判定されます。ポリシー JSON に含まれるグループ名と正確に一致させてください。</p>
+    </div>
+
+    <h2>ゲストユーザーグループ名の設定</h2>
+    <p>ゲストユーザーが所属するグループの名前を登録します。</p>
+    <p>入力方法は管理者グループ名と同じです。</p>
+    <p>この設定は以下の分析に影響します:</p>
+    <ul>
+      <li><strong>ゲストユーザー保護の評価</strong>: ゲスト向けのポリシーが適切に設定されているかの確認</li>
+    </ul>
+
+    <h2>エクスポートメタデータ</h2>
+    <p>Excel / PDF エクスポート時に使用される組織情報を設定します。</p>
+    <ul>
+      <li><strong>組織名 / テナント名</strong>（必須）</li>
+      <li><strong>テナント ID</strong>（推奨）</li>
+      <li><strong>ドキュメントバージョン</strong>（デフォルト: 1.0）</li>
+      <li><strong>作成者</strong>（必須）</li>
+    </ul>
+
+    <h2>設定の保存</h2>
+    <p>分析設定は自動的に保存されます。</p>
+    <p>保存先: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <div class="tip-box">
+      <p>分析設定を変更した後は、ギャップ分析を再実行すると新しい設定が反映されます。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="named-locations.html">&larr; ネームドロケーション</a></span>
+      <span><a href="licensing.html">ライセンス &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 10: Analysis Settings</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What Are Analysis Settings?</h2>
+    <p>The "Analysis Settings" section in the left sidebar allows you to configure settings that improve the accuracy of gap analysis and coverage analysis.</p>
+    <p>Primarily, you register administrator group names and guest group names.</p>
+
+    <h2>Administrator Group Name Settings</h2>
+    <p>Register the names of administrator groups used in your organization.</p>
+    <p>Type a group name in the input field and press Enter to add it.</p>
+    <p>Multiple group names can be registered (e.g., <code>Global Admins</code>, <code>IT Administrators</code>, <code>Security Admins</code>).</p>
+    <p>This setting affects the following analyses:</p>
+    <ul>
+      <li><strong>Administrator Exclusion Analysis</strong>: Determines which policies exclude administrators</li>
+      <li><strong>Administrator Protection Gap Detection</strong>: Checks whether dedicated administrator policies exist</li>
+      <li><strong>Design Flaw Detection</strong>: Identifies cases where administrators are not protected</li>
+    </ul>
+    <div class="info-box">
+      <p>Group names are matched exactly. Make sure they precisely match the group names contained in the policy JSON.</p>
+    </div>
+
+    <h2>Guest User Group Name Settings</h2>
+    <p>Register the names of groups that guest users belong to.</p>
+    <p>The input method is the same as for administrator group names.</p>
+    <p>This setting affects the following analyses:</p>
+    <ul>
+      <li><strong>Guest User Protection Evaluation</strong>: Checks whether policies for guest users are properly configured</li>
+    </ul>
+
+    <h2>Export Metadata</h2>
+    <p>Configure organization information used when exporting to Excel or PDF.</p>
+    <ul>
+      <li><strong>Organization Name / Tenant Name</strong> (required)</li>
+      <li><strong>Tenant ID</strong> (recommended)</li>
+      <li><strong>Document Version</strong> (default: 1.0)</li>
+      <li><strong>Author</strong> (required)</li>
+    </ul>
+
+    <h2>Saving Settings</h2>
+    <p>Analysis settings are saved automatically.</p>
+    <p>Save location: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <div class="tip-box">
+      <p>After changing analysis settings, re-run the gap analysis to apply the new settings.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="named-locations.html?lang=en">&larr; Named Locations</a></span>
+      <span><a href="licensing.html?lang=en">Licensing &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

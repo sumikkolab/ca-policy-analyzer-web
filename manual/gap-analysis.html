@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乖離チェック（ギャップ分析） — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer のギャップ分析機能で、ポリシーを業界標準の推奨構成と比較し、不足や弱点を検出する方法を説明します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第4章: 乖離チェック（ギャップ分析）</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+    <img src="images/ja/gap-analysis.png" alt="ギャップ分析画面" class="screenshot">
+
+    <h2>ギャップ分析とは</h2>
+    <p>ギャップ分析は、登録済みの条件付きアクセスポリシーを業界標準の推奨構成（プリセット）と比較し、不足している項目や設定の弱点を自動的に検出する機能です。</p>
+    <p>以下の 3 つのセキュリティフレームワークに対応しています。</p>
+    <div class="card">
+      <ul>
+        <li><strong>Microsoft Security Baselines</strong> — Microsoft が推奨するセキュリティ基準。Azure AD / Entra ID 環境における標準的なポリシー構成を定義しています。</li>
+        <li><strong>NIST SP 800-53</strong> — 米国国立標準技術研究所（NIST）が策定した連邦政府向けのセキュリティ標準。包括的なセキュリティ管理策を規定しています。</li>
+        <li><strong>DISA STIG</strong> — 米国防総省（DoD）の情報システムセキュリティ技術実装ガイド。厳格なセキュリティ要件を定めています。</li>
+      </ul>
+    </div>
+    <p>これらのフレームワークから導出された <strong>22 項目の推奨構成</strong> に対して、現在のポリシーがどの程度適合しているかを評価します。</p>
+
+    <h2>分析の実行</h2>
+    <ol class="steps">
+      <li>分析対象のポリシーが読み込まれていることを確認します。ポリシーが未登録の場合は、先に「ポリシー管理」からポリシーを読み込んでください。</li>
+      <li>左サイドバーの「推奨構成と比較」ボタンをクリックします。</li>
+      <li>分析が開始されます（通常 15〜30 秒程度）。完了すると、結果が「分析」タブに表示されます。</li>
+    </ol>
+
+    <h2>ステータスの種類</h2>
+    <p>各推奨項目に対して、以下のいずれかのステータスが割り当てられます。</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>ステータス</th>
+          <th>意味</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-compliant">Compliant（適合）</span></td>
+          <td>ポリシーが推奨構成に一致しています。追加の対応は不要です。</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-weak">Weak（不十分）</span></td>
+          <td>該当するポリシーは存在しますが、推奨される要件を完全には満たしていません。設定の強化を検討してください。</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-missing">Missing（欠落）</span></td>
+          <td>推奨される構成に該当するポリシーが見つかりません。新たにポリシーを作成する必要があります。</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-misconfigured">Misconfigured（設定誤り）</span></td>
+          <td>ポリシーの設定が推奨構成と異なっています。設定内容を見直し、修正してください。</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-designflaw">Design Flaw（設計上の欠陥）</span></td>
+          <td>個々のポリシーは存在しますが、ポリシーの組み合わせではカバーできないセキュリティ上の隙間があります。ポリシー全体の設計を見直してください。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>準拠率と総合判定</h2>
+
+    <h3>準拠率（Compliance Rate）</h3>
+    <p>準拠率は、Compliant（適合）と判定された項目数を全項目数で割ったパーセンテージです。</p>
+    <p><strong>計算式:</strong> Compliant の項目数 &divide; 全項目数 &times; 100%</p>
+
+    <h3>総合判定（Verdict）</h3>
+    <p>準拠率と各項目のステータスに基づいて、以下の総合判定が下されます。</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>判定</th>
+          <th>基準</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sufficient（十分）</strong></td>
+          <td>高い準拠率を達成しており、主要なセキュリティリスクが適切にカバーされています。</td>
+        </tr>
+        <tr>
+          <td><strong>Mostly Sufficient（概ね十分）</strong></td>
+          <td>大部分の項目は適合していますが、一部の項目で改善が必要です。</td>
+        </tr>
+        <tr>
+          <td><strong>Needs Improvement（改善が必要）</strong></td>
+          <td>複数の重要項目で不足や設定の弱点があります。優先的に対応してください。</td>
+        </tr>
+        <tr>
+          <td><strong>Vulnerable（脆弱）</strong></td>
+          <td>基本的なセキュリティ要件が満たされていません。早急な対応が必要です。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>各項目の詳細</h2>
+    <p>分析結果の各推奨項目をクリックすると、以下の詳細情報を確認できます。</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>重要度</strong></td>
+          <td>High（高）/ Medium（中）/ Low（低）の 3 段階で、推奨項目の重要性を示します。</td>
+        </tr>
+        <tr>
+          <td><strong>カテゴリ</strong></td>
+          <td>フレームワーク内での分類名です。関連する推奨項目をグループ化しています。</td>
+        </tr>
+        <tr>
+          <td><strong>一致ポリシー</strong></td>
+          <td>この推奨項目に該当すると判定された既存ポリシーの名前が表示されます。</td>
+        </tr>
+        <tr>
+          <td><strong>前提条件</strong></td>
+          <td>推奨構成を実装するために必要なライセンスやサービスです（例: Entra ID P2、Microsoft Intune）。</td>
+        </tr>
+        <tr>
+          <td><strong>推奨修正</strong></td>
+          <td>ステータスを Compliant に改善するための具体的な手順が記載されています。</td>
+        </tr>
+        <tr>
+          <td><strong>レポート専用デプロイガイド</strong></td>
+          <td>本番環境に影響を与えずに安全にテストするための、レポート専用モードでの導入手順です。</td>
+        </tr>
+        <tr>
+          <td><strong>監査ログヒント</strong></td>
+          <td>ポリシー変更の影響を確認するための KQL（Kusto Query Language）クエリが提供されます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box">
+      <p>「推奨修正」の手順に従ってポリシーを変更した後は、再度ギャップ分析を実行して、ステータスが Compliant に改善されたことを確認してください。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="simulation.html">&larr; シミュレーション</a></span>
+      <span><a href="coverage-analysis.html">カバレッジ分析 &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 4: Gap Analysis</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+    <img src="images/en/gap-analysis.png" alt="Gap Analysis Screen" class="screenshot">
+
+    <h2>What is Gap Analysis?</h2>
+    <p>Gap Analysis is a feature that compares your registered Conditional Access policies against industry-standard recommended configurations (presets) to automatically detect missing items and configuration weaknesses.</p>
+    <p>The following three security frameworks are supported:</p>
+    <div class="card">
+      <ul>
+        <li><strong>Microsoft Security Baselines</strong> &mdash; Microsoft's recommended security standards. Defines standard policy configurations for Azure AD / Entra ID environments.</li>
+        <li><strong>NIST SP 800-53</strong> &mdash; Security standards established by the National Institute of Standards and Technology (NIST) for US federal government systems. Specifies comprehensive security controls.</li>
+        <li><strong>DISA STIG</strong> &mdash; The US Department of Defense (DoD) Security Technical Implementation Guide. Defines stringent security requirements.</li>
+      </ul>
+    </div>
+    <p>Your current policies are evaluated against <strong>22 recommended configuration items</strong> derived from these frameworks to determine how well they comply.</p>
+
+    <h2>Running an Analysis</h2>
+    <ol class="steps">
+      <li>Verify that the policies to be analyzed have been loaded. If no policies are registered, load them first from "Policy Management".</li>
+      <li>Click the "Compare with Recommendations" button in the left sidebar.</li>
+      <li>The analysis will begin (typically takes 15 to 30 seconds). Once complete, the results will be displayed in the "Analysis" tab.</li>
+    </ol>
+
+    <h2>Status Types</h2>
+    <p>Each recommended item is assigned one of the following status values.</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-compliant">Compliant</span></td>
+          <td>The policy matches the recommended configuration. No further action is needed.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-weak">Weak</span></td>
+          <td>A relevant policy exists but does not fully meet the recommended requirements. Consider strengthening the configuration.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-missing">Missing</span></td>
+          <td>No policy matching the recommended configuration was found. A new policy needs to be created.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-misconfigured">Misconfigured</span></td>
+          <td>The policy configuration differs from the recommendation. Review and correct the settings.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-designflaw">Design Flaw</span></td>
+          <td>Individual policies exist, but there are security gaps that cannot be covered by the current combination of policies. Review the overall policy design.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Compliance Rate and Overall Verdict</h2>
+
+    <h3>Compliance Rate</h3>
+    <p>The compliance rate is the percentage of items rated as Compliant out of the total number of items.</p>
+    <p><strong>Formula:</strong> Number of Compliant items &divide; Total items &times; 100%</p>
+
+    <h3>Overall Verdict</h3>
+    <p>Based on the compliance rate and the status of each item, one of the following overall verdicts is assigned.</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Verdict</th>
+          <th>Criteria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sufficient</strong></td>
+          <td>A high compliance rate has been achieved, and major security risks are adequately covered.</td>
+        </tr>
+        <tr>
+          <td><strong>Mostly Sufficient</strong></td>
+          <td>Most items are compliant, but some areas require improvement.</td>
+        </tr>
+        <tr>
+          <td><strong>Needs Improvement</strong></td>
+          <td>Multiple important items have deficiencies or weaknesses. Priority action is recommended.</td>
+        </tr>
+        <tr>
+          <td><strong>Vulnerable</strong></td>
+          <td>Basic security requirements are not met. Immediate action is required.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Item Details</h2>
+    <p>Click on any recommended item in the analysis results to view the following detailed information.</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Severity</strong></td>
+          <td>Indicates the importance of the recommended item on a three-level scale: High, Medium, or Low.</td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td>The classification name within the framework. Groups related recommended items together.</td>
+        </tr>
+        <tr>
+          <td><strong>Matched Policy</strong></td>
+          <td>Displays the name of the existing policy that was identified as matching this recommendation.</td>
+        </tr>
+        <tr>
+          <td><strong>Prerequisites</strong></td>
+          <td>Licenses or services required to implement the recommended configuration (e.g., Entra ID P2, Microsoft Intune).</td>
+        </tr>
+        <tr>
+          <td><strong>Recommended Fix</strong></td>
+          <td>Specific steps to improve the status to Compliant.</td>
+        </tr>
+        <tr>
+          <td><strong>Report-Only Deployment Guide</strong></td>
+          <td>Instructions for safely testing in report-only mode without impacting the production environment.</td>
+        </tr>
+        <tr>
+          <td><strong>Audit Log Hints</strong></td>
+          <td>KQL (Kusto Query Language) queries provided to verify the impact of policy changes.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip-box">
+      <p>After modifying policies following the "Recommended Fix" steps, run the Gap Analysis again to confirm that the status has improved to Compliant.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span><a href="simulation.html?lang=en">&larr; Simulation</a></span>
+      <span><a href="coverage-analysis.html?lang=en">Coverage Analysis &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

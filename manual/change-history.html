@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>変更履歴 — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer の変更履歴機能。ポリシーの読み込み・編集・削除を時系列で記録し、監査ログとして活用できます。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第7章: 変更履歴</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>変更履歴とは</h2>
+    <p>ポリシーの読み込み・編集・削除のすべての操作を時系列で記録する監査ログ機能です。</p>
+    <p>「誰が」「いつ」「なぜ」「何を」変更したかを追跡できます。これにより、ポリシー変更の経緯を透明に管理し、監査やトラブルシューティングに役立てることができます。</p>
+
+    <h2>一覧表示</h2>
+    <p>「変更履歴」タブを開くと、すべての変更が時系列で一覧表示されます。各エントリには以下の情報が表示されます:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>日時</td>
+          <td>変更が行われた日時</td>
+        </tr>
+        <tr>
+          <td>変更者</td>
+          <td>操作を行ったユーザーの名前</td>
+        </tr>
+        <tr>
+          <td>変更理由</td>
+          <td>変更の目的や背景</td>
+        </tr>
+        <tr>
+          <td>ファイル名</td>
+          <td>インポートされた JSON ファイル名</td>
+        </tr>
+        <tr>
+          <td>ポリシー数</td>
+          <td>影響を受けたポリシーの件数</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>変更の詳細表示</h2>
+    <p>一覧からエントリをクリックすると、変更の詳細が表示されます。詳細画面では以下が確認できます:</p>
+    <ul>
+      <li><strong>追加されたポリシー:</strong> 新しく追加されたポリシーの一覧</li>
+      <li><strong>削除されたポリシー:</strong> 削除されたポリシーの一覧</li>
+      <li><strong>変更されたポリシー:</strong> 変更されたポリシーの一覧（フィールド単位の差分付き）</li>
+    </ul>
+
+    <h2>差分の読み方</h2>
+    <p>変更されたポリシーについては、フィールドごとの差分が表示されます。以下は差分表示の例です:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>変更前</th>
+          <th>変更後</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>アクセス制御</td>
+          <td>MFA のみ</td>
+          <td>MFA + 準拠デバイス</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>変更の種類は以下で分類されます:</p>
+    <ul>
+      <li><strong>Added:</strong> 新しく追加されたフィールドや値</li>
+      <li><strong>Removed:</strong> 削除されたフィールドや値</li>
+      <li><strong>Modified:</strong> 変更されたフィールド</li>
+      <li><strong>Unchanged:</strong> 変更なし</li>
+    </ul>
+
+    <h2>変更履歴の活用</h2>
+    <div class="tip-box">
+      <p>変更履歴は設計書エクスポート（Excel / PDF）の「変更管理記録」シートに自動的に含まれます。監査対応時にそのまま提出資料として活用できます。</p>
+    </div>
+    <p>変更履歴を活用することで、以下のような場面で役立ちます:</p>
+    <ul>
+      <li>セキュリティ監査への対応: いつ・誰が・なぜ変更したかを証跡として提出</li>
+      <li>トラブルシューティング: 問題が発生した時点の変更内容を特定</li>
+      <li>チーム内の情報共有: ポリシー変更の経緯をチームメンバーと共有</li>
+    </ul>
+
+    <div class="chapter-nav">
+      <span><a href="diagnostics.html">&larr; 診断</a></span>
+      <span><a href="design-document-export.html">設計書エクスポート &rarr;</a></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 7: Change History</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>What is Change History?</h2>
+    <p>Change History is an audit log feature that records all policy operations — imports, edits, and deletions — in chronological order.</p>
+    <p>It tracks "who" changed "what," "when," and "why." This enables transparent management of policy change history, useful for auditing and troubleshooting.</p>
+
+    <h2>List View</h2>
+    <p>Opening the "Change History" tab displays all changes in chronological order. Each entry shows the following information:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Date/Time</td>
+          <td>When the change was made</td>
+        </tr>
+        <tr>
+          <td>Changed By</td>
+          <td>Name of the user who performed the operation</td>
+        </tr>
+        <tr>
+          <td>Reason</td>
+          <td>Purpose or background of the change</td>
+        </tr>
+        <tr>
+          <td>File Name</td>
+          <td>Name of the imported JSON file</td>
+        </tr>
+        <tr>
+          <td>Policy Count</td>
+          <td>Number of policies affected</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Change Details</h2>
+    <p>Click an entry in the list to view the change details. The detail screen shows:</p>
+    <ul>
+      <li><strong>Added Policies:</strong> List of newly added policies</li>
+      <li><strong>Deleted Policies:</strong> List of deleted policies</li>
+      <li><strong>Modified Policies:</strong> List of modified policies (with field-level diffs)</li>
+    </ul>
+
+    <h2>Reading the Diff</h2>
+    <p>For modified policies, a field-by-field diff is displayed. Here is an example:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Access Control</td>
+          <td>MFA only</td>
+          <td>MFA + Compliant Device</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Changes are classified into the following types:</p>
+    <ul>
+      <li><strong>Added:</strong> Newly added fields or values</li>
+      <li><strong>Removed:</strong> Deleted fields or values</li>
+      <li><strong>Modified:</strong> Changed fields</li>
+      <li><strong>Unchanged:</strong> No changes</li>
+    </ul>
+
+    <h2>Utilizing Change History</h2>
+    <div class="tip-box">
+      <p>Change history is automatically included in the "Change Management Record" sheet of the design document export (Excel / PDF). It can be used as-is as audit submission material.</p>
+    </div>
+    <p>Change history is useful in the following scenarios:</p>
+    <ul>
+      <li>Security audit response: Submit evidence of who changed what, when, and why</li>
+      <li>Troubleshooting: Identify the changes made at the time a problem occurred</li>
+      <li>Team communication: Share the history of policy changes with team members</li>
+    </ul>
+
+    <div class="chapter-nav">
+      <span><a href="diagnostics.html?lang=en">&larr; Diagnostics</a></span>
+      <span><a href="design-document-export.html?lang=en">Design Document Export &rarr;</a></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

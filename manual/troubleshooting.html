@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ・トラブルシューティング — CA Policy Analyzer | SumikkoLab</title>
+<meta name="description" content="CA Policy Analyzer のよくある質問とトラブルシューティング。データの保存場所、JSON の取得方法、起動時の問題解決などを解説します。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">マニュアル目次</a>
+    </div>
+    <h1>第12章: FAQ・トラブルシューティング</h1>
+    <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
+
+    <h2>よくある質問</h2>
+
+    <h3>Q. データはどこに保存されていますか？</h3>
+    <p>すべてのデータは以下のフォルダに保存されます:</p>
+    <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
+    <p>主なファイル:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>ファイル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Data/policies.json</code></td>
+          <td>登録済みのポリシーデータ</td>
+        </tr>
+        <tr>
+          <td><code>Data/auditlog.json</code></td>
+          <td>変更履歴（監査ログ）</td>
+        </tr>
+        <tr>
+          <td><code>Data/named-locations.json</code></td>
+          <td>ネームドロケーション</td>
+        </tr>
+        <tr>
+          <td><code>Data/analysis-settings.json</code></td>
+          <td>分析設定</td>
+        </tr>
+        <tr>
+          <td><code>Data/locale.json</code></td>
+          <td>言語設定</td>
+        </tr>
+        <tr>
+          <td><code>eula.dat</code></td>
+          <td>利用規約の同意状態</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Q. データは外部に送信されますか？</h3>
+    <p>いいえ。すべてのデータはローカルデバイス上でのみ処理・保存されます。</p>
+    <p>ネットワーク通信は Microsoft Store のライセンス確認のみです。</p>
+
+    <h3>Q. ポリシー JSON はどのように取得しますか？</h3>
+    <p>Microsoft Entra 管理センターからエクスポートするか、Graph API（<code>GET /identity/conditionalAccess/policies</code>）を使用して取得します。</p>
+    <p>詳しくは「<a href="getting-started.html">はじめに</a>」をご覧ください。</p>
+
+    <h3>Q. 言語を切り替えるにはどうすればいいですか？</h3>
+    <p>About 画面から表示言語を日本語または英語に切り替えられます。</p>
+    <p>設定は即座に反映されます。</p>
+
+    <h3>Q. 試用期間が終了したらデータは消えますか？</h3>
+    <p>いいえ。データはそのまま保持されます。</p>
+    <p>Standard または Pro アドオンを購入すると、すべてのデータを引き続き利用できます。</p>
+
+    <h2>トラブルシューティング</h2>
+
+    <h3>アプリが起動しない</h3>
+    <ol class="steps">
+      <li>Windows のバージョンが 10 (19041) 以降であることを確認</li>
+      <li>WebView2 Runtime がインストールされていることを確認</li>
+      <li><code>%LocalAppData%\CAPolicyAnalyzer\</code> フォルダに書き込み権限があることを確認</li>
+      <li>問題が解決しない場合は、診断バンドルを作成してサポートに送信</li>
+    </ol>
+
+    <h3>JSON ファイルを読み込めない</h3>
+    <p>ファイルが正しい JSON 形式であることを確認してください。</p>
+    <p>Microsoft Entra 管理センターまたは Graph API からエクスポートされた形式に対応しています。</p>
+    <p>ファイルサイズが 10 MB 未満であることを確認してください。</p>
+    <div class="tip-box">
+      <p>アプリにはサンプル JSON ファイルが同梱されています。まずサンプルファイルで動作を確認してみてください。</p>
+    </div>
+
+    <h3>ギャップ分析の結果がおかしい</h3>
+    <p>分析設定で管理者グループ名が正しく設定されているか確認してください。</p>
+    <p>ポリシーの「状態」が「有効」になっているか確認してください（無効やレポート専用は分析対象外の場合があります）。</p>
+
+    <h3>エクスポートが失敗する</h3>
+    <p>分析設定で「組織名」と「作成者」が入力されていることを確認してください。</p>
+    <p>ポリシーが 1 件以上読み込まれていることを確認してください。</p>
+
+    <h2>データのリセット</h2>
+    <p>アプリのデータを完全にリセットするには:</p>
+    <ol class="steps">
+      <li>アプリを終了</li>
+      <li>エクスプローラーで <code>%LocalAppData%\CAPolicyAnalyzer\</code> を開く</li>
+      <li><code>Data</code> フォルダ内のファイルを削除</li>
+      <li>アプリを再起動</li>
+    </ol>
+    <div class="warning-box">
+      <p>リセットすると、すべてのポリシーデータ、変更履歴、分析設定が削除されます。必要に応じて事前にバックアップを取ってください。EULA の同意状態もリセットされます。</p>
+    </div>
+
+    <h2>サポートへの問い合わせ</h2>
+    <p>解決しない問題は、以下の手順でサポートにご連絡ください:</p>
+    <ol class="steps">
+      <li>About 画面を開く</li>
+      <li>「診断バンドルを作成」をクリック（ポリシーデータは自動的に匿名化されます）</li>
+      <li>生成された ZIP ファイルをメールに添付</li>
+      <li><a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a> に送信</li>
+    </ol>
+    <p>対応言語: 日本語・英語</p>
+
+    <div class="chapter-nav">
+      <span><a href="licensing.html">&larr; ライセンス</a></span>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Manual Contents</a>
+    </div>
+    <h1>Chapter 12: FAQ &amp; Troubleshooting</h1>
+    <p class="subtitle">CA Policy Analyzer User Manual</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Q. Where is my data stored?</h3>
+    <p>All data is stored in the following folder:</p>
+    <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
+    <p>Key files:</p>
+    <table class="manual-table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Contents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Data/policies.json</code></td>
+          <td>Registered policy data</td>
+        </tr>
+        <tr>
+          <td><code>Data/auditlog.json</code></td>
+          <td>Change history (audit log)</td>
+        </tr>
+        <tr>
+          <td><code>Data/named-locations.json</code></td>
+          <td>Named locations</td>
+        </tr>
+        <tr>
+          <td><code>Data/analysis-settings.json</code></td>
+          <td>Analysis settings</td>
+        </tr>
+        <tr>
+          <td><code>Data/locale.json</code></td>
+          <td>Language settings</td>
+        </tr>
+        <tr>
+          <td><code>eula.dat</code></td>
+          <td>EULA acceptance state</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Q. Is my data sent externally?</h3>
+    <p>No. All data is processed and stored only on your local device.</p>
+    <p>Network communication is limited to Microsoft Store license verification only.</p>
+
+    <h3>Q. How do I obtain the policy JSON?</h3>
+    <p>Export it from the Microsoft Entra admin center, or use the Graph API (<code>GET /identity/conditionalAccess/policies</code>) to retrieve it.</p>
+    <p>See "<a href="getting-started.html?lang=en">Getting Started</a>" for details.</p>
+
+    <h3>Q. How do I switch the language?</h3>
+    <p>You can switch the display language between Japanese and English from the About screen.</p>
+    <p>The setting takes effect immediately.</p>
+
+    <h3>Q. Will my data be lost when the trial period ends?</h3>
+    <p>No. Your data is retained as-is.</p>
+    <p>After purchasing the Standard or Pro add-on, you can continue using all your data.</p>
+
+    <h2>Troubleshooting</h2>
+
+    <h3>The App Won't Start</h3>
+    <ol class="steps">
+      <li>Verify that your Windows version is 10 (19041) or later</li>
+      <li>Verify that WebView2 Runtime is installed</li>
+      <li>Verify that you have write permissions to the <code>%LocalAppData%\CAPolicyAnalyzer\</code> folder</li>
+      <li>If the problem persists, create a diagnostic bundle and send it to support</li>
+    </ol>
+
+    <h3>Cannot Load JSON File</h3>
+    <p>Make sure the file is in valid JSON format.</p>
+    <p>The app supports formats exported from the Microsoft Entra admin center or Graph API.</p>
+    <p>Verify that the file size is under 10 MB.</p>
+    <div class="tip-box">
+      <p>The app includes sample JSON files. Try loading a sample file first to verify that the app is working correctly.</p>
+    </div>
+
+    <h3>Gap Analysis Results Seem Incorrect</h3>
+    <p>Check that administrator group names are correctly configured in the analysis settings.</p>
+    <p>Verify that the policy "State" is set to "Enabled" (disabled or report-only policies may be excluded from analysis).</p>
+
+    <h3>Export Fails</h3>
+    <p>Verify that "Organization Name" and "Author" are entered in the analysis settings.</p>
+    <p>Verify that at least one policy has been loaded.</p>
+
+    <h2>Data Reset</h2>
+    <p>To completely reset the app data:</p>
+    <ol class="steps">
+      <li>Close the app</li>
+      <li>Open <code>%LocalAppData%\CAPolicyAnalyzer\</code> in File Explorer</li>
+      <li>Delete the files inside the <code>Data</code> folder</li>
+      <li>Restart the app</li>
+    </ol>
+    <div class="warning-box">
+      <p>Resetting will delete all policy data, change history, and analysis settings. Back up your data beforehand if needed. The EULA acceptance state will also be reset.</p>
+    </div>
+
+    <h2>Contacting Support</h2>
+    <p>For unresolved issues, please contact support using the following steps:</p>
+    <ol class="steps">
+      <li>Open the About screen</li>
+      <li>Click "Create Diagnostic Bundle" (policy data is automatically anonymized)</li>
+      <li>Attach the generated ZIP file to an email</li>
+      <li>Send it to <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></li>
+    </ol>
+    <p>Supported languages: Japanese and English</p>
+
+    <div class="chapter-nav">
+      <span><a href="licensing.html?lang=en">&larr; Licensing</a></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. CA Policy Analyzer.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>
