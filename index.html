@@ -245,7 +245,8 @@ var META = {
   }
 };
 function setMeta(selector, value) {
-  document.querySelector(selector).setAttribute('content', value);
+  var el = document.querySelector(selector);
+  if (el) el.setAttribute('content', value);
 }
 function switchLang(lang) {
   document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
