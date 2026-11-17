@@ -81,7 +81,7 @@
     <h2>ポリシー競合（Warning）・重複（Info）</h2>
     <p>対象範囲が重なる 2 つのポリシーを比べ、次の組み合わせを検出します。</p>
     <ul>
-      <li><strong>競合（Warning）</strong>: 一方がブロック、他方が許可（例: 同じグループに、あるポリシーは MFA を求めて許可し、別のポリシーはブロックしている）。ブロックが優先されますが、意図しない設定の可能性があります。</li>
+      <li><strong>競合（Warning）</strong>: 対象ユーザーと対象アプリの指定が重なる 2 つのポリシーで、一方がブロック、他方が許可。ブロックが優先されますが、意図しない設定の可能性があります。</li>
       <li><strong>重複（Info）</strong>: 効果と要求するコントロールが同じポリシー。重複は管理を複雑にし、意図しない変更の原因になります。</li>
     </ul>
     <div class="info-box">
@@ -146,7 +146,7 @@
     <h2>Policy Conflicts (Warning) and Duplicates (Info)</h2>
     <p>Compares every pair of policies whose scopes overlap and detects:</p>
     <ul>
-      <li><strong>Conflicts (Warning)</strong>: one policy blocks while the other grants access (for example, one policy grants a group access with MFA while another blocks the same group). Block takes precedence, but the setup may not be what you intended.</li>
+      <li><strong>Conflicts (Warning)</strong>: two policies whose included users and apps overlap, where one blocks and the other grants access. Block takes precedence, but the setup may not be what you intended.</li>
       <li><strong>Duplicates (Info)</strong>: policies with the same effect and the same required controls. Duplicates add management overhead and can lead to unintended changes.</li>
     </ul>
     <div class="info-box">

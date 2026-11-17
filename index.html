@@ -149,7 +149,7 @@
       </div>
       <div class="feature-card">
         <h3>個々のポリシーは正しいのに、組み合わせで隙間が残っていないか知りたいとき</h3>
-        <p>カバレッジ分析が、全ユーザーへの MFA・管理者ロールの保護・全アプリの保護・レガシー認証のブロック・リスクベースの制御の 5 種類について、ポリシー全体で保護が成り立っていない場合に「Design Flaw」として示します。また、全ユーザー向けポリシーの多く（7 割以上）から除外されているグループを「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように示し、除外が重なってできた穴を見つけられます。</p>
+        <p>カバレッジ分析が、全ユーザーへの MFA・管理者ロールの保護・全アプリの保護・レガシー認証のブロック・リスクベースの制御の 5 種類について、ポリシー全体で保護が成り立っていない場合に「Design Flaw」として示します。また、全ユーザー向けポリシーの多く（全体の 7 割〔小数点以下切り捨て〕以上、かつ 2 件以上）から除外されているグループを「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように示し、除外が重なってできた穴を見つけられます。</p>
         <img src="manual/images/ja/coverage-analysis.png" alt="カバレッジ分析の画面" loading="lazy">
       </div>
       <div class="feature-card">
@@ -168,7 +168,7 @@
       </div>
       <div class="feature-card">
         <h3>矛盾・重複したポリシーを見つけるには <span class="pro-badge">PRO</span></h3>
-        <p>自動診断が、対象範囲が重なる 2 つのポリシーのうち、一方がブロックで他方が許可のもの（同じグループに MFA を求めて許可するポリシーとブロックするポリシーなど）を「競合（Warning）」、効果と要求するコントロールが同じものを「重複（Info）」として検出します。結果は Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。</p>
+        <p>自動診断が、対象ユーザーと対象アプリの指定が重なる 2 つのポリシーで、一方がブロック、他方が許可のものを「競合（Warning）」、効果と要求するコントロールが同じものを「重複（Info）」として検出します。結果は Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。</p>
       </div>
       <div class="feature-card">
         <h3>ポリシーを「誰が・いつ・なぜ」変更したかを追うには</h3>
@@ -279,7 +279,7 @@
       </div>
       <div class="feature-card">
         <h3>What if every policy looks right, but gaps remain when they are combined?</h3>
-        <p>Coverage Analysis marks a "Design Flaw" when your policies as a whole fail to provide one of five protections: MFA for all users, admin role protection, protection of all apps, legacy authentication blocking, and risk-based control. It also lists groups excluded from most (70% or more) of your all-user policies, such as "Group 'Contractors' is excluded from 8 out of 10 all-user policies," so you can find holes created by overlapping exclusions.</p>
+        <p>Coverage Analysis marks a "Design Flaw" when your policies as a whole fail to provide one of five protections: MFA for all users, admin role protection, protection of all apps, legacy authentication blocking, and risk-based control. It also lists groups excluded from most of your all-user policies (at least 70% of them, rounded down, and at least two), such as "Group 'Contractors' is excluded from 8 out of 10 all-user policies," so you can find holes created by overlapping exclusions.</p>
       </div>
       <div class="feature-card">
         <h3>How can I audit Conditional Access against NIST, STIG or Microsoft baselines?</h3>
@@ -297,7 +297,7 @@
       </div>
       <div class="feature-card">
         <h3>How can I detect conflicting or duplicate policies? <span class="pro-badge">PRO</span></h3>
-        <p>For each pair of policies with overlapping scope, the automatic diagnostics report a "Conflict (Warning)" when one blocks and the other grants access (for example, one grants a group access with MFA while another blocks it), and a "Duplicate (Info)" when both have the same effect and the same required controls. The results appear in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report.</p>
+        <p>For each pair of policies whose included users and apps overlap, the automatic diagnostics report a "Conflict (Warning)" when one blocks and the other grants access, and a "Duplicate (Info)" when both have the same effect and the same required controls. The results appear in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report.</p>
       </div>
       <div class="feature-card">
         <h3>How do I keep track of who changed a policy, when, and why?</h3>
