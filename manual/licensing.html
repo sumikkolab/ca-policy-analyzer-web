@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ライセンス | CA Policy Analyzer マニュアル — Sumikko Lab</title>
-<meta name="description" content="CA Policy Analyzer のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
+<meta name="description" content="CA Policy Analyzer のライセンス情報。試用・Standard・Pro の違い、購入方法、ライセンス認証の手順を解説します。">
 <link rel="canonical" href="https://capolanalyzer.sumikkolab.com/manual/licensing.html">
 <meta property="og:title" content="ライセンス | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta property="og:description" content="CA Policy Analyzer のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
+<meta property="og:description" content="CA Policy Analyzer のライセンス情報。試用・Standard・Pro の違い、購入方法、ライセンス認証の手順を解説します。">
 <meta property="og:url" content="https://capolanalyzer.sumikkolab.com/manual/licensing.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="CA Policy Analyzer のポリシー管理画面">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ライセンス | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta name="twitter:description" content="CA Policy Analyzer のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
+<meta name="twitter:description" content="CA Policy Analyzer のライセンス情報。試用・Standard・Pro の違い、購入方法、ライセンス認証の手順を解説します。">
 <meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -39,7 +39,7 @@
 
     <h2>ライセンスモデル</h2>
     <p>CA Policy Analyzer は、無料アプリ + 有料アドオンのモデルを採用しています。</p>
-    <p>基本機能は無料で利用でき、高度な機能は有料アドオンで解放されます。</p>
+    <p>本体は無料で入手でき、15 日間お試しいただけます。試用期間の終了後も使い続けるには、Standard または Pro のアドオンの購入が必要です。シミュレーションや Excel/PDF の出力などの機能は Pro で利用できます。</p>
 
     <h2>プラン比較</h2>
     <table class="manual-table">
@@ -59,19 +59,31 @@
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>ギャップ分析（推奨構成との比較）</td>
+          <td>ポリシー JSON エクスポート</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>診断（ロックアウトリスク・競合検出）</td>
+          <td>ギャップ分析（推奨構成 28 項目との比較）</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>変更履歴（監査ログ）</td>
+          <td>カバレッジ分析（設計不備・除外グループ）</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>管理者除外分析（準拠率の改善見込み）</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>変更履歴</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
@@ -83,61 +95,48 @@
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>シミュレーション（単一シナリオ）</td>
-          <td>&#9675;</td>
-          <td>&#9675;</td>
-          <td>&#9675;</td>
-        </tr>
-        <tr>
           <td>利用期間</td>
           <td>15 日間</td>
           <td>無制限</td>
           <td>無制限</td>
         </tr>
         <tr>
-          <td>シミュレーション（比較モード）</td>
+          <td>シミュレーション（単一シナリオ・比較モード）</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Excel 設計書エクスポート</td>
+          <td>Excel 設計書エクスポート（診断結果・優先対応事項を含む）</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>PDF レポートエクスポート</td>
-          <td>&mdash;</td>
-          <td>&mdash;</td>
-          <td>&#9675;</td>
-        </tr>
-        <tr>
-          <td>ポリシー JSON エクスポート</td>
+          <td>PDF レポートエクスポート（診断結果を含む）</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
       </tbody>
     </table>
+    <p>自動診断（ロックアウトリスク・レガシー認証・管理者保護・競合・重複）の結果は画面には表示されず、Pro の Excel 設計書と PDF レポートに出力されます。詳しくは<a href="diagnostics.html">診断</a>を参照してください。</p>
 
     <h2>Trial（無料試用）</h2>
-    <p>インストール後、15 日間すべての基本機能を無料でお試しいただけます。</p>
+    <p>インストール後、15 日間は上の表の Trial の列の機能を無料でお試しいただけます。</p>
     <p>試用期間中は画面上部にバナーが表示され、残り日数を確認できます。</p>
-    <p>試用期間が終了すると、Standard または Pro アドオンの購入が必要です。</p>
+    <p>試用期間が終了すると、Standard または Pro アドオンを購入するまで、すべての画面がロックされ利用できなくなります。</p>
 
     <h2>Standard アドオン</h2>
-    <p>試用期間の制限を解除し、基本機能を継続して利用できます。</p>
-    <p>ギャップ分析、診断、変更履歴など、すべての基本機能が含まれます。</p>
+    <p>試用期間の制限を解除し、Trial と同じ機能を期限なく利用できます。</p>
 
     <h2>Pro アドオン</h2>
     <img src="images/ja/pro-upgrade.png" alt="Pro アップグレード画面" class="screenshot">
-    <p>Standard の全機能に加えて、以下の高度な機能が利用できます:</p>
+    <p>試用期間の制限を解除し、Standard の全機能に加えて、以下の機能が利用できます（Pro だけを購入した場合も、期間の制限は解除されます）:</p>
     <ul>
-      <li>Excel 設計書エクスポート（8 シート構成）</li>
-      <li>PDF レポートエクスポート（A4 印刷最適化）</li>
-      <li>シミュレーション比較モード</li>
-      <li>ポリシー JSON エクスポート</li>
+      <li>シミュレーション（単一シナリオ・比較モード）</li>
+      <li>Excel 設計書エクスポート（8 シート構成。診断結果・優先対応事項を含む）</li>
+      <li>PDF レポートエクスポート（A4 印刷最適化。診断結果を含む）</li>
     </ul>
 
     <h2>購入方法</h2>
@@ -167,7 +166,7 @@
 
     <h2>Licensing Model</h2>
     <p>CA Policy Analyzer uses a free app + paid add-on model.</p>
-    <p>Core features are available for free, while advanced features are unlocked through paid add-ons.</p>
+    <p>The app itself is free to download and comes with a 15-day trial. To keep using it after the trial, you need to purchase the Standard or Pro add-on. Features such as simulation and Excel/PDF export are available with Pro.</p>
 
     <h2>Plan Comparison</h2>
     <table class="manual-table">
@@ -187,19 +186,31 @@
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Gap Analysis (comparison with recommended configuration)</td>
+          <td>Policy JSON Export</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Diagnostics (lockout risk, conflict detection)</td>
+          <td>Gap Analysis (comparison with 28 recommended configuration items)</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Change History (audit log)</td>
+          <td>Coverage Analysis (design flaws, excluded groups)</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>Administrator Exclusion Analysis (projected compliance rate)</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>Change History</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
           <td>&#9675;</td>
@@ -211,60 +222,47 @@
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Simulation (single scenario)</td>
-          <td>&#9675;</td>
-          <td>&#9675;</td>
-          <td>&#9675;</td>
-        </tr>
-        <tr>
           <td>Usage Period</td>
           <td>15 days</td>
           <td>Unlimited</td>
           <td>Unlimited</td>
         </tr>
         <tr>
-          <td>Simulation (comparison mode)</td>
+          <td>Simulation (single scenario and comparison mode)</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>Excel Design Document Export</td>
+          <td>Excel Design Document Export (including diagnostics and priority actions)</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
         <tr>
-          <td>PDF Report Export</td>
-          <td>&mdash;</td>
-          <td>&mdash;</td>
-          <td>&#9675;</td>
-        </tr>
-        <tr>
-          <td>Policy JSON Export</td>
+          <td>PDF Report Export (including diagnostics)</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
           <td>&#9675;</td>
         </tr>
       </tbody>
     </table>
+    <p>Automatic diagnostics (lockout risk, legacy authentication, administrator protection, conflicts and duplicates) are not shown on screen. Their results are included in the Pro Excel design document and PDF report. See <a href="diagnostics.html?lang=en">Diagnostics</a> for details.</p>
 
     <h2>Trial (Free Trial)</h2>
-    <p>After installation, all core features are available free for 15 days.</p>
+    <p>For 15 days after installation, you can use the features in the Trial column above free of charge.</p>
     <p>During the trial period, a banner at the top of the screen shows the remaining days.</p>
-    <p>When the trial period ends, you need to purchase the Standard or Pro add-on.</p>
+    <p>When the trial ends, every screen is locked until you purchase the Standard or Pro add-on.</p>
 
     <h2>Standard Add-on</h2>
-    <p>Removes the trial period limitation and allows continued use of all core features.</p>
-    <p>Includes all core features such as gap analysis, diagnostics, and change history.</p>
+    <p>Removes the trial time limit so you can keep using the Trial features with no expiry.</p>
 
     <h2>Pro Add-on</h2>
-    <p>In addition to all Standard features, the following advanced features become available:</p>
+    <p>Removes the trial time limit and adds the following features on top of everything in Standard (buying Pro alone is enough to remove the time limit):</p>
     <ul>
-      <li>Excel Design Document Export (8-sheet structure)</li>
-      <li>PDF Report Export (A4 print-optimized)</li>
-      <li>Simulation Comparison Mode</li>
-      <li>Policy JSON Export</li>
+      <li>Simulation (single scenario and comparison mode)</li>
+      <li>Excel Design Document Export (8 sheets, including diagnostics and priority actions)</li>
+      <li>PDF Report Export (A4 print-optimized, including diagnostics)</li>
     </ul>
 
     <h2>How to Purchase</h2>

@@ -38,8 +38,11 @@
     <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
 
     <h2>変更履歴とは</h2>
-    <p>ポリシーの読み込み・編集・削除のすべての操作を時系列で記録する監査ログ機能です。</p>
-    <p>「誰が」「いつ」「なぜ」「何を」変更したかを追跡できます。これにより、ポリシー変更の経緯を透明に管理し、監査やトラブルシューティングに役立てることができます。</p>
+    <p>このアプリでのポリシーの読み込み・登録・編集・削除を、時系列で残す機能です。</p>
+    <p>JSON ファイルを読み込むときは、変更者と変更理由の入力が必須です。入力した内容が、日時・元のファイル名・追加／削除／変更されたポリシーと項目ごとの新旧の値とあわせて記録されるため、「誰が」「いつ」「なぜ」「何を」変更したかを後から確認できます。画面からの登録・編集・削除は、変更者の欄が「手動編集」などの操作名で自動的に記録されます。</p>
+    <div class="info-box">
+      <p>この変更履歴は、アプリの中で行った操作の記録です。Entra ID テナントの監査ログではないため、Entra 管理センターなどで直接行った変更は記録されません。</p>
+    </div>
 
     <h2>一覧表示</h2>
     <p>「変更履歴」タブを開くと、すべての変更が時系列で一覧表示されます。各エントリには以下の情報が表示されます:</p>
@@ -57,7 +60,7 @@
         </tr>
         <tr>
           <td>変更者</td>
-          <td>操作を行ったユーザーの名前</td>
+          <td>読み込み時に入力した変更者（画面での操作は「手動編集」などの操作名）</td>
         </tr>
         <tr>
           <td>変更理由</td>
@@ -134,8 +137,11 @@
     <p class="subtitle">CA Policy Analyzer User Manual</p>
 
     <h2>What is Change History?</h2>
-    <p>Change History is an audit log feature that records all policy operations — imports, edits, and deletions — in chronological order.</p>
-    <p>It tracks "who" changed "what," "when," and "why." This enables transparent management of policy change history, useful for auditing and troubleshooting.</p>
+    <p>Change History keeps a chronological record of policy loads, additions, edits and deletions made in this app.</p>
+    <p>When you load a JSON file, you must enter who is making the change and why. That information is saved together with the date and time, the source file name, the added, removed and modified policies, and the old and new value of each changed setting, so you can later see who changed what, when and why. Additions, edits and deletions made on screen are recorded automatically, with an operation name such as "Manual Edit" in the "changed by" field.</p>
+    <div class="info-box">
+      <p>This history only covers operations performed in the app. It is not your Entra ID tenant's audit log, so changes made directly in the Entra admin center or elsewhere are not recorded.</p>
+    </div>
 
     <h2>List View</h2>
     <p>Opening the "Change History" tab displays all changes in chronological order. Each entry shows the following information:</p>
@@ -153,7 +159,7 @@
         </tr>
         <tr>
           <td>Changed By</td>
-          <td>Name of the user who performed the operation</td>
+          <td>The person entered when loading the file (for on-screen operations, an operation name such as "Manual Edit")</td>
         </tr>
         <tr>
           <td>Reason</td>
@@ -206,7 +212,7 @@
 
     <h2>Utilizing Change History</h2>
     <div class="tip-box">
-      <p>Change history is automatically included in the "Change Management Record" sheet of the design document export (Excel / PDF). It can be used as-is as audit submission material.</p>
+      <p>Change history is automatically included in the "Change Log" sheet of the design document export (Excel / PDF). It can be used as-is as audit submission material.</p>
     </div>
     <p>Change history is useful in the following scenarios:</p>
     <ul>

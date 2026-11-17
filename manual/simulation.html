@@ -38,10 +38,13 @@
     <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
     <img src="images/ja/simulation.png" alt="シミュレーション画面" class="screenshot">
 
-    <h2>シミュレーションとは</h2>
+    <h2>シミュレーションとは <span class="pro-badge">PRO</span></h2>
     <p>シミュレーション機能は、「もし〇〇なユーザーが△△にアクセスしたら？」という仮定のシナリオを検証するための機能です。</p>
-    <p>登録済みの条件付きアクセスポリシーに対して、仮想のアクセス条件（ユーザー、デバイス、場所など）を入力し、その条件下でアクセスが <strong>BLOCK（ブロック）</strong> されるのか、<strong>ALLOW（許可）</strong> されるのかの判定結果を確認できます。</p>
+    <p>登録済みの条件付きアクセスポリシーに対して、仮想のアクセス条件（ユーザー、プラットフォーム〔OS〕、場所など）を入力し、その条件下でアクセスが <strong>BLOCK（ブロック）</strong> されるのか、<strong>ALLOW（許可）</strong> されるのかの判定結果を確認できます。</p>
     <p>これにより、ポリシーを実環境に適用する前に、意図した通りに動作するかを安全に検証できます。</p>
+    <div class="info-box">
+      <p>サインインリスク・ユーザーリスクとデバイスの準拠状態は入力できません。リスクを条件にしたポリシーは「不適用」と判定されます。実際のサインインへの影響は測定しないため、ギャップ分析の詳細に示される KQL の例で確認してください。</p>
+    </div>
 
     <h2>シナリオの入力</h2>
     <p>シミュレーション画面で、以下のアクセス条件を設定します。</p>
@@ -66,7 +69,7 @@
           <td>アクセス先のアプリケーション名を入力します。</td>
         </tr>
         <tr>
-          <td>デバイスプラットフォーム</td>
+          <td>プラットフォーム（OS）</td>
           <td>Windows, iOS, Android, macOS, Linux から選択します。</td>
         </tr>
         <tr>
@@ -170,7 +173,7 @@
     </table>
     <p>この比較により、条件の違いがどのポリシーに影響するかを明確に把握できます。</p>
     <div class="tip-box">
-      <p>比較モードは Pro プランで利用できます。</p>
+      <p>シミュレーションは Pro プランで利用できます（単一のシナリオも比較モードも）。</p>
     </div>
 
     <div class="chapter-nav">
@@ -188,9 +191,12 @@
     <p class="subtitle">CA Policy Analyzer User Manual</p>
     <img src="images/en/simulation.png" alt="Simulation Screen" class="screenshot">
 
-    <h2>What is Simulation?</h2>
+    <h2>What is Simulation? <span class="pro-badge">PRO</span></h2>
     <p>The Simulation feature allows you to test hypothetical scenarios such as "What happens if a specific user tries to access a particular application?"</p>
-    <p>By entering virtual access conditions (user, device, location, etc.) against your registered Conditional Access policies, you can verify whether access would be <strong>BLOCKED</strong> or <strong>ALLOWED</strong> under those conditions.</p>
+    <p>By entering virtual access conditions (user, platform (OS), location, etc.) against your registered Conditional Access policies, you can verify whether access would be <strong>BLOCKED</strong> or <strong>ALLOWED</strong> under those conditions.</p>
+    <div class="info-box">
+      <p>Sign-in risk, user risk and device compliance cannot be entered. Policies that use risk as a condition are reported as "Not applied." The simulation does not measure the impact on real sign-ins; use the sample KQL queries in the Gap Analysis details for that.</p>
+    </div>
     <p>This allows you to safely verify that your policies work as intended before deploying them to a production environment.</p>
 
     <h2>Entering a Scenario</h2>
@@ -216,7 +222,7 @@
           <td>Enter the name of the application being accessed.</td>
         </tr>
         <tr>
-          <td>Device Platform</td>
+          <td>Platform (OS)</td>
           <td>Select from Windows, iOS, Android, macOS, or Linux.</td>
         </tr>
         <tr>
@@ -320,7 +326,7 @@
     </table>
     <p>This comparison makes it clear which policies are affected by different conditions.</p>
     <div class="tip-box">
-      <p>Comparison Mode is available with the Pro plan.</p>
+      <p>Simulation is available with the Pro plan (both single scenarios and comparison mode).</p>
     </div>
 
     <div class="chapter-nav">

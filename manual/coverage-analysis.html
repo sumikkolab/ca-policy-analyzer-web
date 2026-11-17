@@ -44,12 +44,18 @@
 
     <h2>設計不備の検出（Design Flaw Detection）</h2>
     <p>ポリシーが個別には正しくても、組み合わせによって保護されないケースを特定します。</p>
-    <p>例:</p>
+    <p>次の 5 種類について、有効なポリシー全体で保護が成り立っているかを確かめます。</p>
     <ul>
-      <li>一般ユーザー向けの MFA ポリシーが管理者を除外しており、管理者専用ポリシーが存在しない</li>
-      <li>レガシー認証ブロックポリシーが特定のアプリを除外しており、そのアプリに別の保護が無い</li>
+      <li>全ユーザーに対する MFA の適用</li>
+      <li>管理者ロールの保護</li>
+      <li>全アプリケーションの保護</li>
+      <li>レガシー認証のブロック</li>
+      <li>リスクベースのアクセス制御（サインインリスク・ユーザーリスク）</li>
     </ul>
     <p>検出された設計不備は、ステータス <span class="badge-designflaw">Design Flaw</span> として表示されます。</p>
+
+    <h3>除外グループによる穴</h3>
+    <p>全ユーザーを対象にしたポリシーの多く（全体の 7 割〔小数点以下切り捨て〕以上、かつ 2 件以上）から同じグループが除外されている場合、そのグループを「除外グループ: グループ名」として表示します。「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように件数を示し、除外しているポリシー名と、そのグループが受けられていない保護も確認できます。個々のポリシーの除外は意図どおりでも、重なると一部のユーザーが MFA などをまとめて逃れる、という穴を見つけるための項目です。</p>
 
     <h2>管理者除外分析</h2>
     <p>多くの組織では、管理者グループをセキュリティポリシーから除外しています。この分析では、以下の観点から管理者の保護状況を評価します:</p>
@@ -64,39 +70,13 @@
     </div>
 
     <h2>改善見込みの読み方</h2>
-    <p>「管理者保護を追加した場合」のセクションでは、以下の指標が表示されます:</p>
-    <table class="manual-table">
-      <thead>
-        <tr>
-          <th>指標</th>
-          <th>現在</th>
-          <th>改善後</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>管理者除外ポリシー数</td>
-          <td>5</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>専用ポリシーでカバー済み</td>
-          <td>2</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>保護不足</td>
-          <td>3</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>推定準拠率</td>
-          <td>65%</td>
-          <td>82%</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>これにより、管理者保護の強化がどの程度セキュリティ向上につながるかを定量的に把握できます。改善後の数値は、管理者専用ポリシーをすべて追加した場合のシミュレーション値です。</p>
+    <p>管理者を除外しているポリシーが 1 件以上あると、「分析」タブの結果に「管理者除外分析」の欄が表示され、次の内容を確認できます。</p>
+    <ul>
+      <li>管理者グループを除外しているポリシーの件数と、そのうち専用ポリシーで補えている件数・補えていない件数</li>
+      <li>管理者専用ポリシーで対策した場合の総合判定と準拠率の変化（例: 総合判定「改善が必要」→「概ね十分」、準拠率 65% → 82%）</li>
+      <li>該当する推奨項目ごとの、現在のステータスと改善後のステータス、およびその詳細</li>
+    </ul>
+    <p>改善後の値は、管理者の除外による不足が解消されたと仮定して計算した見込みです。管理者保護の強化がどの程度の改善につながるかを、対策前に把握できます。</p>
 
     <div class="chapter-nav">
       <span><a href="gap-analysis.html">&larr; 乖離チェック</a></span>
@@ -118,12 +98,18 @@
 
     <h2>Design Flaw Detection</h2>
     <p>Identifies cases where policies are individually correct but fail to provide protection when combined.</p>
-    <p>Examples:</p>
+    <p>It checks whether your enabled policies, taken together, provide the following five protections:</p>
     <ul>
-      <li>An MFA policy for general users excludes administrators, but no administrator-specific policy exists</li>
-      <li>A legacy authentication block policy excludes certain apps, and those apps have no alternative protection</li>
+      <li>MFA enforcement for all users</li>
+      <li>Admin role protection</li>
+      <li>All application protection</li>
+      <li>Legacy authentication block</li>
+      <li>Risk-based access control (sign-in risk and user risk)</li>
     </ul>
     <p>Detected design flaws are displayed with the status <span class="badge-designflaw">Design Flaw</span>.</p>
+
+    <h3>Gaps created by excluded groups</h3>
+    <p>When the same group is excluded from most of your all-user policies (at least 70% of them, rounded down, and at least two), it is listed as "Excluded group: <em>group name</em>." The entry shows the count, for example "Group 'Contractors' is excluded from 8 out of 10 all-user policies," along with the names of the excluding policies and the protections the group is missing. Each exclusion may be intentional on its own, but together they can let some users skip MFA and other controls entirely. This item is designed to surface that kind of gap.</p>
 
     <h2>Administrator Exclusion Analysis</h2>
     <p>Many organizations exclude administrator groups from security policies. This analysis evaluates the protection status of administrators from the following perspectives:</p>
@@ -138,39 +124,13 @@
     </div>
 
     <h2>Understanding the Improvement Projection</h2>
-    <p>The "If administrator protection is added" section displays the following metrics:</p>
-    <table class="manual-table">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Current</th>
-          <th>After Improvement</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Policies excluding admins</td>
-          <td>5</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>Covered by dedicated policy</td>
-          <td>2</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>Insufficient protection</td>
-          <td>3</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Estimated compliance rate</td>
-          <td>65%</td>
-          <td>82%</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>This allows you to quantitatively understand how much strengthening administrator protection will improve your overall security posture. The "After Improvement" values are simulated figures assuming all dedicated administrator policies are added.</p>
+    <p>When at least one policy excludes administrators, the results in the Analysis tab include an "Administrator Exclusion Analysis" panel showing:</p>
+    <ul>
+      <li>How many policies exclude the administrator group, and how many of those are or are not covered by a dedicated policy</li>
+      <li>How the overall verdict and compliance rate would change if you add dedicated administrator policies (for example, verdict "Needs Improvement" to "Mostly Sufficient", compliance rate 65% to 82%)</li>
+      <li>For each affected recommendation, its current status, its status after the fix, and the details</li>
+    </ul>
+    <p>The "after" values are projections calculated on the assumption that the gaps caused by excluding administrators are resolved. They let you see how much strengthening administrator protection would help before you make the change.</p>
 
     <div class="chapter-nav">
       <span><a href="gap-analysis.html?lang=en">&larr; Gap Analysis</a></span>

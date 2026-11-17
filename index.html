@@ -37,7 +37,7 @@
       "url": "https://capolanalyzer.sumikkolab.com/",
       "name": "CA Policy Analyzer",
       "inLanguage": ["ja", "en"],
-      "dateModified": "2026-11-09",
+      "dateModified": "2026-11-17",
       "publisher": { "@id": "https://capolanalyzer.sumikkolab.com/#organization" }
     },
     {
@@ -46,16 +46,15 @@
       "name": "CA Policy Analyzer",
       "description": "Entra ID の条件付きアクセスで、管理者の除外による穴、管理者のロックアウト、レガシー認証のブロック漏れ、基準（NIST SP 800-53・DISA STIG・Microsoft）との差を、ポリシーの JSON から分析する Windows 向けのツール。変更前のアクセス判定の確認や、変更履歴の追跡にも使えます。テナントには接続せず、ローカルで処理します。",
       "featureList": [
-        "管理者を除外したポリシーの穴を分析（管理者除外分析）",
-        "全員ブロックによる管理者のロックアウトリスクを検出",
-        "レガシー認証（IMAP/POP3/SMTP）のブロック漏れを検出",
-        "個々のポリシーは正しくても、組み合わせで残る隙間（設計不備）を検出",
-        "NIST SP 800-53・DISA STIG・Microsoft Security Baselines の推奨構成とのギャップ分析",
-        "変更前にアクセス判定を確認し、ブロックや許可の根拠を示す What-If シミュレーション（Pro）",
-        "矛盾・重複するポリシーの検出",
-        "ポリシーの変更履歴（誰が・いつ・なぜ）の自動追跡と差分検出",
-        "レポート専用モードでの導入手順と、影響確認用の KQL クエリの提示",
-        "監査提出用の Excel 設計書（8 シート）と PDF レポートの出力（Pro）"
+        "管理者を除外したポリシーの件数と、管理者専用ポリシーで対策した場合の総合判定・準拠率の変化を表示（管理者除外分析）",
+        "NIST SP 800-53・DISA STIG・Microsoft の推奨構成 28 項目（Microsoft 16・DISA STIG 5・NIST 7）とのギャップ分析",
+        "ポリシーの組み合わせで残る隙間（設計不備 5 種類）と、全ユーザー向けポリシーの多くから除外されているグループを検出",
+        "変更前にアクセス判定を確認し、ポリシーごとに適用・不適用の理由を示すシミュレーション（Pro）",
+        "ロックアウトリスク・レガシー認証・管理者保護・競合・重複の自動診断（結果は Pro の Excel・PDF に出力）",
+        "監査提出用の Excel 設計書（8 シート。総評に優先対応事項）と PDF レポートの出力（Pro）",
+        "JSON の読み込み時に変更者と理由を残す変更履歴と、項目ごとの新旧の差分表示",
+        "レポート専用モードでの導入手順と、影響確認用の KQL クエリの例の提示",
+        "ポリシーの JSON エクスポート"
       ],
       "url": "https://capolanalyzer.sumikkolab.com/",
       "applicationCategory": "SecurityApplication",
@@ -64,11 +63,13 @@
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "JPY"
+        "priceCurrency": "JPY",
+        "url": "https://apps.microsoft.com/detail/9NR10PX75754",
+        "description": "本体は無料で、15 日間試用できます。試用後に使い続けるには、Standard または Pro のアドオン（アプリ内購入）が必要です。アドオンの価格は Microsoft Store で確認できます。"
       },
       "author": { "@id": "https://capolanalyzer.sumikkolab.com/#organization" },
       "publisher": { "@id": "https://capolanalyzer.sumikkolab.com/#organization" },
-      "dateModified": "2026-11-09"
+      "dateModified": "2026-11-17"
     }
   ]
 }
@@ -87,7 +88,8 @@
   @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
   .feature-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
   .feature-card h3 { font-size: 0.95rem; color: #1e3a5f; margin-bottom: 6px; }
-  .feature-card p { font-size: 0.85rem; color: #475569; }
+  .feature-card p { font-size: 0.85rem; color: #475569; overflow-wrap: anywhere; }
+  .feature-card img { display: block; width: 100%; height: auto; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 4px; }
   .pro-badge { background: #f59e0b; color: #fff; font-size: 0.7rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
   ul { padding-left: 20px; margin: 8px 0 16px; }
   li { font-size: 0.9rem; margin-bottom: 4px; }
@@ -116,8 +118,12 @@
 <div class="section-ja visible" id="content-ja">
   <div class="hero">
     <h1>CA Policy Analyzer — 条件付きアクセスの抜け・ロックアウト・レガシー認証を、設定の JSON から分析</h1>
-    <p class="tagline">Microsoft Entra ID の条件付きアクセスポリシーをローカルで分析する Windows 向けのセキュリティツールです。ギャップ分析などの基本機能に加え、Pro では What-If シミュレーションと Excel/PDF エクスポートに対応します。</p>
-    <p class="subtitle">最終更新: 2026-11-09</p>
+    <p class="tagline">Microsoft Entra ID の条件付きアクセスポリシーをローカルで分析する Windows 向けのセキュリティツールです。本体は無料で 15 日間試用でき、その後は Standard または Pro のアドオンで使い続けられます。Pro ではシミュレーションと、自動診断を含む Excel/PDF の出力に対応します。</p>
+    <p class="subtitle">最終更新: 2026-11-17</p>
+    <div class="links">
+      <a href="https://apps.microsoft.com/detail/9NR10PX75754" class="primary">Microsoft Store で入手</a>
+      <a href="manual/licensing.html" class="secondary">プランと試用期間</a>
+    </div>
     <span class="badge">NIST SP 800-53</span>
     <span class="badge">DISA STIG</span>
     <span class="badge">Microsoft Baselines</span>
@@ -131,74 +137,82 @@
     <div class="features">
       <div class="feature-card">
         <h3>条件付きアクセスで管理者を除外している場合の穴を調べるには</h3>
-        <p>カバレッジ分析の「管理者除外分析」が、管理者を除外しているポリシーの数と、管理者専用の代替ポリシーで補えているもの・不足しているものの数を示します。分析設定に管理者グループ名を登録すると、管理者専用の保護がない場合は「管理者保護不備」として検出します。</p>
+        <p>ギャップ分析の結果に表示される「管理者除外分析」が、管理者グループを除外しているポリシーの件数と、そのうち管理者専用ポリシーで補えている件数・補えていない件数を示します。専用ポリシーで対策した場合の総合判定と準拠率の変化（例: 準拠率 65% → 82%）と、項目ごとの現在と改善後のステータスも確認できます。管理者グループ名は、あらかじめ分析設定で登録します。</p>
       </div>
       <div class="feature-card">
-        <h3>管理者がロックアウトされるポリシーを事前に見つけるには</h3>
-        <p>自動診断の「ロックアウトリスク（Critical）」が、すべてのユーザーをブロックし、管理者にも適用されうるポリシーを検出します。緊急アクセスアカウントの除外があるかなど、確認すべき点も示します。</p>
+        <h3>管理者がロックアウトされるポリシーを事前に見つけるには <span class="pro-badge">PRO</span></h3>
+        <p>自動診断の「ロックアウトリスク（Critical）」が、全ユーザー・全アプリをブロックするポリシーのうち、除外のユーザーも除外のグループも 1 件も無いものを検出します。結果は画面には出ず、Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。画面では、Pro のシミュレーションに管理者や緊急アクセス用アカウントを入力し、判定が BLOCK にならないかを確かめられます。</p>
       </div>
       <div class="feature-card">
         <h3>レガシー認証のブロック漏れを確認するには</h3>
-        <p>自動診断の「レガシー認証の露出（Warning）」が、MFA に対応しない IMAP・POP3・SMTP などを止めるポリシーがない、または不完全な場合に検出します。「その他のクライアント（レガシー）」を対象にしたブロックポリシーの作成が推奨対応です。</p>
+        <p>ギャップ分析の推奨項目「MS-LEGACY-AUTH-BLOCK」と、カバレッジ分析の「レガシー認証のブロック」が、IMAP・POP3・SMTP など MFA に対応しない認証を止めるポリシーがあるかをどのプランでも示します。レガシー認証を許可しているポリシーを 1 件ずつ挙げる自動診断（Warning）の結果は、Pro の Excel・PDF に出力されます。</p>
       </div>
       <div class="feature-card">
         <h3>個々のポリシーは正しいのに、組み合わせで隙間が残っていないか知りたいとき</h3>
-        <p>カバレッジ分析の設計不備の検出が、ポリシーの組み合わせでは保護されないケースを「Design Flaw」として表示します。例えば、一般ユーザー向けの MFA ポリシーが管理者を除外し、管理者専用のポリシーがない場合です。</p>
+        <p>カバレッジ分析が、全ユーザーへの MFA・管理者ロールの保護・全アプリの保護・レガシー認証のブロック・リスクベースの制御の 5 種類について、ポリシー全体で保護が成り立っていない場合に「Design Flaw」として示します。また、全ユーザー向けポリシーの多く（7 割以上）から除外されているグループを「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように示し、除外が重なってできた穴を見つけられます。</p>
+        <img src="manual/images/ja/coverage-analysis.png" alt="カバレッジ分析の画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>条件付きアクセスが NIST や STIG、Microsoft の基準に沿っているか点検するには</h3>
-        <p>ギャップ分析が、NIST SP 800-53・DISA STIG・Microsoft Security Baselines から導いた推奨構成と現在のポリシーを比較し、項目ごとに適合・不十分・欠落などを判定します。準拠率と総合判定、推奨修正の手順も確認できます。</p>
+        <p>ギャップ分析が、Microsoft 16 項目・DISA STIG 5 項目・NIST SP 800-53 7 項目の計 28 項目の推奨構成と現在のポリシーを比較し、項目ごとに適合・不十分・欠落などを判定します。準拠率と総合判定、推奨修正の手順も確認できます。</p>
+        <img src="manual/images/ja/gap-analysis.png" alt="ギャップ分析の画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>条件付きアクセスの変更前に、誰がどこでブロックされるか確かめるには <span class="pro-badge">PRO</span></h3>
-        <p>What-If シミュレーションで、ユーザー・グループ・アプリ・デバイス・クライアントアプリ・場所を仮定し、BLOCK か ALLOW か、必要なコントロールを確認できます。実環境に適用する前に、意図どおりに動くかを検証できます。</p>
+        <p>シミュレーションで、ユーザー・グループ・アプリ・プラットフォーム（OS）・クライアントアプリ・場所を仮定し、BLOCK か ALLOW か、必要なコントロールを確認できます。評価・適用・不適用・無効のポリシーの件数も表示されるため、実環境に適用する前に、意図どおりに動くかを検証できます。</p>
+        <img src="manual/images/ja/simulation.png" alt="シミュレーションの画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>想定外にブロックされる（許可される）原因が分からないとき <span class="pro-badge">PRO</span></h3>
         <p>シミュレーションの結果には、適用されたポリシーと適用されなかったポリシーの一覧が出ます。どの条件が一致したか、一致しなかったかの理由も確認でき、原因の特定とポリシーの見直しに使えます。</p>
       </div>
       <div class="feature-card">
-        <h3>矛盾・重複したポリシーを見つけるには</h3>
-        <p>自動診断の「ポリシー競合・重複（Info）」が、同じ条件に矛盾する制御を設定した組み合わせ（同じグループに MFA を求めるポリシーとブロックするポリシーなど）と、実質的に同じ効果の重複ポリシーを検出します。</p>
+        <h3>矛盾・重複したポリシーを見つけるには <span class="pro-badge">PRO</span></h3>
+        <p>自動診断が、対象範囲が重なる 2 つのポリシーのうち、一方がブロックで他方が許可のもの（同じグループに MFA を求めて許可するポリシーとブロックするポリシーなど）を「競合（Warning）」、効果と要求するコントロールが同じものを「重複（Info）」として検出します。結果は Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。</p>
       </div>
       <div class="feature-card">
         <h3>ポリシーを「誰が・いつ・なぜ」変更したかを追うには</h3>
-        <p>ポリシー管理の変更履歴が、変更の内容を自動で記録し、差分を検出します。誰が・いつ・なぜ・何を変更したかを追跡でき、監査やトラブルシューティングの証跡として使えます。</p>
+        <p>JSON ファイルを読み込むときに、変更者と変更理由の入力が必須です。入力内容は、日時・元のファイル名・追加／削除／変更されたポリシーと項目ごとの新旧の値とともに変更履歴に残ります。画面での登録・編集・削除は「手動編集」などの操作名で記録されます。アプリ内の操作の記録であり、テナントの監査ログではありません。</p>
       </div>
       <div class="feature-card">
         <h3>推奨構成を本番環境に影響なく試すには</h3>
-        <p>ギャップ分析の各項目の詳細に、レポート専用モードで安全に試すための導入手順（レポート専用デプロイガイド）と、変更の影響を確認する KQL クエリが示されます。</p>
+        <p>ギャップ分析で適合していない項目の詳細に、レポート専用モードで安全に試すための導入手順（レポート専用デプロイガイド）と、変更の影響を確認するための KQL クエリの例が示されます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>監査や報告に出す資料をまとめるには <span class="pro-badge">PRO</span></h3>
+        <p>Excel 設計書は「表紙・総評・設計方針・ポリシー設定状況・ギャップ分析詳細・診断結果・変更管理記録・参照フレームワーク」の 8 シートで出力されます。総評には「優先対応事項」と「改善後の見通し」が入ります。PDF レポートも出力でき、どちらも出力時に組織名と作成者の入力が必要です。</p>
+        <img src="manual/images/ja/export-excel.png" alt="Excel 設計書の出力画面" loading="lazy">
       </div>
     </div>
-    <p>制限: ポリシーの取り込みは JSON ファイルの読み込みと手動登録のみで、テナントへ接続して自動取得する機能はありません。無効・レポート専用のポリシーは分析対象外になる場合があります。対応 OS は Windows 10（バージョン 2004 以降）と Windows 11 です。</p>
 
-    <h2>無料機能</h2>
+    <h2>できないこと</h2>
+    <ul>
+      <li>リスクベースのポリシーのシミュレーション: サインインリスク・ユーザーリスクの入力欄が無いため、リスクを条件にしたポリシーは「不適用」と判定されます。</li>
+      <li>デバイスの準拠状態による判定: シミュレーションでは、デバイスが準拠しているかどうかを条件にできません。</li>
+      <li>テナントからの自動取得と、実際のサインインへの影響の測定: ポリシーは JSON ファイルの読み込みか画面での登録で取り込みます。サインインへの影響は、示される KQL の例を使ってご自身の環境で確認してください。</li>
+    </ul>
+    <p>無効のポリシーは診断の対象外です。対応 OS は Windows 10（バージョン 2004 以降）と Windows 11 です。</p>
+
+    <h2>プランと使える機能</h2>
+    <p>本体は無料で、インストール後 15 日間は試用できます。試用期間が終わると、Standard または Pro のアドオン（アプリ内購入）を購入するまで、すべての画面がロックされます。Pro だけを購入した場合も期間の制限は解除されます。価格は Microsoft Store でご確認ください。</p>
     <div class="features">
       <div class="feature-card">
-        <h3>ポリシー管理</h3>
-        <p>JSON ファイルの読み込み・一覧表示・検索。変更履歴の自動追跡と差分検出。</p>
+        <h3>試用（15 日間）・Standard</h3>
+        <p>ポリシー管理（読み込み・編集・JSON エクスポート）、ギャップ分析（28 項目）、カバレッジ分析（設計不備・除外グループ）、管理者除外分析、変更履歴、ネームドロケーション。Standard では、これらを期限なく使えます。</p>
       </div>
       <div class="feature-card">
-        <h3>ギャップ分析</h3>
-        <p>28 項目のセキュリティベストプラクティスとの適合チェック。管理者除外の補償判定を含む多角的分析。</p>
-      </div>
-      <div class="feature-card">
-        <h3>セキュリティ評価</h3>
-        <p>総合スコア・重要度別分類・優先対応事項を一画面で確認。</p>
-      </div>
-      <div class="feature-card">
-        <h3>自動診断</h3>
-        <p>ロックアウトリスク・レガシー認証許可・ポリシー競合を自動検出し、改善策を提示。</p>
+        <h3>Pro <span class="pro-badge">PRO</span></h3>
+        <p>Standard の全機能に加えて、シミュレーション（単一シナリオ・比較）と、Excel 設計書（8 シート）・PDF レポートの出力。自動診断（ロックアウト・レガシー認証・管理者保護・競合・重複）の結果は、この Excel・PDF に出力されます。</p>
       </div>
     </div>
+    <p><a href="manual/licensing.html">プランごとの機能の比較表を見る</a></p>
 
-    <h2>Pro 機能 <span class="pro-badge">PRO</span></h2>
-    <ul>
-      <li><strong>What-If シミュレーション</strong> — ユーザー・デバイス・場所ごとのアクセス判定を事前検証</li>
-      <li><strong>Excel 設計書エクスポート</strong> — 監査提出用 8 シート構成</li>
-      <li><strong>PDF レポート出力</strong> — A4 印刷最適化</li>
-      <li><strong>ポリシー JSON エクスポート</strong></li>
-    </ul>
+    <h2>入手方法</h2>
+    <p>Microsoft Store から入手できます。インストール後 15 日間は無料で試用できます。</p>
+    <div class="links">
+      <a href="https://apps.microsoft.com/detail/9NR10PX75754" class="primary">Microsoft Store で入手</a>
+      <a href="manual/getting-started.html" class="secondary">はじめに（インストール手順）</a>
+    </div>
 
     <div class="privacy-note">
       <p><strong>プライバシー:</strong> すべてのデータはローカルで処理されます。外部サーバーへのデータ送信は一切行いません（Microsoft Store ライセンス API を除く）。</p>
@@ -234,8 +248,12 @@
 <div class="section-en" id="content-en">
   <div class="hero">
     <h1>CA Policy Analyzer — Find Conditional Access gaps, lockout risk and legacy authentication exposure from your policy JSON</h1>
-    <p class="tagline">CA Policy Analyzer is a Windows security tool that analyzes Microsoft Entra ID Conditional Access policies locally. In addition to basic features such as gap analysis, Pro adds What-If simulation and Excel/PDF export.</p>
-    <p class="subtitle">Last updated: 2026-11-09</p>
+    <p class="tagline">CA Policy Analyzer is a Windows security tool that analyzes Microsoft Entra ID Conditional Access policies locally. The app is free with a 15-day trial; after that, a Standard or Pro add-on keeps it running. Pro adds simulation and Excel/PDF reports that include the automatic diagnostics.</p>
+    <p class="subtitle">Last updated: 2026-11-17</p>
+    <div class="links">
+      <a href="https://apps.microsoft.com/detail/9NR10PX75754" class="primary">Get it from Microsoft Store</a>
+      <a href="manual/licensing.html?lang=en" class="secondary">Plans and trial</a>
+    </div>
     <span class="badge">NIST SP 800-53</span>
     <span class="badge">DISA STIG</span>
     <span class="badge">Microsoft Baselines</span>
@@ -249,74 +267,81 @@
     <div class="features">
       <div class="feature-card">
         <h3>How do I check which Conditional Access policies exclude admins?</h3>
-        <p>Administrator Exclusion Analysis in Coverage Analysis shows how many policies exclude administrators, and how many of them are covered by a dedicated admin policy or left under-protected. Once you register your admin group names in Analysis Settings, a missing admin-specific policy is reported as "Insufficient Administrator Protection."</p>
+        <p>The Administrator Exclusion Analysis shown with the Gap Analysis results tells you how many policies exclude the administrator group, and how many of them are or are not covered by a dedicated admin policy. It also shows how the overall verdict and compliance rate would change if you add dedicated admin policies (for example, 65% to 82%), plus the current and improved status of each affected item. Register your admin group names in Analysis Settings first.</p>
       </div>
       <div class="feature-card">
-        <h3>How can I find policies that could lock administrators out before they do?</h3>
-        <p>Automatic Diagnostics flags "Lockout Risk (Critical)" when a policy blocks all users and may also apply to administrators. It also points out what to verify, such as whether an emergency access account is excluded.</p>
+        <h3>How can I find policies that could lock administrators out before they do? <span class="pro-badge">PRO</span></h3>
+        <p>The "Lockout Risk (Critical)" diagnostic flags policies that block all users and all apps with no excluded users and no excluded groups at all. It is not shown on screen; it appears in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report. On screen, you can enter an administrator or an emergency access account in a Pro simulation and check that the decision is not BLOCK.</p>
       </div>
       <div class="feature-card">
         <h3>How do I check whether legacy authentication is really blocked?</h3>
-        <p>"Legacy Authentication Exposure (Warning)" is raised when no policy blocks protocols such as IMAP, POP3 and SMTP, which cannot use MFA, or when that policy is incomplete. The recommended fix is a block policy targeting "Other clients (legacy)."</p>
+        <p>On every plan, the Gap Analysis item "MS-LEGACY-AUTH-BLOCK" and the Coverage Analysis item "Legacy authentication block" show whether any policy stops protocols such as IMAP, POP3 and SMTP that cannot use MFA. The automatic diagnostic (Warning) that lists each policy still allowing legacy authentication is included in the Pro Excel and PDF reports.</p>
       </div>
       <div class="feature-card">
         <h3>What if every policy looks right, but gaps remain when they are combined?</h3>
-        <p>Design Flaw Detection in Coverage Analysis shows scenarios that no combination of policies protects, marked "Design Flaw." One example is an MFA policy for general users that excludes administrators while no administrator-specific policy exists.</p>
+        <p>Coverage Analysis marks a "Design Flaw" when your policies as a whole fail to provide one of five protections: MFA for all users, admin role protection, protection of all apps, legacy authentication blocking, and risk-based control. It also lists groups excluded from most (70% or more) of your all-user policies, such as "Group 'Contractors' is excluded from 8 out of 10 all-user policies," so you can find holes created by overlapping exclusions.</p>
       </div>
       <div class="feature-card">
         <h3>How can I audit Conditional Access against NIST, STIG or Microsoft baselines?</h3>
-        <p>Gap Analysis compares your policies with recommended configurations derived from NIST SP 800-53, DISA STIG and Microsoft Security Baselines, and rates each item as compliant, weak, missing, and so on. You also get a compliance rate, an overall verdict and recommended remediation steps.</p>
+        <p>Gap Analysis compares your policies with 28 recommended configuration items (16 from Microsoft, 5 from DISA STIG and 7 from NIST SP 800-53) and rates each item as compliant, weak, missing, and so on. You also get a compliance rate, an overall verdict and recommended remediation steps.</p>
+        <img src="manual/images/en/gap-analysis.png" alt="Gap Analysis screen" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>How can I see who would be blocked, and where, before I change a policy? <span class="pro-badge">PRO</span></h3>
-        <p>With What-If Simulation, you enter a hypothetical user, group, app, device, client app and location, and see whether access would be BLOCKED or ALLOWED and which controls are required. You can verify that policies behave as intended before applying them to production.</p>
+        <p>In the simulation, you enter a hypothetical user, group, app, platform (OS), client app and location, and see whether access would be BLOCKED or ALLOWED and which controls are required. The result also counts the policies evaluated, applied, not applied and disabled, so you can confirm policies behave as intended before applying them to production.</p>
+        <img src="manual/images/en/simulation.png" alt="Simulation screen" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>Why is someone blocked, or allowed, unexpectedly? <span class="pro-badge">PRO</span></h3>
         <p>Simulation results list the applied and not-applied policies, along with which conditions matched and why others did not. That lets you pinpoint the cause and fix the policy.</p>
       </div>
       <div class="feature-card">
-        <h3>How can I detect conflicting or duplicate policies?</h3>
-        <p>"Policy Conflicts and Overlaps (Info)" in Automatic Diagnostics detects combinations that set contradictory controls for the same conditions, such as one policy requiring MFA for a group while another blocks it, as well as duplicate policies with effectively the same result.</p>
+        <h3>How can I detect conflicting or duplicate policies? <span class="pro-badge">PRO</span></h3>
+        <p>For each pair of policies with overlapping scope, the automatic diagnostics report a "Conflict (Warning)" when one blocks and the other grants access (for example, one grants a group access with MFA while another blocks it), and a "Duplicate (Info)" when both have the same effect and the same required controls. The results appear in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report.</p>
       </div>
       <div class="feature-card">
         <h3>How do I keep track of who changed a policy, when, and why?</h3>
-        <p>The change history in Policy Management automatically records changes and detects differences. You can trace who changed what, when and why, and use it as audit and troubleshooting evidence.</p>
+        <p>When you load a JSON file, you must enter who is making the change and why. That is stored in the change history with the date and time, the source file name, the added, removed and modified policies, and the old and new value of each setting. Additions, edits and deletions made on screen are recorded with an operation name such as "Manual Edit." This is a record of operations in the app, not your tenant's audit log.</p>
       </div>
       <div class="feature-card">
         <h3>How can I try the recommended configuration without affecting production?</h3>
-        <p>The detail view of each Gap Analysis item includes a report-only deployment guide for testing safely, plus KQL queries for checking the impact of a policy change.</p>
+        <p>For each Gap Analysis item that is not compliant, the detail view includes a report-only deployment guide for testing safely, plus sample KQL queries for checking the impact of the change.</p>
+      </div>
+      <div class="feature-card">
+        <h3>How can I put together documents for an audit or a report? <span class="pro-badge">PRO</span></h3>
+        <p>The Excel design document has eight sheets: Cover, Executive Summary, Design Policy, Policy Configuration, Gap Analysis Detail, Diagnostics, Change Log and Reference Frameworks. The Executive Summary includes priority actions and the outlook after improvement. You can also export a PDF report. Both require an organization name and an author when you export.</p>
+        <img src="manual/images/en/export-excel.png" alt="Excel design document export screen" loading="lazy">
       </div>
     </div>
-    <p>Limitations: Policies are brought in only by loading JSON files or entering them manually. The tool does not connect to your tenant to fetch them automatically. Disabled and report-only policies may be excluded from analysis. Supported on Windows 10 (version 2004 or later) and Windows 11 only.</p>
 
-    <h2>Free Features</h2>
+    <h2>What it cannot do</h2>
+    <ul>
+      <li>Simulate risk-based policies: there is no input for sign-in risk or user risk, so policies that use risk as a condition are reported as "Not applied."</li>
+      <li>Evaluate device compliance: the simulation cannot use whether a device is compliant as a condition.</li>
+      <li>Fetch policies from your tenant or measure the impact on real sign-ins: policies are brought in by loading JSON files or entering them on screen. To check the impact on sign-ins, run the sample KQL queries in your own environment.</li>
+    </ul>
+    <p>Disabled policies are skipped by the diagnostics. Supported on Windows 10 (version 2004 or later) and Windows 11.</p>
+
+    <h2>Plans and features</h2>
+    <p>The app itself is free, and you can try it for 15 days after installation. When the trial ends, every screen is locked until you buy the Standard or Pro add-on (in-app purchase). Buying Pro alone also removes the time limit. Check the Microsoft Store for prices.</p>
     <div class="features">
       <div class="feature-card">
-        <h3>Policy Management</h3>
-        <p>Load, list, and search JSON files. Automatic change tracking with diff detection.</p>
+        <h3>Trial (15 days) and Standard</h3>
+        <p>Policy management (load, edit and JSON export), Gap Analysis (28 items), Coverage Analysis (design flaws and excluded groups), Administrator Exclusion Analysis, change history and named locations. Standard lets you keep using all of these with no time limit.</p>
       </div>
       <div class="feature-card">
-        <h3>Gap Analysis</h3>
-        <p>Compliance check against 28 security best practices. Multi-faceted analysis including admin exclusion compensation.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Security Assessment</h3>
-        <p>Overall score, severity classification, and priority actions in a single view.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Automatic Diagnostics</h3>
-        <p>Detect lockout risks, legacy auth issues, and policy conflicts automatically with remediation advice.</p>
+        <h3>Pro <span class="pro-badge">PRO</span></h3>
+        <p>Everything in Standard, plus simulation (single scenario and comparison) and export of the Excel design document (8 sheets) and PDF report. The automatic diagnostics (lockout, legacy authentication, administrator protection, conflicts and duplicates) are included in these Excel and PDF files.</p>
       </div>
     </div>
+    <p><a href="manual/licensing.html?lang=en">See the full plan comparison</a></p>
 
-    <h2>Pro Features <span class="pro-badge">PRO</span></h2>
-    <ul>
-      <li><strong>What-If Simulation</strong> — Predict access decisions by user, device, and location</li>
-      <li><strong>Excel Design Document Export</strong> — 8-sheet audit-ready format</li>
-      <li><strong>PDF Report Output</strong> — A4 print-optimized</li>
-      <li><strong>Policy JSON Export</strong></li>
-    </ul>
+    <h2>How to get it</h2>
+    <p>Available from the Microsoft Store, with a free 15-day trial after installation.</p>
+    <div class="links">
+      <a href="https://apps.microsoft.com/detail/9NR10PX75754" class="primary">Get it from Microsoft Store</a>
+      <a href="manual/getting-started.html?lang=en" class="secondary">Getting Started (installation)</a>
+    </div>
 
     <div class="privacy-note">
       <p><strong>Privacy:</strong> All data is processed locally. No data is ever sent to external servers (except Microsoft Store license API).</p>

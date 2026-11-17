@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>はじめに | CA Policy Analyzer マニュアル — Sumikko Lab</title>
-<meta name="description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、Entra IDへのサインイン手順を解説します。">
+<meta name="description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、ポリシーの JSON の取り出し方と読み込みの手順を解説します。">
 <link rel="canonical" href="https://capolanalyzer.sumikkolab.com/manual/getting-started.html">
 <meta property="og:title" content="はじめに | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta property="og:description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、Entra IDへのサインイン手順を解説します。">
+<meta property="og:description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、ポリシーの JSON の取り出し方と読み込みの手順を解説します。">
 <meta property="og:url" content="https://capolanalyzer.sumikkolab.com/manual/getting-started.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="CA Policy Analyzer のポリシー管理画面">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="はじめに | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta name="twitter:description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、Entra IDへのサインイン手順を解説します。">
+<meta name="twitter:description" content="CA Policy Analyzer のインストール方法と初期設定。Microsoft Store からのセットアップ、ポリシーの JSON の取り出し方と読み込みの手順を解説します。">
 <meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -42,8 +42,8 @@
     <h3>Microsoft Store からのインストール</h3>
     <p>Microsoft Store を利用すると、最も簡単にインストールできます。</p>
     <ol class="steps">
-      <li>Microsoft Store を開き、検索バーに「CA Policy Analyzer」と入力して検索します。</li>
-      <li>検索結果から「CA Policy Analyzer」を選択し、「入手」ボタンをクリックしてインストールを開始します。</li>
+      <li><a href="https://apps.microsoft.com/detail/9NR10PX75754">Microsoft Store の CA Policy Analyzer のページ</a>を開きます。</li>
+      <li>「入手」ボタンをクリックしてインストールを開始します。</li>
       <li>インストールが完了すると、スタートメニューにアプリが追加されます。</li>
     </ol>
     <div class="tip-box">
@@ -123,7 +123,7 @@
       <li><strong>ポリシー管理</strong> — ポリシーの読み込み・編集・管理を行います。</li>
       <li><strong>シミュレーション</strong> — What-If シナリオ（仮定の条件での検証）を実行します。</li>
       <li><strong>分析</strong> — ギャップ分析（推奨構成との比較）と準拠状況を確認します。</li>
-      <li><strong>変更履歴</strong> — ポリシーの変更に関する監査ログを閲覧します。</li>
+      <li><strong>変更履歴</strong> — ポリシーの変更履歴（アプリ内の操作の記録。テナントの監査ログではありません）を閲覧します。</li>
     </ol>
     <p>左サイドバーには「ポリシー読み込み」ボタンと「分析設定」があり、どのタブからでもアクセスできます。</p>
 
@@ -146,8 +146,8 @@
     <h3>Installing from the Microsoft Store</h3>
     <p>The Microsoft Store provides the easiest way to install the application.</p>
     <ol class="steps">
-      <li>Open the Microsoft Store and search for "CA Policy Analyzer" in the search bar.</li>
-      <li>Select "CA Policy Analyzer" from the search results and click the "Get" button to begin installation.</li>
+      <li>Open the <a href="https://apps.microsoft.com/detail/9NR10PX75754">CA Policy Analyzer page in the Microsoft Store</a>.</li>
+      <li>Click the "Get" button to begin installation.</li>
       <li>Once installation is complete, the app will be added to your Start menu.</li>
     </ol>
     <div class="tip-box">
@@ -227,7 +227,7 @@
       <li><strong>Policy Management</strong> &mdash; Load, edit, and manage your policies.</li>
       <li><strong>Simulation</strong> &mdash; Run What-If scenarios to test hypothetical access conditions.</li>
       <li><strong>Analysis</strong> &mdash; Perform gap analysis against recommended configurations and review compliance status.</li>
-      <li><strong>Change History</strong> &mdash; View audit logs of policy changes.</li>
+      <li><strong>Change History</strong> &mdash; View the history of policy changes (a record of operations in the app, not your tenant's audit log).</li>
     </ol>
     <p>The left sidebar contains the "Load Policies" button and "Analysis Settings", accessible from any tab.</p>
 
