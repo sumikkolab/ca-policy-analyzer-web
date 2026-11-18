@@ -49,14 +49,14 @@
           <li><strong>変更理由</strong>（必須）: なぜこのインポートを行ったかの理由を記録します。</li>
         </ul>
       </li>
-      <li>「読み込み」ボタンをクリックすると、ポリシーが一覧に追加されます。</li>
+      <li>「読み込み確定」ボタンをクリックすると、ポリシーが一覧に追加されます。</li>
     </ol>
     <div class="info-box">
       <p>JSON ファイルは Microsoft Entra 管理センターまたは Graph API からエクスポートした形式に対応しています。単一ポリシーの JSON と、複数ポリシーを含む配列形式の JSON のどちらにも対応しています。</p>
     </div>
 
     <h2>ポリシーの手動登録</h2>
-    <p>JSON ファイルがない場合でも、手動でポリシーを作成・登録できます。「新規ポリシー」ボタンから以下の項目を入力してください。</p>
+    <p>JSON ファイルがない場合でも、手動でポリシーを作成・登録できます。「+ 新規登録」ボタンから以下の項目を入力してください。</p>
 
     <h3>基本情報</h3>
     <ul>
@@ -132,15 +132,14 @@
     <ol class="steps">
       <li>コピー元のポリシーを一覧から選択します。</li>
       <li>「コピー」ボタンをクリックします。</li>
-      <li>コピーされたポリシーが「[元の名前] - コピー」という名前で一覧に追加されます。</li>
-      <li>必要に応じてコピーしたポリシーを編集し、新しいポリシーとして活用します。</li>
+      <li>「ポリシーのコピー（内容を変更して保存）」の画面が開き、ポリシー名が「元の名前 (コピー)」になります。</li>
+      <li>必要に応じて内容を変更し、「保存」をクリックすると、新しいポリシーとして一覧に追加されます。</li>
     </ol>
 
     <h2>JSON エクスポート</h2>
-    <p>登録済みのポリシーを JSON ファイルとしてエクスポートできます。</p>
+    <p>登録済みのポリシーを JSON ファイルとしてエクスポートできます。一覧での選択に関係なく、登録済みのすべてのポリシーが書き出されます。</p>
     <ol class="steps">
-      <li>エクスポートしたいポリシーを一覧から選択します（複数選択可）。</li>
-      <li>「エクスポート」ボタンをクリックします。</li>
+      <li>ポリシー管理画面の上部にある「JSON エクスポート」ボタンをクリックします。</li>
       <li>保存先とファイル名を指定して JSON ファイルを保存します。</li>
     </ol>
     <p>エクスポートした JSON は、他の環境での参照やバックアップとして利用できます。また、別の CA Policy Analyzer インスタンスに再インポートすることも可能です。</p>
@@ -174,14 +173,14 @@
           <li><strong>Change Reason</strong> (required): Records the reason for this import.</li>
         </ul>
       </li>
-      <li>Click the "Load" button to add the policies to the list.</li>
+      <li>Click the "Confirm Load" button to add the policies to the list.</li>
     </ol>
     <div class="info-box">
       <p>The application supports JSON files exported from the Microsoft Entra admin center or Graph API. Both single-policy JSON and array-format JSON containing multiple policies are supported.</p>
     </div>
 
     <h2>Manual Policy Registration</h2>
-    <p>Even without a JSON file, you can create and register policies manually. Click the "New Policy" button and fill in the following fields.</p>
+    <p>Even without a JSON file, you can create and register policies manually. Click the "+ New Policy" button and fill in the following fields.</p>
 
     <h3>Basic Information</h3>
     <ul>
@@ -257,15 +256,14 @@
     <ol class="steps">
       <li>Select the source policy from the list.</li>
       <li>Click the "Copy" button.</li>
-      <li>A copy of the policy will be added to the list with the name "[Original Name] - Copy".</li>
-      <li>Edit the copied policy as needed and use it as a new policy.</li>
+      <li>The "Copy Policy (modify and save)" screen opens, and the policy name is set to "Original Name (Copy)".</li>
+      <li>Modify the contents as needed and click "Save" to add it to the list as a new policy.</li>
     </ol>
 
     <h2>JSON Export</h2>
-    <p>You can export registered policies as JSON files.</p>
+    <p>You can export registered policies as JSON files. All registered policies are exported, regardless of any selection in the list.</p>
     <ol class="steps">
-      <li>Select the policies you want to export from the list (multiple selection is supported).</li>
-      <li>Click the "Export" button.</li>
+      <li>Click the "JSON Export" button at the top of the Policy Management screen.</li>
       <li>Specify the destination and file name to save the JSON file.</li>
     </ol>
     <p>Exported JSON files can be used for reference in other environments or as backups. They can also be re-imported into another CA Policy Analyzer instance.</p>
