@@ -81,8 +81,8 @@
     <p>いいえ。すべてのデータはローカルデバイス上でのみ処理・保存されます。</p>
     <p>ネットワーク通信は Microsoft Store のライセンス確認のみです（WebView2 Runtime が見つからない場合にブラウザーでダウンロードページを開く操作と、利用者の操作でマニュアルやプライバシーポリシーのページをブラウザーで開く操作を除きます）。</p>
 
-    <h3>Q. ポリシー JSON はどのように取得しますか？</h3>
-    <p>Microsoft Entra 管理センターからエクスポートするか、Graph API（<code>GET /identity/conditionalAccess/policies</code>）を使用して取得します。</p>
+    <h3>Q. 読み込むポリシー JSON はどのように用意しますか？</h3>
+    <p>アプリの JSON 形式（ポリシーの配列）のファイルを用意します。Microsoft Entra 管理センターや Microsoft Graph（<code>GET /identity/conditionalAccess/policies</code>）が返す形式は、そのままでは読み込めません。アプリの JSON 形式に変換してください。</p>
     <p>詳しくは「<a href="getting-started.html">はじめに</a>」をご覧ください。</p>
 
     <h3>Q. 言語を切り替えるにはどうすればいいですか？</h3>
@@ -105,7 +105,7 @@
 
     <h3>JSON ファイルを読み込めない</h3>
     <p>ファイルが正しい JSON 形式であることを確認してください。</p>
-    <p>Microsoft Entra 管理センターまたは Graph API からエクスポートされた形式に対応しています。</p>
+    <p>読み込めるのは、アプリの JSON 形式のポリシーを並べた配列だけです。単一のオブジェクトは読み込みエラーになります。Microsoft Entra 管理センターや Microsoft Graph が返す形式は、アプリの JSON 形式に変換してください。</p>
     <div class="tip-box">
       <p>サンプルは本サイトの <a href="../sample-policies-for-review.json">sample-policies-for-review.json</a> から入手できます。まずサンプルファイルで動作を確認してみてください。</p>
     </div>
@@ -202,8 +202,8 @@
     <p>No. All data is processed and stored only on your local device.</p>
     <p>Network communication is limited to Microsoft Store license verification. There are two exceptions. When the WebView2 Runtime is not found, the app opens the download page in your browser. When you choose to open the manual or the privacy policy, the app opens that page in your browser.</p>
 
-    <h3>Q. How do I obtain the policy JSON?</h3>
-    <p>Export it from the Microsoft Entra admin center, or use the Graph API (<code>GET /identity/conditionalAccess/policies</code>) to retrieve it.</p>
+    <h3>Q. How do I prepare the policy JSON to load?</h3>
+    <p>Prepare a file in the app's JSON format (an array of policies). JSON in the format returned by the Microsoft Entra admin center or Microsoft Graph (<code>GET /identity/conditionalAccess/policies</code>) cannot be loaded as it is. Convert it to the app's JSON format.</p>
     <p>See "<a href="getting-started.html?lang=en">Getting Started</a>" for details.</p>
 
     <h3>Q. How do I switch the language?</h3>
@@ -226,7 +226,7 @@
 
     <h3>Cannot Load JSON File</h3>
     <p>Make sure the file is in valid JSON format.</p>
-    <p>The app supports formats exported from the Microsoft Entra admin center or Graph API.</p>
+    <p>The app loads only an array of policies in the app's JSON format. A single object causes a load error. Convert JSON in the format returned by the Microsoft Entra admin center or Microsoft Graph to the app's JSON format.</p>
     <div class="tip-box">
       <p>A sample file is available on this website (<a href="../sample-policies-for-review.json">sample-policies-for-review.json</a>). Try loading the sample file first to verify that the app is working correctly.</p>
     </div>
