@@ -87,29 +87,29 @@
     </ul>
 
     <h2>差分の読み方</h2>
-    <p>変更されたポリシーについては、フィールドごとの差分が表示されます。以下は差分表示の例です:</p>
+    <p>変更されたポリシーについては、「フィールド」「変更前」「変更後」の列で、フィールドごとの差分が表示されます。以下は差分表示の例です:</p>
     <table class="manual-table">
       <thead>
         <tr>
-          <th>項目</th>
+          <th>フィールド</th>
           <th>変更前</th>
           <th>変更後</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>アクセス制御</td>
-          <td>MFA のみ</td>
-          <td>MFA + 準拠デバイス</td>
+          <td>AccessControls.Requirements</td>
+          <td>Mfa</td>
+          <td>Mfa, CompliantDevice</td>
         </tr>
       </tbody>
     </table>
-    <p>変更の種類は以下で分類されます:</p>
+    <p>ポリシーは、変更の種類によって次の 4 つに分類されます:</p>
     <ul>
-      <li><strong>追加:</strong> 新しく追加されたフィールドや値</li>
-      <li><strong>削除:</strong> 削除されたフィールドや値</li>
-      <li><strong>変更:</strong> 変更されたフィールド</li>
-      <li><strong>変更なし:</strong> 変更がないもの</li>
+      <li><strong>追加:</strong> 新しく追加されたポリシー</li>
+      <li><strong>削除:</strong> 削除されたポリシー</li>
+      <li><strong>変更:</strong> 設定が変更されたポリシー（上記のフィールドごとの差分が表示されます）</li>
+      <li><strong>変更なし:</strong> 設定に変更がないポリシー</li>
     </ul>
 
     <h2>変更履歴の活用</h2>
@@ -145,7 +145,7 @@
     </div>
 
     <h2>List View</h2>
-    <p>Opening the "Change History" tab displays all changes in chronological order. Each entry shows the following information:</p>
+    <p>Opening the "Change Log" tab displays all changes in chronological order. Each entry shows the following information:</p>
     <table class="manual-table">
       <thead>
         <tr>
@@ -187,7 +187,7 @@
     </ul>
 
     <h2>Reading the Diff</h2>
-    <p>For modified policies, a field-by-field diff is displayed. Here is an example:</p>
+    <p>For modified policies, a field-by-field diff is displayed in the "Field", "Before" and "After" columns. Here is an example:</p>
     <table class="manual-table">
       <thead>
         <tr>
@@ -198,18 +198,18 @@
       </thead>
       <tbody>
         <tr>
-          <td>Access Control</td>
-          <td>MFA only</td>
-          <td>MFA + Compliant Device</td>
+          <td>AccessControls.Requirements</td>
+          <td>Mfa</td>
+          <td>Mfa, CompliantDevice</td>
         </tr>
       </tbody>
     </table>
-    <p>Changes are classified into the following types:</p>
+    <p>Each policy is classified into one of the following four types:</p>
     <ul>
-      <li><strong>Added:</strong> Newly added fields or values</li>
-      <li><strong>Removed:</strong> Deleted fields or values</li>
-      <li><strong>Modified:</strong> Changed fields</li>
-      <li><strong>Unchanged:</strong> No changes</li>
+      <li><strong>Added:</strong> Policies that were newly added</li>
+      <li><strong>Removed:</strong> Policies that were deleted</li>
+      <li><strong>Modified:</strong> Policies whose settings changed (the field-by-field diff above is shown)</li>
+      <li><strong>Unchanged:</strong> Policies whose settings did not change</li>
     </ul>
 
     <h2>Utilizing Change History</h2>
