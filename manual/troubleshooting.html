@@ -79,7 +79,7 @@
 
     <h3>Q. データは外部に送信されますか？</h3>
     <p>いいえ。すべてのデータはローカルデバイス上でのみ処理・保存されます。</p>
-    <p>ネットワーク通信は Microsoft Store のライセンス確認のみです。</p>
+    <p>ネットワーク通信は Microsoft Store のライセンス確認のみです（WebView2 Runtime が見つからない場合にブラウザーでダウンロードページを開く操作を除きます）。</p>
 
     <h3>Q. ポリシー JSON はどのように取得しますか？</h3>
     <p>Microsoft Entra 管理センターからエクスポートするか、Graph API（<code>GET /identity/conditionalAccess/policies</code>）を使用して取得します。</p>
@@ -200,7 +200,7 @@
 
     <h3>Q. Is my data sent externally?</h3>
     <p>No. All data is processed and stored only on your local device.</p>
-    <p>Network communication is limited to Microsoft Store license verification only.</p>
+    <p>Network communication is limited to Microsoft Store license verification. The only exception is when the WebView2 Runtime is not found: the app then opens the download page in your browser.</p>
 
     <h3>Q. How do I obtain the policy JSON?</h3>
     <p>Export it from the Microsoft Entra admin center, or use the Graph API (<code>GET /identity/conditionalAccess/policies</code>) to retrieve it.</p>

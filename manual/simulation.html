@@ -89,14 +89,14 @@
     <h3>最終判定</h3>
     <p>画面上部に最終的なアクセス判定が大きく表示されます。</p>
     <ul>
-      <li><strong>BLOCK</strong>: いずれかのポリシーによりアクセスがブロックされます。</li>
-      <li><strong>ALLOW</strong>: すべてのポリシーの条件を満たし、アクセスが許可されます。</li>
+      <li><strong>ブロック (アクセス拒否)</strong>: いずれかのポリシーによりアクセスがブロックされます。</li>
+      <li><strong>許可 (アクセス可能)</strong>: すべてのポリシーの条件を満たし、アクセスが許可されます。</li>
     </ul>
 
-    <h3>必要なコントロール</h3>
+    <h3>要求コントロール</h3>
     <p>アクセスが許可される場合に必要となる条件（多要素認証、準拠デバイスなど）が一覧で表示されます。</p>
 
-    <h3>評価サマリー</h3>
+    <h3>評価サマリ</h3>
     <table class="manual-table">
       <thead>
         <tr>
@@ -128,8 +128,12 @@
     <p>シミュレーション結果には、各ポリシーの評価理由が詳しく表示されます。</p>
     <h3>「適用ポリシー」セクション</h3>
     <p>条件に一致して適用されたポリシーの一覧が表示されます。各ポリシーについて、どの条件が一致したかの詳細を確認できます。</p>
-    <h3>「未適用ポリシー」セクション</h3>
-    <p>条件に一致せず適用されなかったポリシーの一覧が表示されます。各ポリシーについて、どの条件が一致しなかったかの理由が表示されます。</p>
+    <h3>「スキップされたポリシー」セクション</h3>
+    <p>適用されなかったポリシーの一覧が表示されます。条件に一致しなかったポリシーに加えて、無効状態のポリシーも含まれます。</p>
+    <ul>
+      <li>条件不一致でスキップ: どの条件が一致しなかったかの理由がポリシーごとに表示されます。</li>
+      <li>無効 (Disabled) ポリシー: 無効状態のため評価されなかったポリシーの名前が表示されます。</li>
+    </ul>
     <p>これらの情報により、意図しないブロックや許可が発生した場合の原因を特定し、ポリシーの設定を改善できます。</p>
 
     <h2>比較モード <span class="pro-badge">PRO</span></h2>
@@ -280,8 +284,12 @@
     <p>The simulation results include detailed evaluation reasons for each policy.</p>
     <h3>"Applied Policies" Section</h3>
     <p>Lists the policies that matched the conditions and were applied. For each policy, you can review the details of which conditions were matched.</p>
-    <h3>"Not Applied Policies" Section</h3>
-    <p>Lists the policies that did not match the conditions and were not applied. For each policy, the reason why the conditions did not match is displayed.</p>
+    <h3>"Skipped Policies" Section</h3>
+    <p>Lists the policies that were not applied. This includes policies whose conditions did not match, as well as disabled policies.</p>
+    <ul>
+      <li>Skipped due to condition mismatch: For each policy, the reason why the conditions did not match is displayed.</li>
+      <li>Disabled Policy: The names of policies that were not evaluated because they are disabled are displayed.</li>
+    </ul>
     <p>This information helps you identify the cause of unintended blocks or grants and improve your policy configuration.</p>
 
     <h2>Comparison Mode <span class="pro-badge">PRO</span></h2>
