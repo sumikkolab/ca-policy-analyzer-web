@@ -145,7 +145,7 @@
       </div>
       <div class="feature-card">
         <h3>レガシー認証のブロック漏れを確認するには</h3>
-        <p>ギャップ分析の推奨項目「MS-LEGACY-AUTH-BLOCK」と、カバレッジ分析の「レガシー認証のブロック」が、IMAP・POP3・SMTP など MFA に対応しない認証を止めるポリシーがあるかをどのプランでも示します。レガシー認証を許可しているポリシーを 1 件ずつ挙げる自動診断（Warning）の結果は、Pro の Excel・PDF に出力されます。</p>
+        <p>ギャップ分析の推奨項目「MS-LEGACY-AUTH-BLOCK」と、カバレッジ分析の「レガシー認証のブロック」が、IMAP・POP3・SMTP など MFA に対応しない認証を止めるポリシーがあるかをどのプランでも示します。レガシー認証をブロックするポリシーが 1 件も無い場合に、許可しているポリシーを 1 件ずつ挙げる自動診断（Warning）の結果は、Pro の Excel・PDF に出力されます。</p>
       </div>
       <div class="feature-card">
         <h3>個々のポリシーは正しいのに、組み合わせで隙間が残っていないか知りたいとき</h3>
@@ -222,7 +222,6 @@
     <ul>
       <li>Windows 10 バージョン 2004 (19041) 以降 / Windows 11</li>
       <li>WebView2 Runtime（通常は Windows に同梱）</li>
-      <li>ディスク: 約 100 MB / RAM: 512 MB 以上</li>
     </ul>
 
     <div class="links">
@@ -275,7 +274,7 @@
       </div>
       <div class="feature-card">
         <h3>How do I check whether legacy authentication is really blocked?</h3>
-        <p>On every plan, the Gap Analysis item "MS-LEGACY-AUTH-BLOCK" and the Coverage Analysis item "Legacy authentication block" show whether any policy stops protocols such as IMAP, POP3 and SMTP that cannot use MFA. The automatic diagnostic (Warning) that lists each policy still allowing legacy authentication is included in the Pro Excel and PDF reports.</p>
+        <p>On every plan, the Gap Analysis item "MS-LEGACY-AUTH-BLOCK" and the Coverage Analysis item "Legacy authentication block" show whether any policy stops protocols such as IMAP, POP3 and SMTP that cannot use MFA. The automatic diagnostic (Warning) is included in the Pro Excel and PDF reports: if no policy blocks legacy authentication, each policy that allows it is listed.</p>
       </div>
       <div class="feature-card">
         <h3>What if every policy looks right, but gaps remain when they are combined?</h3>
@@ -351,7 +350,6 @@
     <ul>
       <li>Windows 10 version 2004 (19041) or later / Windows 11</li>
       <li>WebView2 Runtime (typically bundled with Windows)</li>
-      <li>Disk: ~100 MB / RAM: 512 MB or more</li>
     </ul>
 
     <div class="links">

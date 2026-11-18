@@ -40,7 +40,7 @@
     <h2>よくある質問</h2>
 
     <h3>Q. データはどこに保存されていますか？</h3>
-    <p>すべてのデータは以下のフォルダに保存されます:</p>
+    <p>Store 版では、すべてのデータは以下のフォルダに保存されます:</p>
     <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
     <p>主なファイル:</p>
     <table class="manual-table">
@@ -68,7 +68,7 @@
           <td>分析設定</td>
         </tr>
         <tr>
-          <td><code>Data/locale.json</code></td>
+          <td><code>locale.json</code></td>
           <td>言語設定</td>
         </tr>
         <tr>
@@ -107,21 +107,20 @@
     <h3>JSON ファイルを読み込めない</h3>
     <p>ファイルが正しい JSON 形式であることを確認してください。</p>
     <p>Microsoft Entra 管理センターまたは Graph API からエクスポートされた形式に対応しています。</p>
-    <p>ファイルサイズが 10 MB 未満であることを確認してください。</p>
     <div class="tip-box">
-      <p>アプリにはサンプル JSON ファイルが同梱されています。まずサンプルファイルで動作を確認してみてください。</p>
+      <p>サンプルは本サイトの <a href="../sample-policies-for-review.json">sample-policies-for-review.json</a> から入手できます。まずサンプルファイルで動作を確認してみてください。</p>
     </div>
 
     <h3>ギャップ分析の結果がおかしい</h3>
     <p>分析設定で管理者グループ名が正しく設定されているか確認してください。</p>
-    <p>ポリシーの「状態」が「有効」になっているか確認してください（無効やレポート専用は分析対象外の場合があります）。</p>
+    <p>ポリシーの「状態」が「有効」になっているか確認してください。無効のポリシーは適合と評価されず、Misconfigured（設定誤り）になります。レポート専用のポリシーは、「有効」を要する項目では Weak（不十分）になります。</p>
 
     <h3>エクスポートが失敗する</h3>
     <p>分析設定で「組織名」と「作成者」が入力されていることを確認してください。</p>
     <p>ポリシーが 1 件以上読み込まれていることを確認してください。</p>
 
     <h2>データのリセット</h2>
-    <p>アプリのデータを完全にリセットするには:</p>
+    <p>Store 版でポリシーデータなどをリセットするには:</p>
     <ol class="steps">
       <li>アプリを終了</li>
       <li>エクスプローラーで <code>%LocalAppData%\CAPolicyAnalyzer\</code> を開く</li>
@@ -129,14 +128,14 @@
       <li>アプリを再起動</li>
     </ol>
     <div class="warning-box">
-      <p>リセットすると、すべてのポリシーデータ、変更履歴、分析設定が削除されます。必要に応じて事前にバックアップを取ってください。EULA の同意状態もリセットされます。</p>
+      <p>リセットすると、すべてのポリシーデータ、変更履歴、分析設定が削除されます。必要に応じて事前にバックアップを取ってください。Data フォルダ内のファイルを削除しても、利用規約の同意状態、言語設定、試用状態は残ります。</p>
     </div>
 
     <h2>サポートへの問い合わせ</h2>
     <p>解決しない問題は、以下の手順でサポートにご連絡ください:</p>
     <ol class="steps">
       <li>About 画面を開く</li>
-      <li>「診断バンドルを作成」をクリック（ポリシーデータは自動的に匿名化されます）</li>
+      <li>「診断バンドルを作成」をクリック（ポリシー名・ID・説明・グループ名などを自動で置き換えます。送付前に内容をご確認ください）</li>
       <li>生成された ZIP ファイルをメールに添付</li>
       <li><a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a> に送信</li>
     </ol>
@@ -159,7 +158,7 @@
     <h2>Frequently Asked Questions</h2>
 
     <h3>Q. Where is my data stored?</h3>
-    <p>All data is stored in the following folder:</p>
+    <p>In the Store version, all data is stored in the following folder:</p>
     <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
     <p>Key files:</p>
     <table class="manual-table">
@@ -187,7 +186,7 @@
           <td>Analysis settings</td>
         </tr>
         <tr>
-          <td><code>Data/locale.json</code></td>
+          <td><code>locale.json</code></td>
           <td>Language settings</td>
         </tr>
         <tr>
@@ -226,21 +225,20 @@
     <h3>Cannot Load JSON File</h3>
     <p>Make sure the file is in valid JSON format.</p>
     <p>The app supports formats exported from the Microsoft Entra admin center or Graph API.</p>
-    <p>Verify that the file size is under 10 MB.</p>
     <div class="tip-box">
-      <p>The app includes sample JSON files. Try loading a sample file first to verify that the app is working correctly.</p>
+      <p>A sample file is available on this website (<a href="../sample-policies-for-review.json">sample-policies-for-review.json</a>). Try loading the sample file first to verify that the app is working correctly.</p>
     </div>
 
     <h3>Gap Analysis Results Seem Incorrect</h3>
     <p>Check that administrator group names are correctly configured in the analysis settings.</p>
-    <p>Verify that the policy "State" is set to "Enabled" (disabled or report-only policies may be excluded from analysis).</p>
+    <p>Verify that the policy "State" is set to "Enabled". A disabled policy is not rated as compliant and is shown as Misconfigured. A report-only policy is rated Weak for items that require the policy to be enabled.</p>
 
     <h3>Export Fails</h3>
     <p>Verify that "Organization Name" and "Author" are entered in the analysis settings.</p>
     <p>Verify that at least one policy has been loaded.</p>
 
     <h2>Data Reset</h2>
-    <p>To completely reset the app data:</p>
+    <p>To reset the policy data and other app data in the Store version:</p>
     <ol class="steps">
       <li>Close the app</li>
       <li>Open <code>%LocalAppData%\CAPolicyAnalyzer\</code> in File Explorer</li>
@@ -248,14 +246,14 @@
       <li>Restart the app</li>
     </ol>
     <div class="warning-box">
-      <p>Resetting will delete all policy data, change history, and analysis settings. Back up your data beforehand if needed. The EULA acceptance state will also be reset.</p>
+      <p>Resetting will delete all policy data, change history, and analysis settings. Back up your data beforehand if needed. Deleting the files in the Data folder does not reset the EULA acceptance state, language setting, or trial state.</p>
     </div>
 
     <h2>Contacting Support</h2>
     <p>For unresolved issues, please contact support using the following steps:</p>
     <ol class="steps">
       <li>Open the About screen</li>
-      <li>Click "Create Diagnostic Bundle" (policy data is automatically anonymized)</li>
+      <li>Click "Create Diagnostic Bundle" (names, IDs, and descriptions are replaced automatically; review the contents before sending)</li>
       <li>Attach the generated ZIP file to an email</li>
       <li>Send it to <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></li>
     </ol>
