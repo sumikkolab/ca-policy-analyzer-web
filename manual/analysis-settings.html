@@ -78,7 +78,11 @@
     <p>分析設定は、「設定を保存」を押すと保存されます。自動では保存されません。</p>
     <p>「設定を保存」では、管理者グループ名・ゲストユーザーグループ名と、エクスポートメタデータをまとめて保存します。グループ名の入力欄に Enter キーで追加していない文字がある場合は、保存時に一覧へ追加されます。</p>
     <p>ギャップ分析は、保存済みの設定を読み込んで実行します。</p>
-    <p>通常の保存先: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>通常の保存先は、次の 2 つのファイルです。</p>
+    <ul>
+      <li>管理者グループ名・ゲストユーザーグループ名: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></li>
+      <li>エクスポートメタデータ: <code>%LocalAppData%\CAPolicyAnalyzer\Data\design-doc-metadata.json</code></li>
+    </ul>
     <p>Microsoft Store 版では、Windows により <code>%LocalAppData%\Packages</code> 以下の対応する場所に保存される場合があります。</p>
     <div class="tip-box">
       <p>分析設定を変更した後は、「設定を保存」を押してからギャップ分析を再実行すると、新しい設定が反映されます。</p>
@@ -141,7 +145,11 @@
     <p>Analysis settings are saved when you select "Save Settings". They are not saved automatically.</p>
     <p>"Save Settings" saves the administrator group names, the guest user group names, and the export metadata together. If a group name input field contains text that you have not added with Enter, it is added to the list when you save.</p>
     <p>The gap analysis runs using the saved settings.</p>
-    <p>Usual save location: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>The settings are usually saved in the following two files.</p>
+    <ul>
+      <li>Administrator group names and guest user group names: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></li>
+      <li>Export metadata: <code>%LocalAppData%\CAPolicyAnalyzer\Data\design-doc-metadata.json</code></li>
+    </ul>
     <p>In the Microsoft Store version, Windows may store the data in the corresponding location under <code>%LocalAppData%\Packages</code>.</p>
     <div class="tip-box">
       <p>After changing analysis settings, select "Save Settings" and then re-run the gap analysis to apply the new settings.</p>

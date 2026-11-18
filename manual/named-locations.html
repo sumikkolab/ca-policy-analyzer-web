@@ -70,7 +70,7 @@
     <h2>ポリシー・シミュレーションでの利用</h2>
     <p>ポリシー編集画面の「条件」→「場所」で、登録したネームドロケーションを指定できます。</p>
     <p>シミュレーション画面の「場所」フィールドでも選択できます。</p>
-    <p>「含める」と「除外」の両方で指定可能です。</p>
+    <p>ポリシーの編集画面では、場所を「含める」「除外」のどちらでも指定できます。シミュレーション画面の「場所」フィールドは 1 つで、含める・除外の区別はありません。</p>
     <div class="tip-box">
       <p>Microsoft Entra 管理センターのネームドロケーションと同じ概念ですが、本ツールでは場所の名前だけが使われます。</p>
       <p>登録した場所の名前が、ポリシー条件とシミュレーションの「場所」の選択肢に表示されます。シミュレーションでは、選択した場所の名前をポリシーの場所条件の名前と比較して（大文字・小文字は区別しません）、ポリシーが適用されるかを判定します。登録した IP 範囲と国コードは、この判定には使われません。</p>
@@ -126,7 +126,7 @@
     <h2>Using Locations in Policies and Simulations</h2>
     <p>In the policy editor, go to "Conditions" &rarr; "Locations" to specify registered named locations.</p>
     <p>Named locations can also be selected in the "Location" field on the simulation screen.</p>
-    <p>Both "Include" and "Exclude" options are available.</p>
+    <p>In the policy editor, you can specify locations to either include or exclude. The simulation screen has a single "Location" field, with no include or exclude option.</p>
     <div class="tip-box">
       <p>This is the same concept as named locations in the Microsoft Entra admin center, but this tool uses only the location name.</p>
       <p>Registered location names appear as options for "Locations" in policy conditions and in simulations. In a simulation, the tool compares the location name you select with the location names in the policy's location condition (case-insensitive) to decide whether the policy applies. The registered IP ranges and country codes are not used in this decision.</p>
