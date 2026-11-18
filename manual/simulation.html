@@ -80,7 +80,7 @@
       </tbody>
     </table>
     <div class="tip-box">
-      <p>ユーザー、グループ、ターゲット リソース、場所の入力欄は、フリーテキスト入力に対応しています。テキストを入力して Enter キーを押すと項目が追加されます。複数の値を指定することも可能です。デバイス プラットフォームとクライアント アプリは、一覧からの選択のみです。</p>
+      <p>ユーザー、グループ、ターゲット リソース、場所の入力欄は、フリーテキスト入力に対応しています。テキストを入力して Enter キーを押すと項目が追加されます。ユーザーは 1 人だけ指定します。複数入力しても、評価に使われるのは最初の 1 件だけです。グループ、ターゲット リソース、場所は、複数指定できます。デバイス プラットフォームとクライアント アプリは、一覧から選択します（複数選択できます）。</p>
     </div>
 
     <h2>判定結果の読み方</h2>
@@ -236,7 +236,7 @@
       </tbody>
     </table>
     <div class="tip-box">
-      <p>The User, Group, Target Resource, and Location fields support free-text entry. Type your text and press Enter to add an item. You can specify multiple values for each field. Device Platform and Client Application accept selection from a list only.</p>
+      <p>The User, Group, Target Resource, and Location fields support free-text entry. Type your text and press Enter to add an item. Specify only one user: if you enter several, only the first one is used in the evaluation. You can specify multiple values for Group, Target Resource and Location. Device Platform and Client Application accept selection from a list only (you can select several).</p>
     </div>
 
     <h2>Reading the Results</h2>
@@ -245,8 +245,8 @@
     <h3>Final Verdict</h3>
     <p>The final access decision is prominently displayed at the top of the screen.</p>
     <ul>
-      <li><strong>BLOCK</strong>: Access is blocked by one or more policies.</li>
-      <li><strong>ALLOW</strong>: All policy conditions are met, and access is permitted.</li>
+      <li><strong>Block (Access Denied)</strong>: Access is blocked by one or more policies.</li>
+      <li><strong>Allow (Access Granted)</strong>: All policy conditions are met, and access is permitted.</li>
     </ul>
 
     <h3>Required Controls</h3>
