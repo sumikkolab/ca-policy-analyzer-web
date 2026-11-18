@@ -67,18 +67,19 @@
           <td>変更の目的や背景</td>
         </tr>
         <tr>
-          <td>ファイル名</td>
-          <td>インポートされた JSON ファイル名</td>
+          <td>追加・削除・変更の件数</td>
+          <td>追加（+）・削除（-）・変更（~）されたポリシーの件数を示すバッジ。0 件の種類は表示されません。</td>
         </tr>
         <tr>
           <td>ポリシー数</td>
-          <td>影響を受けたポリシーの件数</td>
+          <td>その変更の後のポリシーの総数（JSON の読み込みでは、読み込んだポリシーの総数）。影響を受けた件数ではありません。</td>
         </tr>
       </tbody>
     </table>
+    <p>ファイル名は一覧には表示されません。詳細画面にだけ表示されます。</p>
 
     <h2>変更の詳細表示</h2>
-    <p>一覧からエントリをクリックすると、変更の詳細が表示されます。詳細画面では以下が確認できます:</p>
+    <p>一覧からエントリをクリックすると、変更の詳細が表示されます。詳細画面には、日時・変更者・理由・ファイル（読み込んだ JSON ファイル名）・ポリシー数のほか、以下が表示されます:</p>
     <ul>
       <li><strong>追加されたポリシー:</strong> 新しく追加されたポリシーの一覧</li>
       <li><strong>削除されたポリシー:</strong> 削除されたポリシーの一覧</li>
@@ -105,10 +106,10 @@
     </table>
     <p>変更の種類は以下で分類されます:</p>
     <ul>
-      <li><strong>Added:</strong> 新しく追加されたフィールドや値</li>
-      <li><strong>Removed:</strong> 削除されたフィールドや値</li>
-      <li><strong>Modified:</strong> 変更されたフィールド</li>
-      <li><strong>Unchanged:</strong> 変更なし</li>
+      <li><strong>追加:</strong> 新しく追加されたフィールドや値</li>
+      <li><strong>削除:</strong> 削除されたフィールドや値</li>
+      <li><strong>変更:</strong> 変更されたフィールド</li>
+      <li><strong>変更なし:</strong> 変更がないもの</li>
     </ul>
 
     <h2>変更履歴の活用</h2>
@@ -166,21 +167,22 @@
           <td>Purpose or background of the change</td>
         </tr>
         <tr>
-          <td>File Name</td>
-          <td>Name of the imported JSON file</td>
+          <td>Added / Removed / Modified counts</td>
+          <td>Badges showing the number of policies added (+), removed (-), and modified (~). A type with zero policies is not shown.</td>
         </tr>
         <tr>
           <td>Policy Count</td>
-          <td>Number of policies affected</td>
+          <td>Total number of policies after the change (for a JSON load, the total number of policies loaded). It is not the number of policies affected.</td>
         </tr>
       </tbody>
     </table>
+    <p>The file name is not shown in the list. It appears only on the detail screen.</p>
 
     <h2>Change Details</h2>
-    <p>Click an entry in the list to view the change details. The detail screen shows:</p>
+    <p>Click an entry in the list to view the change details. In addition to the date/time, changed by, reason, file (the loaded JSON file name), and policy count, the detail screen shows:</p>
     <ul>
       <li><strong>Added Policies:</strong> List of newly added policies</li>
-      <li><strong>Deleted Policies:</strong> List of deleted policies</li>
+      <li><strong>Removed Policies:</strong> List of removed policies</li>
       <li><strong>Modified Policies:</strong> List of modified policies (with field-level diffs)</li>
     </ul>
 

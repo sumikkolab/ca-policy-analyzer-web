@@ -65,15 +65,15 @@
           <td>ユーザーが所属するグループ名を入力します。</td>
         </tr>
         <tr>
-          <td>対象リソース / アプリ</td>
+          <td>ターゲット リソース</td>
           <td>アクセス先のアプリケーション名を入力します。</td>
         </tr>
         <tr>
-          <td>プラットフォーム（OS）</td>
+          <td>デバイス プラットフォーム</td>
           <td>Windows, iOS, Android, macOS, Linux から選択します。</td>
         </tr>
         <tr>
-          <td>クライアントアプリ</td>
+          <td>クライアント アプリ</td>
           <td>ブラウザー、モバイル アプリとデスクトップ、Exchange ActiveSync、その他 (レガシー) から選択します。</td>
         </tr>
         <tr>
@@ -83,7 +83,7 @@
       </tbody>
     </table>
     <div class="tip-box">
-      <p>ユーザー、グループ、対象リソース / アプリ、場所の入力欄は、フリーテキスト入力に対応しています。テキストを入力して Enter キーを押すと項目が追加されます。複数の値を指定することも可能です。プラットフォームとクライアントアプリは、一覧からの選択のみです。</p>
+      <p>ユーザー、グループ、ターゲット リソース、場所の入力欄は、フリーテキスト入力に対応しています。テキストを入力して Enter キーを押すと項目が追加されます。複数の値を指定することも可能です。デバイス プラットフォームとクライアント アプリは、一覧からの選択のみです。</p>
     </div>
 
     <h2>判定結果の読み方</h2>
@@ -109,19 +109,19 @@
       </thead>
       <tbody>
         <tr>
-          <td>評価済みポリシー</td>
+          <td>評価対象</td>
           <td>判定対象となったポリシーの総数です。</td>
         </tr>
         <tr>
-          <td>適用ポリシー</td>
+          <td>適用</td>
           <td>入力した条件に一致し、実際に適用されたポリシーの数です。</td>
         </tr>
         <tr>
-          <td>未適用ポリシー</td>
+          <td>不適用</td>
           <td>入力した条件に一致せず、適用されなかったポリシーの数です。</td>
         </tr>
         <tr>
-          <td>無効ポリシー</td>
+          <td>無効</td>
           <td>無効状態に設定されているため、評価から除外されたポリシーの数です。</td>
         </tr>
       </tbody>
@@ -218,15 +218,15 @@
           <td>Enter the group(s) the user belongs to.</td>
         </tr>
         <tr>
-          <td>Target Resource / App</td>
+          <td>Target Resource</td>
           <td>Enter the name of the application being accessed.</td>
         </tr>
         <tr>
-          <td>Platform (OS)</td>
+          <td>Device Platform</td>
           <td>Select from Windows, iOS, Android, macOS, or Linux.</td>
         </tr>
         <tr>
-          <td>Client App</td>
+          <td>Client Application</td>
           <td>Select from Browser, Mobile apps and desktop, Exchange ActiveSync, or Other (Legacy).</td>
         </tr>
         <tr>
@@ -236,7 +236,7 @@
       </tbody>
     </table>
     <div class="tip-box">
-      <p>The User, Group, Target Resource / App, and Location fields support free-text entry. Type your text and press Enter to add an item. You can specify multiple values for each field. Platform and Client App accept selection from a list only.</p>
+      <p>The User, Group, Target Resource, and Location fields support free-text entry. Type your text and press Enter to add an item. You can specify multiple values for each field. Device Platform and Client Application accept selection from a list only.</p>
     </div>
 
     <h2>Reading the Results</h2>
@@ -262,19 +262,19 @@
       </thead>
       <tbody>
         <tr>
-          <td>Evaluated Policies</td>
+          <td>Evaluated</td>
           <td>The total number of policies that were evaluated.</td>
         </tr>
         <tr>
-          <td>Applied Policies</td>
+          <td>Applied</td>
           <td>The number of policies whose conditions matched the input and were applied.</td>
         </tr>
         <tr>
-          <td>Not Applied Policies</td>
+          <td>Not Applied</td>
           <td>The number of policies whose conditions did not match the input.</td>
         </tr>
         <tr>
-          <td>Disabled Policies</td>
+          <td>Disabled</td>
           <td>The number of policies excluded from evaluation because they are in a disabled state.</td>
         </tr>
       </tbody>

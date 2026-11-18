@@ -40,8 +40,9 @@
     <h2>よくある質問</h2>
 
     <h3>Q. データはどこに保存されていますか？</h3>
-    <p>Store 版では、すべてのデータは以下のフォルダに保存されます:</p>
+    <p>通常は、すべてのデータは以下のフォルダに保存されます:</p>
     <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
+    <p>Microsoft Store 版では、Windows により <code>%LocalAppData%\Packages</code> 以下の対応する場所に保存される場合があります。</p>
     <p>主なファイル:</p>
     <table class="manual-table">
       <thead>
@@ -100,7 +101,7 @@
     <ol class="steps">
       <li>Windows のバージョンが 10 (19041) 以降であることを確認</li>
       <li>WebView2 Runtime がインストールされていることを確認</li>
-      <li><code>%LocalAppData%\CAPolicyAnalyzer\</code> フォルダに書き込み権限があることを確認</li>
+      <li>通常の保存先である <code>%LocalAppData%\CAPolicyAnalyzer\</code> フォルダに書き込み権限があることを確認</li>
       <li>問題が解決しない場合は、診断バンドルを作成してサポートに送信</li>
     </ol>
 
@@ -113,23 +114,25 @@
 
     <h3>ギャップ分析の結果がおかしい</h3>
     <p>分析設定で管理者グループ名が正しく設定されているか確認してください。</p>
-    <p>ポリシーの「状態」が「有効」になっているか確認してください。無効のポリシーは適合と評価されず、Misconfigured（設定誤り）になります。レポート専用のポリシーは、「有効」を要する項目では Weak（不十分）になります。</p>
+    <p>ポリシーの「状態」が「有効」になっているか確認してください。無効のポリシーは「準拠」と評価されず、「構成不一致」になります。レポート専用のポリシーは、「有効」を要する項目では「不十分」になります。</p>
 
     <h3>エクスポートが失敗する</h3>
     <p>分析設定で「組織名」と「作成者」が入力されていることを確認してください。</p>
     <p>ポリシーが 1 件以上読み込まれていることを確認してください。</p>
 
     <h2>データのリセット</h2>
-    <p>Store 版でポリシーデータなどをリセットするには:</p>
+    <p>Store 版でアプリのデータをリセットするには、Windows の設定から行います:</p>
     <ol class="steps">
       <li>アプリを終了</li>
-      <li>エクスプローラーで <code>%LocalAppData%\CAPolicyAnalyzer\</code> を開く</li>
-      <li><code>Data</code> フォルダ内のファイルを削除</li>
+      <li>Windows の「設定」→「アプリ」→「インストールされているアプリ」を開く</li>
+      <li>「CA Policy Analyzer」の「詳細オプション」を開く</li>
+      <li>「リセット」を選択</li>
       <li>アプリを再起動</li>
     </ol>
     <div class="warning-box">
-      <p>リセットすると、すべてのポリシーデータ、変更履歴、分析設定が削除されます。必要に応じて事前にバックアップを取ってください。Data フォルダ内のファイルを削除しても、利用規約の同意状態、言語設定、試用状態は残ります。</p>
+      <p>Windows のリセットは、このアプリのデータを削除します。ポリシーデータ、変更履歴、分析設定が失われます。利用規約の同意状態や言語設定も初期化される場合があります。必要に応じて、事前に元のポリシー JSON ファイルを保管してください。</p>
     </div>
+    <p>ポリシーを 1 件ずつ削除する場合は、ポリシー管理の一覧で、削除するポリシーの「削除」を選択します。</p>
 
     <h2>サポートへの問い合わせ</h2>
     <p>解決しない問題は、以下の手順でサポートにご連絡ください:</p>
@@ -158,8 +161,9 @@
     <h2>Frequently Asked Questions</h2>
 
     <h3>Q. Where is my data stored?</h3>
-    <p>In the Store version, all data is stored in the following folder:</p>
+    <p>Usually, all data is stored in the following folder:</p>
     <p><code>%LocalAppData%\CAPolicyAnalyzer\</code></p>
+    <p>In the Microsoft Store version, Windows may store the data in the corresponding location under <code>%LocalAppData%\Packages</code>.</p>
     <p>Key files:</p>
     <table class="manual-table">
       <thead>
@@ -218,7 +222,7 @@
     <ol class="steps">
       <li>Verify that your Windows version is 10 (19041) or later</li>
       <li>Verify that WebView2 Runtime is installed</li>
-      <li>Verify that you have write permissions to the <code>%LocalAppData%\CAPolicyAnalyzer\</code> folder</li>
+      <li>Verify that you have write permissions to the <code>%LocalAppData%\CAPolicyAnalyzer\</code> folder, the usual save location</li>
       <li>If the problem persists, create a diagnostic bundle and send it to support</li>
     </ol>
 
@@ -231,23 +235,25 @@
 
     <h3>Gap Analysis Results Seem Incorrect</h3>
     <p>Check that administrator group names are correctly configured in the analysis settings.</p>
-    <p>Verify that the policy "State" is set to "Enabled". A disabled policy is not rated as compliant and is shown as Misconfigured. A report-only policy is rated Weak for items that require the policy to be enabled.</p>
+    <p>Verify that the policy "State" is set to "Enabled". A disabled policy is not rated as Compliant and is shown as Misconfigured. A report-only policy is rated Insufficient for items that require the policy to be enabled.</p>
 
     <h3>Export Fails</h3>
     <p>Verify that "Organization Name" and "Author" are entered in the analysis settings.</p>
     <p>Verify that at least one policy has been loaded.</p>
 
     <h2>Data Reset</h2>
-    <p>To reset the policy data and other app data in the Store version:</p>
+    <p>To reset the app data in the Store version, use Windows Settings:</p>
     <ol class="steps">
       <li>Close the app</li>
-      <li>Open <code>%LocalAppData%\CAPolicyAnalyzer\</code> in File Explorer</li>
-      <li>Delete the files inside the <code>Data</code> folder</li>
+      <li>Open Windows "Settings" &rarr; "Apps" &rarr; "Installed apps"</li>
+      <li>Open "Advanced options" for "CA Policy Analyzer"</li>
+      <li>Select "Reset"</li>
       <li>Restart the app</li>
     </ol>
     <div class="warning-box">
-      <p>Resetting will delete all policy data, change history, and analysis settings. Back up your data beforehand if needed. Deleting the files in the Data folder does not reset the EULA acceptance state, language setting, or trial state.</p>
+      <p>The Windows reset deletes this app's data. You will lose your policy data, change history, and analysis settings. The EULA acceptance state and language setting may also be initialized. Keep the original policy JSON files beforehand if needed.</p>
     </div>
+    <p>To delete policies one at a time, select "Delete" for the policy in the Policy Management list.</p>
 
     <h2>Contacting Support</h2>
     <p>For unresolved issues, please contact support using the following steps:</p>

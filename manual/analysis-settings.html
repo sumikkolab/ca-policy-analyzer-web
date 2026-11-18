@@ -38,29 +38,33 @@
     <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
 
     <h2>分析設定とは</h2>
-    <p>左サイドバーの「分析設定」セクションでは、ギャップ分析やカバレッジ分析の精度を向上させるための設定を行います。</p>
+    <p>左サイドバーの「分析設定」セクションでは、ギャップ分析（推奨構成との比較）でポリシーを判定するための設定を行います。</p>
     <p>主に、管理者グループ名とゲストグループ名を登録します。</p>
 
     <h2>管理者グループ名の設定</h2>
     <p>組織で使用している管理者グループの名前を登録します。</p>
-    <p>入力欄にグループ名を入力し、Enter キーで追加します。</p>
+    <p>入力欄にグループ名を入力し、Enter キーで画面上の一覧に追加します。この時点では保存されていません。「設定を保存」を押すと保存されます。</p>
     <p>複数のグループ名を登録できます（例: <code>Global Admins</code>, <code>IT Administrators</code>, <code>Security Admins</code>）。</p>
-    <p>この設定は以下の分析に影響します:</p>
+    <p>保存した設定は、以下の機能で使われます:</p>
     <ul>
-      <li><strong>管理者除外分析</strong>: どのポリシーが管理者を除外しているかの判定</li>
-      <li><strong>管理者保護不備の検出</strong>: 管理者専用ポリシーの有無の確認</li>
-      <li><strong>設計不備の検出</strong>: 管理者が保護されていないケースの特定</li>
+      <li><strong>ギャップ分析</strong>: 管理者向けの推奨項目で、登録したグループ名を使って対象のポリシーを判定します。全ユーザー向けのポリシーが管理者グループを除外している場合も検出します。</li>
+      <li><strong>管理者除外分析</strong>: ギャップ分析の結果から、管理者グループを除外しているポリシーを示します。</li>
+    </ul>
+    <p>次の機能では、グループ名の設定を使いません:</p>
+    <ul>
+      <li><strong>管理者保護不備の検出</strong>（診断）: ポリシーに指定された管理者ロールと、MFA の要求の有無で判定します。</li>
+      <li><strong>設計不備の検出</strong>（カバレッジ分析）: ポリシー全体を対象に判定します。グループ名の設定は影響しません。</li>
     </ul>
     <div class="info-box">
-      <p>グループ名は完全一致で判定されます。ポリシー JSON に含まれるグループ名と正確に一致させてください。</p>
+      <p>グループ名は、大文字・小文字を区別せず、ポリシー JSON に含まれるグループ名と完全一致するか、一方がもう一方を含む場合に一致と判定されます。短い名前を登録すると、意図しないグループにも一致することがあります。</p>
     </div>
 
     <h2>ゲストユーザーグループ名の設定</h2>
     <p>ゲストユーザーが所属するグループの名前を登録します。</p>
-    <p>入力方法は管理者グループ名と同じです。</p>
-    <p>この設定は以下の分析に影響します:</p>
+    <p>入力方法は管理者グループ名と同じです。「設定を保存」を押すと保存されます。</p>
+    <p>保存した設定は、以下の機能で使われます:</p>
     <ul>
-      <li><strong>ゲストユーザー保護の評価</strong>: ゲスト向けのポリシーが適切に設定されているかの確認</li>
+      <li><strong>ギャップ分析</strong>: ゲストユーザー向けの推奨項目で、登録したグループ名を使って対象のポリシーを判定します。</li>
     </ul>
 
     <h2>エクスポートメタデータ</h2>
@@ -73,10 +77,13 @@
     </ul>
 
     <h2>設定の保存</h2>
-    <p>分析設定は自動的に保存されます。</p>
-    <p>保存先: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>分析設定は、「設定を保存」を押すと保存されます。自動では保存されません。</p>
+    <p>「設定を保存」では、管理者グループ名・ゲストユーザーグループ名と、エクスポートメタデータをまとめて保存します。グループ名の入力欄に Enter キーで追加していない文字がある場合は、保存時に一覧へ追加されます。</p>
+    <p>ギャップ分析は、保存済みの設定を読み込んで実行します。</p>
+    <p>通常の保存先: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>Microsoft Store 版では、Windows により <code>%LocalAppData%\Packages</code> 以下の対応する場所に保存される場合があります。</p>
     <div class="tip-box">
-      <p>分析設定を変更した後は、ギャップ分析を再実行すると新しい設定が反映されます。</p>
+      <p>分析設定を変更した後は、「設定を保存」を押してからギャップ分析を再実行すると、新しい設定が反映されます。</p>
     </div>
 
     <div class="chapter-nav">
@@ -94,29 +101,33 @@
     <p class="subtitle">CA Policy Analyzer User Manual</p>
 
     <h2>What Are Analysis Settings?</h2>
-    <p>The "Analysis Settings" section in the left sidebar allows you to configure settings that improve the accuracy of gap analysis and coverage analysis.</p>
+    <p>The "Analysis Settings" section in the left sidebar lets you configure how policies are evaluated in the gap analysis (comparison with recommended configurations).</p>
     <p>Primarily, you register administrator group names and guest group names.</p>
 
     <h2>Administrator Group Name Settings</h2>
     <p>Register the names of administrator groups used in your organization.</p>
-    <p>Type a group name in the input field and press Enter to add it.</p>
+    <p>Type a group name in the input field and press Enter to add it to the list on the screen. It is not saved at this point. Select "Save Settings" to save it.</p>
     <p>Multiple group names can be registered (e.g., <code>Global Admins</code>, <code>IT Administrators</code>, <code>Security Admins</code>).</p>
-    <p>This setting affects the following analyses:</p>
+    <p>The saved settings are used by the following features:</p>
     <ul>
-      <li><strong>Administrator Exclusion Analysis</strong>: Determines which policies exclude administrators</li>
-      <li><strong>Administrator Protection Gap Detection</strong>: Checks whether dedicated administrator policies exist</li>
-      <li><strong>Design Flaw Detection</strong>: Identifies cases where administrators are not protected</li>
+      <li><strong>Gap Analysis</strong>: For recommended items aimed at administrators, the registered group names are used to determine which policies apply. It also detects all-user policies that exclude an administrator group.</li>
+      <li><strong>Administrator Exclusion Analysis</strong>: Based on the gap analysis results, shows the policies that exclude an administrator group.</li>
+    </ul>
+    <p>The following features do not use the group name settings:</p>
+    <ul>
+      <li><strong>Administrator Protection Gap Detection</strong> (diagnostics): Determined from the administrator roles specified in policies and whether MFA is required.</li>
+      <li><strong>Design Flaw Detection</strong> (coverage analysis): Evaluated across all policies. The group name settings have no effect.</li>
     </ul>
     <div class="info-box">
-      <p>Group names are matched exactly. Make sure they precisely match the group names contained in the policy JSON.</p>
+      <p>Group names are matched without regard to case. A name matches a group name in the policy JSON if the two are identical or if one contains the other. A short name may therefore match groups you did not intend.</p>
     </div>
 
     <h2>Guest User Group Name Settings</h2>
     <p>Register the names of groups that guest users belong to.</p>
-    <p>The input method is the same as for administrator group names.</p>
-    <p>This setting affects the following analyses:</p>
+    <p>The input method is the same as for administrator group names. Select "Save Settings" to save them.</p>
+    <p>The saved settings are used by the following features:</p>
     <ul>
-      <li><strong>Guest User Protection Evaluation</strong>: Checks whether policies for guest users are properly configured</li>
+      <li><strong>Gap Analysis</strong>: For recommended items aimed at guest users, the registered group names are used to determine which policies apply.</li>
     </ul>
 
     <h2>Export Metadata</h2>
@@ -129,10 +140,13 @@
     </ul>
 
     <h2>Saving Settings</h2>
-    <p>Analysis settings are saved automatically.</p>
-    <p>Save location: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>Analysis settings are saved when you select "Save Settings". They are not saved automatically.</p>
+    <p>"Save Settings" saves the administrator group names, the guest user group names, and the export metadata together. If a group name input field contains text that you have not added with Enter, it is added to the list when you save.</p>
+    <p>The gap analysis runs using the saved settings.</p>
+    <p>Usual save location: <code>%LocalAppData%\CAPolicyAnalyzer\Data\analysis-settings.json</code></p>
+    <p>In the Microsoft Store version, Windows may store the data in the corresponding location under <code>%LocalAppData%\Packages</code>.</p>
     <div class="tip-box">
-      <p>After changing analysis settings, re-run the gap analysis to apply the new settings.</p>
+      <p>After changing analysis settings, select "Save Settings" and then re-run the gap analysis to apply the new settings.</p>
     </div>
 
     <div class="chapter-nav">

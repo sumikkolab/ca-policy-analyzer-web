@@ -91,7 +91,7 @@
     </ol>
     <p>同意しない場合、アプリは使用できません。同意状態はローカルに保存され、次回以降の起動時には表示されません。</p>
     <div class="info-box">
-      <p>同意状態は <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code> に保存されます。このファイルを削除すると、次回起動時に再度利用規約が表示されます。</p>
+      <p>同意状態は、通常は <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code> に保存されます。Microsoft Store 版では、Windows により <code>%LocalAppData%\Packages</code> 以下の対応する場所に保存される場合があります。</p>
     </div>
 
     <h2>CA ポリシー JSON のエクスポート方法</h2>
@@ -102,7 +102,7 @@
       <li>Microsoft Entra 管理センター (<code>https://entra.microsoft.com</code>) にサインインします。</li>
       <li>左メニューから「保護」→「条件付きアクセス」→「ポリシー」に移動します。</li>
       <li>対象のポリシーを選択し、JSON 形式でエクスポートします。</li>
-      <li>エクスポートした JSON ファイルを CA Policy Analyzer の「ポリシー読み込み」機能で読み込みます。</li>
+      <li>エクスポートした JSON ファイルを CA Policy Analyzer の「ポリシーを読み込む」ボタンで読み込みます。</li>
     </ol>
     <div class="tip-box">
       <p>複数のポリシーを一括でエクスポートするには、Microsoft Graph API の <code>GET /identity/conditionalAccess/policies</code> エンドポイントを利用すると便利です。</p>
@@ -117,7 +117,7 @@
       <li><strong>分析</strong> — ギャップ分析（推奨構成との比較）と準拠状況を確認します。</li>
       <li><strong>変更履歴</strong> — ポリシーの変更履歴（アプリ内の操作の記録。テナントの監査ログではありません）を閲覧します。</li>
     </ol>
-    <p>左サイドバーには「ポリシー読み込み」ボタンと「分析設定」があり、どのタブからでもアクセスできます。</p>
+    <p>左サイドバーには「ポリシーを読み込む」ボタンと「分析設定」があります。シミュレーション以外のタブで表示されます。シミュレーションのタブでは、左サイドバーは非表示になります。</p>
 
     <div class="chapter-nav">
       <span></span>
@@ -187,7 +187,7 @@
     </ol>
     <p>If you do not agree, the application cannot be used. Your acceptance is saved locally and will not be shown again on subsequent launches.</p>
     <div class="info-box">
-      <p>The acceptance state is stored at <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code>. Deleting this file will cause the EULA to be displayed again on the next launch.</p>
+      <p>The acceptance state is usually stored at <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code>. In the Microsoft Store version, Windows may store it in the corresponding location under <code>%LocalAppData%\Packages</code>.</p>
     </div>
 
     <h2>How to Export CA Policy JSON</h2>
@@ -213,7 +213,7 @@
       <li><strong>Analysis</strong> &mdash; Perform gap analysis against recommended configurations and review compliance status.</li>
       <li><strong>Change History</strong> &mdash; View the history of policy changes (a record of operations in the app, not your tenant's audit log).</li>
     </ol>
-    <p>The left sidebar contains the "Load Policies" button and "Analysis Settings", accessible from any tab.</p>
+    <p>The left sidebar contains the "Load Policies" button and "Analysis Settings". It is shown on every tab except Simulation. On the Simulation tab, the left sidebar is hidden.</p>
 
     <div class="chapter-nav">
       <span></span>

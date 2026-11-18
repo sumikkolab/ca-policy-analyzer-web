@@ -44,7 +44,7 @@
 
     <h2>設計不備の検出（Design Flaw Detection）</h2>
     <p>ポリシーが個別には正しくても、組み合わせによって保護されないケースを特定します。</p>
-    <p>次の 5 種類について、有効なポリシー全体で保護が成り立っているかを確かめます。</p>
+    <p>次の 5 種類について、無効ではないポリシー（有効とレポート専用）全体で保護が成り立っているかを確かめます。</p>
     <ul>
       <li>全ユーザーに対する MFA の適用</li>
       <li>管理者ロールの保護</li>
@@ -52,7 +52,7 @@
       <li>レガシー認証のブロック</li>
       <li>リスクベースのアクセス制御（サインインリスク・ユーザーリスク）</li>
     </ul>
-    <p>検出された設計不備は、ステータス <span class="badge-designflaw">Design Flaw</span> として表示されます。</p>
+    <p>検出された設計不備は、ステータス <span class="badge-designflaw">設計不備</span> として表示されます。</p>
 
     <h3>除外グループによる穴</h3>
     <p>全ユーザーを対象にしたポリシーの多く（全体の 7 割〔小数点以下切り捨て〕以上、かつ 2 件以上）から同じグループが除外されている場合、そのグループを「除外グループ: グループ名」として表示します。「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように件数を示し、除外しているポリシー名と、そのグループが受けられていない保護も確認できます。個々のポリシーの除外は意図どおりでも、重なると一部のユーザーが MFA などをまとめて逃れる、という穴を見つけるための項目です。</p>
@@ -98,7 +98,7 @@
 
     <h2>Design Flaw Detection</h2>
     <p>Identifies cases where policies are individually correct but fail to provide protection when combined.</p>
-    <p>It checks whether your enabled policies, taken together, provide the following five protections:</p>
+    <p>It checks whether your policies that are not disabled (enabled and report-only), taken together, provide the following five protections:</p>
     <ul>
       <li>MFA enforcement for all users</li>
       <li>Admin role protection</li>

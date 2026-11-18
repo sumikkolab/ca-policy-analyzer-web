@@ -54,12 +54,12 @@
     <h2>分析の実行</h2>
     <ol class="steps">
       <li>分析対象のポリシーが読み込まれていることを確認します。ポリシーが未登録の場合は、先に「ポリシー管理」からポリシーを読み込んでください。</li>
-      <li>左サイドバーの「推奨構成と比較」ボタンをクリックします。</li>
+      <li>左サイドバーの「推奨構成との比較」ボタンをクリックします。</li>
       <li>分析が開始されます。完了すると、結果が「分析」タブに表示されます。</li>
     </ol>
 
     <h2>ステータスの種類</h2>
-    <p>各推奨項目に対して、以下のいずれかのステータスが割り当てられます。</p>
+    <p>各推奨項目に対して、以下のいずれかのステータスが割り当てられます。表は、アプリの画面（分析タブ）に表示される語です。</p>
     <table class="manual-table">
       <thead>
         <tr>
@@ -69,33 +69,36 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="badge badge-compliant">Compliant（適合）</span></td>
+          <td><span class="badge badge-compliant">準拠</span></td>
           <td>ポリシーが推奨構成に一致しています。追加の対応は不要です。</td>
         </tr>
         <tr>
-          <td><span class="badge badge-weak">Weak（不十分）</span></td>
+          <td><span class="badge badge-weak">不十分</span></td>
           <td>該当するポリシーは存在しますが、推奨される要件を完全には満たしていません。設定の強化を検討してください。</td>
         </tr>
         <tr>
-          <td><span class="badge badge-missing">Missing（欠落）</span></td>
+          <td><span class="badge badge-missing">未構成</span></td>
           <td>推奨される構成に該当するポリシーが見つかりません。新たにポリシーを作成する必要があります。</td>
         </tr>
         <tr>
-          <td><span class="badge badge-misconfigured">Misconfigured（設定誤り）</span></td>
+          <td><span class="badge badge-misconfigured">構成不一致</span></td>
           <td>ポリシーの設定が推奨構成と異なっています。設定内容を見直し、修正してください。</td>
         </tr>
         <tr>
-          <td><span class="badge badge-designflaw">Design Flaw（設計上の欠陥）</span></td>
+          <td><span class="badge badge-designflaw">設計不備</span></td>
           <td>個々のポリシーは存在しますが、ポリシーの組み合わせではカバーできないセキュリティ上の隙間があります。ポリシー全体の設計を見直してください。</td>
         </tr>
       </tbody>
     </table>
+    <div class="info-box">
+      <p>Excel と PDF のレポートでは、一部のステータスが画面と別の語で出力されます。「不十分」は「部分的」、「未構成」は Excel で「未実装」・PDF で「未対応」、「構成不一致」は Excel で「不備あり」・PDF で「構成不備」、「設計不備」は「設計問題」です。「準拠」は画面と同じです。</p>
+    </div>
 
     <h2>準拠率と総合判定</h2>
 
     <h3>準拠率（Compliance Rate）</h3>
-    <p>準拠率は、Compliant（適合）と判定された項目数を全項目数で割ったパーセンテージです。</p>
-    <p><strong>計算式:</strong> Compliant の項目数 &divide; 全項目数 &times; 100%</p>
+    <p>準拠率は、「準拠」と判定された項目数を全項目数で割ったパーセンテージです。</p>
+    <p><strong>計算式:</strong> 「準拠」の項目数 &divide; 全項目数 &times; 100%</p>
 
     <h3>総合判定（Verdict）</h3>
     <p>準拠率と各項目のステータスに基づいて、以下の総合判定が下されます。</p>
@@ -113,7 +116,7 @@
         </tr>
         <tr>
           <td><strong>Mostly Sufficient（概ね十分）</strong></td>
-          <td>大部分の項目は適合していますが、一部の項目で改善が必要です。</td>
+          <td>大部分の項目は準拠していますが、一部の項目で改善が必要です。</td>
         </tr>
         <tr>
           <td><strong>Needs Improvement（改善が必要）</strong></td>
@@ -145,7 +148,7 @@
           <td>フレームワーク内での分類名です。関連する推奨項目をグループ化しています。</td>
         </tr>
         <tr>
-          <td><strong>一致ポリシー</strong></td>
+          <td><strong>合致ポリシー</strong></td>
           <td>この推奨項目に該当すると判定された既存ポリシーの名前が表示されます。</td>
         </tr>
         <tr>
@@ -154,7 +157,7 @@
         </tr>
         <tr>
           <td><strong>推奨修正</strong></td>
-          <td>ステータスを Compliant に改善するための具体的な手順が記載されています。</td>
+          <td>ステータスを「準拠」に改善するための具体的な手順が記載されています。</td>
         </tr>
         <tr>
           <td><strong>レポート専用デプロイガイド</strong></td>
@@ -167,7 +170,7 @@
       </tbody>
     </table>
     <div class="tip-box">
-      <p>「推奨修正」の手順に従ってポリシーを変更した後は、再度ギャップ分析を実行して、ステータスが Compliant に改善されたことを確認してください。</p>
+      <p>「推奨修正」の手順に従ってポリシーを変更した後は、再度ギャップ分析を実行して、ステータスが「準拠」に改善されたことを確認してください。</p>
     </div>
 
     <div class="chapter-nav">
@@ -201,12 +204,12 @@
     <h2>Running an Analysis</h2>
     <ol class="steps">
       <li>Verify that the policies to be analyzed have been loaded. If no policies are registered, load them first from "Policy Management".</li>
-      <li>Click the "Compare with Recommendations" button in the left sidebar.</li>
+      <li>Select the "Compare with Recommended Config" button in the left sidebar.</li>
       <li>The analysis will begin. Once complete, the results will be displayed in the "Analysis" tab.</li>
     </ol>
 
     <h2>Status Types</h2>
-    <p>Each recommended item is assigned one of the following status values.</p>
+    <p>Each recommended item is assigned one of the following status values. The table shows the words displayed on the app screen (Analysis tab).</p>
     <table class="manual-table">
       <thead>
         <tr>
@@ -220,11 +223,11 @@
           <td>The policy matches the recommended configuration. No further action is needed.</td>
         </tr>
         <tr>
-          <td><span class="badge badge-weak">Weak</span></td>
+          <td><span class="badge badge-weak">Insufficient</span></td>
           <td>A relevant policy exists but does not fully meet the recommended requirements. Consider strengthening the configuration.</td>
         </tr>
         <tr>
-          <td><span class="badge badge-missing">Missing</span></td>
+          <td><span class="badge badge-missing">Not Configured</span></td>
           <td>No policy matching the recommended configuration was found. A new policy needs to be created.</td>
         </tr>
         <tr>
@@ -237,6 +240,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="info-box">
+      <p>In the Excel and PDF reports, some statuses are shown with different words. "Insufficient" is shown as "Partial", and "Not Configured" is shown as "Not Implemented" in Excel and "Not Addressed" in PDF. The other statuses use the same words as on the screen.</p>
+    </div>
 
     <h2>Compliance Rate and Overall Verdict</h2>
 
