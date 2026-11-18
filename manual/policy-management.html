@@ -36,7 +36,7 @@
     <p class="subtitle">CA Policy Analyzer ユーザーマニュアル</p>
 
     <h2>ポリシーの読み込み（JSON インポート）</h2>
-    <p>Microsoft Entra 管理センターや Graph API からエクスポートした JSON ファイルを読み込んで、ポリシーを登録します。</p>
+    <p>アプリの JSON 形式（<a href="../sample-policies-for-review.json">sample-policies-for-review.json</a> と同じ形式）のファイルを読み込んで、ポリシーを登録します。</p>
     <ol class="steps">
       <li>左サイドバーの「ポリシーを読み込む」ボタンをクリックします。</li>
       <li>ファイル選択ダイアログが開くので、JSON ファイルを選択します。</li>
@@ -49,7 +49,7 @@
       <li>「読み込み確定」ボタンをクリックすると、ポリシーが一覧に追加されます。</li>
     </ol>
     <div class="info-box">
-      <p>JSON ファイルは Microsoft Entra 管理センターまたは Graph API からエクスポートした形式に対応しています。単一ポリシーの JSON と、複数ポリシーを含む配列形式の JSON のどちらにも対応しています。</p>
+      <p>読み込めるのは、アプリの JSON 形式（<code>id</code>・<code>name</code>・<code>state</code>・<code>assignments</code>・<code>conditions</code>・<code>accessControls</code> を持つポリシー）を配列にしたファイルです。ポリシーが 1 件の場合も、配列（<code>[ ]</code>）で囲んでください。単一のポリシーだけの JSON は、読み込みエラーになります。Microsoft Entra 管理センターや Microsoft Graph の形式（<code>displayName</code>・<code>grantControls</code> など）は、アプリの形式に変換してから読み込んでください。</p>
     </div>
 
     <h2>ポリシーの手動登録</h2>
@@ -89,8 +89,13 @@
       <li><strong>許可</strong>: 以下の条件付きでアクセスを許可します。
         <ul>
           <li>多要素認証（MFA）を要求</li>
-          <li>準拠デバイスを要求</li>
+          <li>認証強度が必要</li>
+          <li>デバイスが準拠としてマーク済み</li>
           <li>Microsoft Entra ハイブリッド参加済みデバイスが必要</li>
+          <li>承認されたクライアント アプリを要求</li>
+          <li>アプリの保護ポリシーを必須にする</li>
+          <li>パスワードの変更を必須とする</li>
+          <li>利用規約が必須</li>
         </ul>
       </li>
     </ul>
@@ -156,7 +161,7 @@
     <p class="subtitle">CA Policy Analyzer User Manual</p>
 
     <h2>Loading Policies (JSON Import)</h2>
-    <p>Import JSON files exported from the Microsoft Entra admin center or Graph API to register your policies.</p>
+    <p>Import a JSON file in the app's JSON format (the same format as <a href="../sample-policies-for-review.json">sample-policies-for-review.json</a>) to register your policies.</p>
     <ol class="steps">
       <li>Click the "Load Policies" button in the left sidebar.</li>
       <li>A file selection dialog will open. Select your JSON file.</li>
@@ -169,7 +174,7 @@
       <li>Click the "Confirm Load" button to add the policies to the list.</li>
     </ol>
     <div class="info-box">
-      <p>The application supports JSON files exported from the Microsoft Entra admin center or Graph API. Both single-policy JSON and array-format JSON containing multiple policies are supported.</p>
+      <p>You can import only a file that contains an array of policies in the app's JSON format (each policy has <code>id</code>, <code>name</code>, <code>state</code>, <code>assignments</code>, <code>conditions</code>, and <code>accessControls</code>). Enclose even a single policy in an array (<code>[ ]</code>). A JSON file that contains only a single policy object causes a load error. Convert the Microsoft Entra admin center or Microsoft Graph format (<code>displayName</code>, <code>grantControls</code>, and so on) to the app's format before you import it.</p>
     </div>
 
     <h2>Manual Policy Registration</h2>
@@ -209,8 +214,13 @@
       <li><strong>Grant</strong>: Allow access with the following conditions:
         <ul>
           <li>Require multi-factor authentication (MFA)</li>
-          <li>Require compliant device</li>
+          <li>Require authentication strength</li>
+          <li>Require device to be marked as compliant</li>
           <li>Require Microsoft Entra hybrid joined device</li>
+          <li>Require approved client app</li>
+          <li>Require app protection policy</li>
+          <li>Require password change</li>
+          <li>Require terms of use</li>
         </ul>
       </li>
     </ul>

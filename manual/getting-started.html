@@ -74,7 +74,7 @@
         </tr>
         <tr>
           <td>ランタイム</td>
-          <td>WebView2 Runtime（通常 Windows に同梱されています）</td>
+          <td>WebView2 Runtime（画面の表示に必要です。見つからない場合、アプリは起動時にダウンロードページを開くかどうかを確認します）</td>
         </tr>
       </tbody>
     </table>
@@ -92,18 +92,16 @@
       <p>同意状態は、通常は <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code> に保存されます。Microsoft Store 版では、Windows により <code>%LocalAppData%\Packages</code> 以下の対応する場所に保存される場合があります。</p>
     </div>
 
-    <h2>CA ポリシー JSON のエクスポート方法</h2>
-    <p>CA Policy Analyzer でポリシーを分析するには、Microsoft Entra 管理センターから条件付きアクセスポリシーを JSON 形式でエクスポートする必要があります。</p>
+    <h2>読み込むポリシー JSON の準備</h2>
+    <p>CA Policy Analyzer でポリシーを分析するには、アプリの JSON 形式（ポリシーの配列）のファイルを読み込みます。Microsoft Entra 管理センターや Microsoft Graph が返す形式の JSON は、そのままでは読み込めません。</p>
 
-    <h3>Microsoft Entra 管理センターからエクスポートする手順</h3>
+    <h3>ポリシー JSON を読み込む手順</h3>
     <ol class="steps">
-      <li>Microsoft Entra 管理センター (<code>https://entra.microsoft.com</code>) にサインインします。</li>
-      <li>左メニューから「保護」→「条件付きアクセス」→「ポリシー」に移動します。</li>
-      <li>対象のポリシーを選択し、JSON 形式でエクスポートします。</li>
-      <li>エクスポートした JSON ファイルを CA Policy Analyzer の「ポリシーを読み込む」ボタンで読み込みます。</li>
+      <li>アプリの JSON 形式でポリシーを記述したファイルを用意します。形式は、下記のサンプルと同じです。</li>
+      <li>CA Policy Analyzer の「ポリシーを読み込む」ボタンで、JSON ファイルを選択して読み込みます。</li>
     </ol>
     <div class="tip-box">
-      <p>複数のポリシーを一括でエクスポートするには、Microsoft Graph API の <code>GET /identity/conditionalAccess/policies</code> エンドポイントを利用すると便利です。</p>
+      <p>Microsoft Graph の <code>GET /identity/conditionalAccess/policies</code> のレスポンスは、アプリの JSON 形式に変換してから読み込んでください。</p>
     </div>
     <p>サンプルは本サイトの <a href="../sample-policies-for-review.json">sample-policies-for-review.json</a> から入手できます。まず動作を試したい場合は、サンプルファイルを使って操作を確認できます。</p>
 
@@ -170,7 +168,7 @@
         </tr>
         <tr>
           <td>Runtime</td>
-          <td>WebView2 Runtime (typically bundled with Windows)</td>
+          <td>WebView2 Runtime (required to display the app screens; if it is not found, the app asks at startup whether to open the download page)</td>
         </tr>
       </tbody>
     </table>
@@ -188,18 +186,16 @@
       <p>The acceptance state is usually stored at <code>%LocalAppData%\CAPolicyAnalyzer\eula.dat</code>. In the Microsoft Store version, Windows may store it in the corresponding location under <code>%LocalAppData%\Packages</code>.</p>
     </div>
 
-    <h2>How to Export CA Policy JSON</h2>
-    <p>To analyze policies with CA Policy Analyzer, you need to export your Conditional Access policies from the Microsoft Entra admin center in JSON format.</p>
+    <h2>Preparing the Policy JSON</h2>
+    <p>To analyze policies with CA Policy Analyzer, load a file in the app's JSON format (an array of policies). JSON in the format returned by the Microsoft Entra admin center or Microsoft Graph cannot be loaded as it is.</p>
 
-    <h3>Exporting from the Microsoft Entra Admin Center</h3>
+    <h3>Loading the Policy JSON</h3>
     <ol class="steps">
-      <li>Sign in to the Microsoft Entra admin center (<code>https://entra.microsoft.com</code>).</li>
-      <li>Navigate to "Protection" &rarr; "Conditional Access" &rarr; "Policies" from the left menu.</li>
-      <li>Select the target policy and export it in JSON format.</li>
-      <li>Load the exported JSON file into CA Policy Analyzer using the "Load Policies" feature.</li>
+      <li>Prepare a file that describes your policies in the app's JSON format. The format is the same as the sample below.</li>
+      <li>In CA Policy Analyzer, select "Load Policies", then select the JSON file.</li>
     </ol>
     <div class="tip-box">
-      <p>To export multiple policies at once, you can use the Microsoft Graph API endpoint <code>GET /identity/conditionalAccess/policies</code> for bulk export.</p>
+      <p>Convert the response of the Microsoft Graph endpoint <code>GET /identity/conditionalAccess/policies</code> to the app's JSON format before you load it.</p>
     </div>
     <p>A sample file is available on this website (<a href="../sample-policies-for-review.json">sample-policies-for-review.json</a>). If you want to try out the features first, you can use the sample file to explore the application's functionality.</p>
 
