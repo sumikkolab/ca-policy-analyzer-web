@@ -12,14 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="CA Policy Analyzer — Sumikko Lab">
-<meta property="og:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1032">
-<meta property="og:image:alt" content="CA Policy Analyzer のポリシー管理画面">
+<meta property="og:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
+<meta property="og:image:alt" content="CA Policy Analyzer の PDF レポート（総評）">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="条件付きアクセスの管理者除外・ロックアウト・レガシー認証を点検 | CA Policy Analyzer">
 <meta name="twitter:description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴、管理者のロックアウト、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、これらの隙間と、NIST SP 800-53・DISA STIG・Microsoft の基準との差を洗い出す Windows 向けのツールで、変更前のアクセス判定の確認もできます（テナントには接続しません）。">
-<meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
+<meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -150,17 +148,14 @@
       <div class="feature-card">
         <h3>個々のポリシーは正しいのに、組み合わせで隙間が残っていないか知りたいとき</h3>
         <p>カバレッジ分析が、全ユーザーへの MFA・管理者ロールの保護・全アプリの保護・レガシー認証のブロック・リスクベースの制御の 5 種類について、ポリシー全体で保護が成り立っていない場合に「設計不備」として示します。また、全ユーザー向けポリシーの多く（全体の 7 割〔小数点以下切り捨て〕以上、かつ 2 件以上）から除外されているグループを「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように示し、除外が重なってできた穴を見つけられます。</p>
-        <img src="manual/images/ja/coverage-analysis.png" alt="カバレッジ分析の画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>条件付きアクセスが NIST や STIG、Microsoft の基準に沿っているか点検するには</h3>
         <p>ギャップ分析が、Microsoft 16 項目・DISA STIG 5 項目・NIST SP 800-53 7 項目の計 28 項目の推奨構成と現在のポリシーを比較し、項目ごとに準拠・不十分・未構成などを判定します。準拠率と総合判定、推奨修正の手順も確認できます。</p>
-        <img src="manual/images/ja/gap-analysis.png" alt="ギャップ分析の画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>条件付きアクセスの変更前に、誰がどこでブロックされるか確かめるには <span class="pro-badge">PRO</span></h3>
         <p>シミュレーションで、ユーザー・グループ・アプリ・プラットフォーム（OS）・クライアントアプリ・場所を仮定し、BLOCK か ALLOW か、必要なコントロールを確認できます。評価・適用・不適用・無効のポリシーの件数も表示されるため、実環境に適用する前に、意図どおりに動くかを検証できます。</p>
-        <img src="manual/images/ja/simulation.png" alt="シミュレーションの画面" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>想定外にブロックされる（許可される）原因が分からないとき <span class="pro-badge">PRO</span></h3>
@@ -181,7 +176,6 @@
       <div class="feature-card">
         <h3>監査や報告に出す資料をまとめるには <span class="pro-badge">PRO</span></h3>
         <p>Excel 設計書は「表紙・総評・設計方針・ポリシー設定状況・ギャップ分析詳細・診断結果・変更管理記録・参照フレームワーク」の 8 シートで出力されます。総評には「優先対応事項」と「改善後の見通し」が入ります。PDF レポートも出力でき、どちらも出力時に組織名と作成者の入力が必要です。</p>
-        <img src="manual/images/ja/export-excel.png" alt="Excel 設計書の出力画面" loading="lazy">
       </div>
     </div>
 
@@ -283,12 +277,10 @@
       <div class="feature-card">
         <h3>How can I audit Conditional Access against NIST, STIG or Microsoft baselines?</h3>
         <p>Gap Analysis compares your policies with 28 recommended configuration items (16 from Microsoft, 5 from DISA STIG and 7 from NIST SP 800-53) and rates each item as compliant, Insufficient, Not Configured, and so on. You also get a compliance rate, an overall verdict and recommended remediation steps.</p>
-        <img src="manual/images/en/gap-analysis.png" alt="Gap Analysis screen" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>How can I see who would be blocked, and where, before I change a policy? <span class="pro-badge">PRO</span></h3>
         <p>In the simulation, you enter a hypothetical user, group, app, platform (OS), client app and location, and see whether access would be BLOCKED or ALLOWED and which controls are required. The result also counts the policies evaluated, applied, not applied and disabled, so you can confirm policies behave as intended before applying them to production.</p>
-        <img src="manual/images/en/simulation.png" alt="Simulation screen" loading="lazy">
       </div>
       <div class="feature-card">
         <h3>Why is someone blocked, or allowed, unexpectedly? <span class="pro-badge">PRO</span></h3>

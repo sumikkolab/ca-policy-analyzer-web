@@ -12,14 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="CA Policy Analyzer — Sumikko Lab">
-<meta property="og:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1032">
-<meta property="og:image:alt" content="CA Policy Analyzer のポリシー管理画面">
+<meta property="og:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
+<meta property="og:image:alt" content="CA Policy Analyzer の PDF レポート（総評）">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="診断 | CA Policy Analyzer マニュアル — Sumikko Lab">
 <meta name="twitter:description" content="CA Policy Analyzer の診断機能。ポリシー構成の問題検出、推奨事項の確認方法を解説します。">
-<meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/en/policy-management.png">
+<meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -39,7 +37,7 @@
 
     <h2>診断機能とは</h2>
     <p>ポリシーの構成に潜むリスクを自動的に検出する機能です。無効のポリシーは対象外で、レポート専用モードのポリシーは対象に含まれます。</p>
-    <p>ギャップ分析の実行時に診断も同時に行われます。<strong>診断の結果は画面には表示されず、Excel 設計書の「診断結果」シートと PDF レポートの診断のページに出力されます</strong>（いずれも <span class="pro-badge">PRO</span>）。診断の結果は、ギャップ分析を実行した後のエクスポートに含まれます。結果は重要度（Critical・Warning・Info）別に並ぶため、対処の優先順位を判断できます。</p>
+    <p>ギャップ分析の実行時に診断も同時に行われます。<strong>診断の結果は画面には表示されず、Excel 設計書の「診断結果」シートと PDF レポートの診断のページに出力されます</strong>（いずれも <span class="pro-badge">PRO</span>）。診断の結果は、ギャップ分析を実行した後のエクスポートに含まれます。Excel の「診断結果」シートでは、結果は検出した順に並び、重要度は各行の列で確認できます。PDF レポートでは、重要度（Critical・Warning・Info）の高い順に並びます。</p>
     <div class="info-box">
       <p>Pro 以外のプランでも、次の方法で同じリスクの一部を画面で確かめられます。</p>
       <ul>
@@ -76,7 +74,7 @@
       <li>管理者ロールを明示的に対象にしたポリシーが 1 件も無い</li>
     </ul>
     <p>管理者アカウントは攻撃対象になりやすいため、一般ユーザーと同等以上の保護が必要です。特に、グローバル管理者や特権ロール管理者などの高権限アカウントは、最も厳格なポリシーで保護すべきです。</p>
-    <p><strong>推奨対応:</strong> 管理者専用の MFA + 準拠デバイスポリシーを作成してください。</p>
+    <p><strong>推奨対応:</strong> 管理者ロールを対象に、MFA またはフィッシング耐性認証を要求するポリシーを作成してください。すでに管理者向けのポリシーがある場合は、最低でも MFA を要求してください。</p>
 
     <h2>ポリシー競合（Warning）・重複（Info）</h2>
     <p>対象範囲が重なる 2 つのポリシーを比べ、次の組み合わせを検出します。</p>
@@ -104,7 +102,7 @@
 
     <h2>What is Diagnostics?</h2>
     <p>The Diagnostics feature automatically detects risks hidden in your policy configurations. Disabled policies are skipped; report-only policies are included.</p>
-    <p>Diagnostics run together with the Gap Analysis. <strong>The results are not shown on screen. They appear in the "Diagnostics" sheet of the Excel design document and on the diagnostics page of the PDF report</strong> (both <span class="pro-badge">PRO</span>). Diagnostic results are included in exports made after you run Gap Analysis. Results are grouped by severity (Critical, Warning, Info) so you can decide what to fix first.</p>
+    <p>Diagnostics run together with the Gap Analysis. <strong>The results are not shown on screen. They appear in the "Diagnostics" sheet of the Excel design document and on the diagnostics page of the PDF report</strong> (both <span class="pro-badge">PRO</span>). Diagnostic results are included in exports made after you run Gap Analysis. In the Excel "Diagnostics" sheet, results are listed in the order they were detected, and the severity is shown in a column on each row. In the PDF report, results are sorted by severity (Critical, Warning, Info), highest first.</p>
     <div class="info-box">
       <p>On other plans, you can still check some of the same risks on screen:</p>
       <ul>
@@ -141,7 +139,7 @@
       <li>No policy explicitly targets administrator roles</li>
     </ul>
     <p>Administrator accounts are prime targets for attacks and require protection equal to or greater than that of regular users. In particular, high-privilege accounts such as Global Administrators and Privileged Role Administrators should be protected by the strictest policies.</p>
-    <p><strong>Recommended action:</strong> Create a dedicated MFA + compliant device policy for administrators.</p>
+    <p><strong>Recommended action:</strong> Create a policy that targets administrator roles and requires MFA or phishing-resistant authentication. If a policy for administrators already exists, require MFA at a minimum.</p>
 
     <h2>Policy Conflicts (Warning) and Duplicates (Info)</h2>
     <p>Compares every pair of policies whose scopes overlap and detects:</p>
