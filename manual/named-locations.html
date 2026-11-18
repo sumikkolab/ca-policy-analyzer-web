@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ネームドロケーション | CA Policy Analyzer マニュアル — Sumikko Lab</title>
-<meta name="description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所条件の設定と分析方法を解説します。">
+<meta name="description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所の登録方法と、ポリシー・シミュレーションでの利用方法を解説します。">
 <link rel="canonical" href="https://capolanalyzer.sumikkolab.com/manual/named-locations.html">
 <meta property="og:title" content="ネームドロケーション | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta property="og:description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所条件の設定と分析方法を解説します。">
+<meta property="og:description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所の登録方法と、ポリシー・シミュレーションでの利用方法を解説します。">
 <meta property="og:url" content="https://capolanalyzer.sumikkolab.com/manual/named-locations.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="CA Policy Analyzer の PDF レポート（総評）">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ネームドロケーション | CA Policy Analyzer マニュアル — Sumikko Lab">
-<meta name="twitter:description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所条件の設定と分析方法を解説します。">
+<meta name="twitter:description" content="CA Policy Analyzer のネームドロケーション管理。IPアドレス範囲や国/地域ベースの場所の登録方法と、ポリシー・シミュレーションでの利用方法を解説します。">
 <meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -72,7 +72,9 @@
     <p>シミュレーション画面の「場所」フィールドでも選択できます。</p>
     <p>「含める」と「除外」の両方で指定可能です。</p>
     <div class="tip-box">
-      <p>Microsoft Entra 管理センターのネームドロケーションと同じ概念です。読み込むポリシーの JSON に含まれる場所名と一致させると、分析の精度が向上します。</p>
+      <p>Microsoft Entra 管理センターのネームドロケーションと同じ概念ですが、本ツールでは場所の名前だけが使われます。</p>
+      <p>登録した場所の名前が、ポリシー条件とシミュレーションの「場所」の選択肢に表示されます。シミュレーションでは、選択した場所の名前をポリシーの場所条件の名前と比較して（大文字・小文字は区別しません）、ポリシーが適用されるかを判定します。登録した IP 範囲と国コードは、この判定には使われません。</p>
+      <p>ギャップ分析では、ポリシーに場所条件が設定されているかだけを確認します。</p>
     </div>
 
     <div class="chapter-nav">
@@ -126,7 +128,9 @@
     <p>Named locations can also be selected in the "Location" field on the simulation screen.</p>
     <p>Both "Include" and "Exclude" options are available.</p>
     <div class="tip-box">
-      <p>This is the same concept as named locations in the Microsoft Entra admin center. Matching location names with those contained in the policy JSON you load will improve analysis accuracy.</p>
+      <p>This is the same concept as named locations in the Microsoft Entra admin center, but this tool uses only the location name.</p>
+      <p>Registered location names appear as options for "Locations" in policy conditions and in simulations. In a simulation, the tool compares the location name you select with the location names in the policy's location condition (case-insensitive) to decide whether the policy applies. The registered IP ranges and country codes are not used in this decision.</p>
+      <p>Gap analysis only checks whether a policy has a location condition.</p>
     </div>
 
     <div class="chapter-nav">
