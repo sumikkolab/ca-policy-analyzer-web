@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>条件付きアクセスの管理者除外・ロックアウト・レガシー認証を点検 | CA Policy Analyzer</title>
-<meta name="description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴、管理者のロックアウト、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、これらの隙間と、NIST SP 800-53・DISA STIG・Microsoft の基準との差を洗い出す Windows 向けのツールで、変更前のアクセス判定の確認もできます（テナントには接続しません）。">
+<meta name="description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴や、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、管理者の除外、レガシー認証をブロックするポリシーの有無、全ユーザー・全アプリをブロックして除外が無いポリシーを確認します。NIST SP 800-53・DISA STIG・Microsoft の基準との差の洗い出しと、変更前のアクセス判定の確認もできる Windows 向けのツールです（テナントには接続しません）。">
 <link rel="canonical" href="https://capolanalyzer.sumikkolab.com/">
 <meta property="og:title" content="条件付きアクセスの管理者除外・ロックアウト・レガシー認証を点検 | CA Policy Analyzer">
-<meta property="og:description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴、管理者のロックアウト、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、これらの隙間と、NIST SP 800-53・DISA STIG・Microsoft の基準との差を洗い出す Windows 向けのツールで、変更前のアクセス判定の確認もできます（テナントには接続しません）。">
+<meta property="og:description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴や、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、管理者の除外、レガシー認証をブロックするポリシーの有無、全ユーザー・全アプリをブロックして除外が無いポリシーを確認します。NIST SP 800-53・DISA STIG・Microsoft の基準との差の洗い出しと、変更前のアクセス判定の確認もできる Windows 向けのツールです（テナントには接続しません）。">
 <meta property="og:url" content="https://capolanalyzer.sumikkolab.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="CA Policy Analyzer の PDF レポート（総評）">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="条件付きアクセスの管理者除外・ロックアウト・レガシー認証を点検 | CA Policy Analyzer">
-<meta name="twitter:description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴、管理者のロックアウト、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、これらの隙間と、NIST SP 800-53・DISA STIG・Microsoft の基準との差を洗い出す Windows 向けのツールで、変更前のアクセス判定の確認もできます（テナントには接続しません）。">
+<meta name="twitter:description" content="Entra ID の条件付きアクセスで、管理者を除外したままの穴や、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、管理者の除外、レガシー認証をブロックするポリシーの有無、全ユーザー・全アプリをブロックして除外が無いポリシーを確認します。NIST SP 800-53・DISA STIG・Microsoft の基準との差の洗い出しと、変更前のアクセス判定の確認もできる Windows 向けのツールです（テナントには接続しません）。">
 <meta name="twitter:image" content="https://capolanalyzer.sumikkolab.com/manual/images/ja/export-pdf.png">
 <script type="application/ld+json">
 {
@@ -42,16 +42,16 @@
       "@type": "SoftwareApplication",
       "@id": "https://capolanalyzer.sumikkolab.com/#software",
       "name": "CA Policy Analyzer",
-      "description": "Entra ID の条件付きアクセスで、管理者の除外による穴、管理者のロックアウト、レガシー認証のブロック漏れ、基準（NIST SP 800-53・DISA STIG・Microsoft）との差を、ポリシーの JSON から分析する Windows 向けのツール。変更前のアクセス判定の確認や、変更履歴の追跡にも使えます。テナントには接続せず、ローカルで処理します。",
+      "description": "Entra ID の条件付きアクセスで、管理者の除外による穴、全ユーザー・全アプリをブロックして除外が無いポリシー、レガシー認証をブロックするポリシーの有無、基準（NIST SP 800-53・DISA STIG・Microsoft）との差を、ポリシーの JSON から分析する Windows 向けのツール。変更前のアクセス判定の確認や、変更履歴の追跡にも使えます。テナントには接続せず、ローカルで処理します。",
       "featureList": [
-        "管理者を除外したポリシーの件数と、管理者専用ポリシーで対策した場合の総合判定・準拠率の変化を表示（管理者除外分析）",
+        "管理者グループの除外が見つかった推奨項目の件数と、管理者専用ポリシーで対策した場合の総合判定・準拠率の変化を表示（管理者除外分析）",
         "NIST SP 800-53・DISA STIG・Microsoft の推奨構成 28 項目（Microsoft 16・DISA STIG 5・NIST 7）とのギャップ分析",
         "ポリシーの組み合わせで残る隙間（設計不備 5 種類）と、全ユーザー向けポリシーの多くから除外されているグループを検出",
         "変更前にアクセス判定を確認し、ポリシーごとに適用・不適用の理由を示すシミュレーション（Pro）",
         "ロックアウトリスク・レガシー認証・管理者保護・競合・重複の自動診断（結果は Pro の Excel・PDF に出力）",
         "監査提出用の Excel 設計書（8 シート。総評に優先対応事項）と PDF レポートの出力（Pro）",
         "JSON の読み込み時に変更者と理由を残す変更履歴と、項目ごとの新旧の差分表示",
-        "レポート専用モードでの導入手順と、影響確認用の KQL クエリの例の提示",
+        "レポート専用モードでの導入手順と、影響確認用の KQL（Kusto Query Language）クエリの例の提示",
         "ポリシーの JSON エクスポート"
       ],
       "url": "https://capolanalyzer.sumikkolab.com/",
@@ -129,21 +129,21 @@
 
   <div class="container">
     <h2>概要</h2>
-    <p>CA Policy Analyzer は、Microsoft Entra ID の条件付きアクセス (CA) ポリシーを<strong>ローカル環境で</strong>分析するセキュリティツールです。ポリシー JSON をインポートするだけで、国際標準に基づくギャップ分析と改善提案を即座に確認できます。</p>
+    <p>CA Policy Analyzer は、Microsoft Entra ID の条件付きアクセス (CA) ポリシーを<strong>ローカル環境で</strong>分析するセキュリティツールです。アプリの形式のポリシー JSON を読み込むと、NIST SP 800-53・DISA STIG・Microsoft Security Baselines の公開情報を参考にしたギャップ分析と改善提案を確認できます。判定は目安であり、各基準の公式の認証や保証ではありません（<a href="terms-of-use.html">利用規約</a>第 4 条）。Microsoft Entra 管理センターや Microsoft Graph が出力した JSON は、そのままでは読み込めません。形式は<a href="sample-policies-for-review.json">サンプルファイル</a>で確認できます。</p>
 
     <h2>こんな課題を解決します</h2>
     <div class="features">
       <div class="feature-card">
         <h3>条件付きアクセスで管理者を除外している場合の穴を調べるには</h3>
-        <p>ギャップ分析の結果に表示される「管理者除外分析」が、管理者グループを除外しているポリシーの件数と、そのうち管理者専用ポリシーで補えている件数・補えていない件数を示します。専用ポリシーで対策した場合の総合判定と準拠率の変化（例: 準拠率 65% → 82%）と、項目ごとの現在と改善後のステータスも確認できます。管理者グループ名は、あらかじめ分析設定で登録します。</p>
+        <p>ギャップ分析の結果に表示される「管理者除外分析」が、管理者グループの除外が見つかった推奨項目の件数と、そのうち管理者専用ポリシーで補えている件数・補えていない件数を示します。件数はポリシーの件数ではなく、ギャップ分析の推奨項目の件数です。全ユーザー向けポリシーの多くから除外されているグループの項目も含みます。専用ポリシーで対策した場合の総合判定と準拠率の変化（例: 準拠率 65% → 82%）と、項目ごとの現在と改善後のステータスも確認できます。管理者グループ名は、あらかじめ分析設定で登録します。</p>
       </div>
       <div class="feature-card">
-        <h3>管理者がロックアウトされるポリシーを事前に見つけるには <span class="pro-badge">PRO</span></h3>
-        <p>自動診断の「ロックアウトリスク（Critical）」が、全ユーザー・全アプリをブロックするポリシーのうち、除外のユーザーも除外のグループも 1 件も無いものを検出します。結果は画面には出ず、Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。画面では、Pro のシミュレーションに管理者や緊急アクセス用アカウントを入力し、判定が BLOCK にならないかを確かめられます。</p>
+        <h3>全ユーザー・全アプリをブロックして、除外が無いポリシーを事前に見つけるには <span class="pro-badge">PRO</span></h3>
+        <p>自動診断の「ロックアウトリスク（Critical）」が検出するのは、全ユーザー・全アプリをブロックし、除外のユーザーも除外のグループも 1 件も無いポリシーだけです。これ以外の原因によるロックアウトは検出しません。結果は画面には出ず、Pro の Excel 設計書の「診断結果」シートと PDF レポートに出力されます。画面では、Pro のシミュレーションに緊急アクセス用アカウント（Break Glass Account。ポリシーの設定ミスなどでサインインできなくなったときに備え、ポリシーから除外しておく緊急用の管理者アカウント）などを入力し、判定が BLOCK にならないかを確かめられます。確かめられるのは、ユーザーまたはグループで除外している場合です。ロールで除外している場合、シミュレーションはロールを評価しないため、結果が実際と異なります。</p>
       </div>
       <div class="feature-card">
-        <h3>レガシー認証のブロック漏れを確認するには</h3>
-        <p>ギャップ分析の推奨項目「MS-LEGACY-AUTH-BLOCK」と、カバレッジ分析の「レガシー認証のブロック」が、IMAP・POP3・SMTP など MFA に対応しない認証を止めるポリシーがあるかをどのプランでも示します。レガシー認証をブロックするポリシーが 1 件も無い場合に、許可しているポリシーを 1 件ずつ挙げる自動診断（Warning）の結果は、Pro の Excel・PDF に出力されます。</p>
+        <h3>レガシー認証をブロックするポリシーがあるかを確認するには</h3>
+        <p>ギャップ分析の推奨項目「MS-LEGACY-AUTH-BLOCK」と、カバレッジ分析の「レガシー認証のブロック」が、IMAP・POP3・SMTP など MFA に対応しない認証をブロックするポリシーがあるかをどのプランでも示します。レガシー認証をブロックするポリシーが 1 件も無い場合に、許可しているポリシーを 1 件ずつ挙げる自動診断（Warning）の結果は、Pro の Excel・PDF に出力されます。</p>
       </div>
       <div class="feature-card">
         <h3>個々のポリシーは正しいのに、組み合わせで隙間が残っていないか知りたいとき</h3>
@@ -171,7 +171,7 @@
       </div>
       <div class="feature-card">
         <h3>推奨構成を本番環境に影響なく試すには</h3>
-        <p>ギャップ分析で適合していない項目の詳細に、レポート専用モードで安全に試すための導入手順（レポート専用デプロイガイド）と、変更の影響を確認するための KQL クエリの例が示されます。</p>
+        <p>ギャップ分析で適合していない項目の詳細に、レポート専用モードで安全に試すための導入手順（レポート専用デプロイガイド）と、変更の影響を確認するための KQL（Kusto Query Language。Log Analytics でサインインログを検索するためのクエリ言語）クエリの例が示されます。</p>
       </div>
       <div class="feature-card">
         <h3>監査や報告に出す資料をまとめるには <span class="pro-badge">PRO</span></h3>
@@ -183,6 +183,8 @@
     <ul>
       <li>リスクベースのポリシーのシミュレーション: サインインリスク・ユーザーリスクの入力欄が無いため、リスクを条件にしたポリシーは「不適用」と判定されます。</li>
       <li>デバイスの準拠状態による判定: シミュレーションでは、デバイスが準拠しているかどうかを条件にできません。</li>
+      <li>ロールとデバイスフィルターを条件にしたポリシーの評価: シミュレーションは、ディレクトリロール（対象に含めるロール・除外するロール）とデバイスフィルターを評価せず、入力欄もありません。これらを条件にしたポリシーは、その条件を無視して評価されるため、結果が実際と異なる場合があります。</li>
+      <li>Entra 管理センターや Microsoft Graph の JSON の直接の読み込み: 読み込めるのは、アプリの形式のポリシー JSON（ポリシーの配列）です。Entra 管理センターや Graph の形式（displayName・grantControls など）は、変換してから読み込みます。形式は、サンプルファイル <a href="sample-policies-for-review.json">sample-policies-for-review.json</a> で確認できます。</li>
       <li>テナントからの自動取得と、実際のサインインへの影響の測定: ポリシーは JSON ファイルの読み込みか画面での登録で取り込みます。サインインへの影響は、示される KQL の例を使ってご自身の環境で確認してください。</li>
     </ul>
     <p>無効のポリシーは診断の対象外です。対応 OS は Windows 10（バージョン 2004 以降）と Windows 11 です。</p>
@@ -200,6 +202,7 @@
       </div>
     </div>
     <p><a href="manual/licensing.html">プランごとの機能の比較表を見る</a></p>
+    <p>本ソフトウェアで作成したレポート・設計書・診断結果を、顧客などの第三者に販売・譲渡する場合や、コンサルティング業務の一部として提供する場合は、別途 Pro ライセンスが必要です。詳しくは<a href="terms-of-use.html">利用規約</a>第 10 条（商用利用の制限）を確認してください。</p>
 
     <h2>入手方法</h2>
     <p>Microsoft Store から入手できます。初回起動から 15 日間は無料で試用できます。</p>
@@ -254,21 +257,21 @@
 
   <div class="container">
     <h2>Overview</h2>
-    <p>CA Policy Analyzer is a security tool that analyzes Microsoft Entra ID Conditional Access (CA) policies <strong>in a local environment</strong>. Simply import your policy JSON to instantly review gap analysis and improvement recommendations based on international security standards.</p>
+    <p>CA Policy Analyzer is a security tool that analyzes Microsoft Entra ID Conditional Access (CA) policies <strong>in a local environment</strong>. Load policy JSON in the app's format to review gap analysis and improvement recommendations that draw on public information from NIST SP 800-53, DISA STIG and Microsoft Security Baselines. The assessments are a guide, not an official certification or guarantee by any of these frameworks (<a href="terms-of-use.html">Terms of Use</a>, Article 4). JSON exported from the Microsoft Entra admin center or Microsoft Graph cannot be loaded as it is. You can check the format in the <a href="sample-policies-for-review.json">sample file</a>.</p>
 
     <h2>Problems this solves</h2>
     <div class="features">
       <div class="feature-card">
         <h3>How do I check which Conditional Access policies exclude admins?</h3>
-        <p>The Admin Exclusion Analysis shown with the Gap Analysis results tells you how many policies exclude the administrator group, and how many of them are or are not covered by a dedicated admin policy. It also shows how the overall verdict and compliance rate would change if you add dedicated admin policies (for example, 65% to 82%), plus the current and improved status of each affected item. Register your admin group names in Analysis Settings first.</p>
+        <p>The Admin Exclusion Analysis shown with the Gap Analysis results tells you how many recommendation items show an administrator group exclusion, and how many of them are or are not covered by a dedicated admin policy. The count is of Gap Analysis recommendation items, not of policies, and it includes the items for groups excluded from most of your all-user policies. It also shows how the overall verdict and compliance rate would change if you add dedicated admin policies (for example, 65% to 82%), plus the current and improved status of each affected item. Register your admin group names in Analysis Settings first.</p>
       </div>
       <div class="feature-card">
-        <h3>How can I find policies that could lock administrators out before they do? <span class="pro-badge">PRO</span></h3>
-        <p>The "Lockout Risk (Critical)" diagnostic flags policies that block all users and all apps with no excluded users and no excluded groups at all. It is not shown on screen; it appears in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report. On screen, you can enter an administrator or an emergency access account in a Pro simulation and check that the decision is not BLOCK.</p>
+        <h3>How can I find policies that block all users and all apps with no exclusions? <span class="pro-badge">PRO</span></h3>
+        <p>The "Lockout Risk (Critical)" diagnostic flags only policies that block all users and all apps with no excluded users and no excluded groups at all. It does not detect lockouts that have other causes. It is not shown on screen; it appears in the "Diagnostics" sheet of the Pro Excel design document and in the PDF report. On screen, you can enter an emergency access account (a "Break Glass Account": an emergency administrator account that you keep excluded from policies, so you can still sign in if a policy misconfiguration locks everyone out) in a Pro simulation and check that the decision is not BLOCK. This works when the account is excluded by user or by group. If it is excluded by role, the result differs from the actual behavior, because the simulation does not evaluate roles.</p>
       </div>
       <div class="feature-card">
-        <h3>How do I check whether legacy authentication is really blocked?</h3>
-        <p>On every plan, the Gap Analysis item "MS-LEGACY-AUTH-BLOCK" and the Coverage Analysis item "Legacy authentication block" show whether any policy stops protocols such as IMAP, POP3 and SMTP that cannot use MFA. The automatic diagnostic (Warning) is included in the Pro Excel and PDF reports: if no policy blocks legacy authentication, each policy that allows it is listed.</p>
+        <h3>How do I check whether any policy blocks legacy authentication?</h3>
+        <p>On every plan, the Gap Analysis item "MS-LEGACY-AUTH-BLOCK" and the Coverage Analysis item "Legacy authentication block" show whether any policy blocks protocols such as IMAP, POP3 and SMTP that cannot use MFA. The automatic diagnostic (Warning) is included in the Pro Excel and PDF reports: if no policy blocks legacy authentication, each policy that allows it is listed.</p>
       </div>
       <div class="feature-card">
         <h3>What if every policy looks right, but gaps remain when they are combined?</h3>
@@ -296,7 +299,7 @@
       </div>
       <div class="feature-card">
         <h3>How can I try the recommended configuration without affecting production?</h3>
-        <p>For each Gap Analysis item that is not compliant, the detail view includes a report-only deployment guide for testing safely, plus sample KQL queries for checking the impact of the change.</p>
+        <p>For each Gap Analysis item that is not compliant, the detail view includes a report-only deployment guide for testing safely, plus sample KQL (Kusto Query Language, a query language for searching sign-in logs in Log Analytics) queries for checking the impact of the change.</p>
       </div>
       <div class="feature-card">
         <h3>How can I put together documents for an audit or a report? <span class="pro-badge">PRO</span></h3>
@@ -309,6 +312,8 @@
     <ul>
       <li>Simulate risk-based policies: there is no input for sign-in risk or user risk, so policies that use risk as a condition are reported as "Not applied."</li>
       <li>Evaluate device compliance: the simulation cannot use whether a device is compliant as a condition.</li>
+      <li>Evaluate roles and device filters: the simulation does not evaluate directory roles (included and excluded roles) or device filters, and has no input field for them. Policies that use them as a condition are evaluated without that condition, so the result may differ from the actual behavior.</li>
+      <li>Load JSON exported directly from the Entra admin center or Microsoft Graph: the app loads only policy JSON in its own format (an array of policies). Convert the Entra admin center or Graph format (<code>displayName</code>, <code>grantControls</code>, and so on) before you load it. You can check the format in the sample file <a href="sample-policies-for-review.json">sample-policies-for-review.json</a>.</li>
       <li>Fetch policies from your tenant or measure the impact on real sign-ins: policies are brought in by loading JSON files or entering them on screen. To check the impact on sign-ins, run the sample KQL queries in your own environment.</li>
     </ul>
     <p>Disabled policies are skipped by the diagnostics. Supported on Windows 10 (version 2004 or later) and Windows 11.</p>
@@ -326,6 +331,7 @@
       </div>
     </div>
     <p><a href="manual/licensing.html?lang=en">See the full plan comparison</a></p>
+    <p>If you sell or transfer reports, design documents or diagnostic results created with this software to third parties such as customers, or provide them as part of consulting services, you need a separate Pro license. See Article 10 (Commercial Use Restrictions) of the <a href="terms-of-use.html">Terms of Use</a> for details.</p>
 
     <h2>How to get it</h2>
     <p>Available from the Microsoft Store, with a free 15-day trial from the first launch.</p>
@@ -372,12 +378,12 @@
 var META = {
   ja: {
     title: '条件付きアクセスの管理者除外・ロックアウト・レガシー認証を点検 | CA Policy Analyzer',
-    description: 'Entra ID の条件付きアクセスで、管理者を除外したままの穴、管理者のロックアウト、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、これらの隙間と、NIST SP 800-53・DISA STIG・Microsoft の基準との差を洗い出す Windows 向けのツールで、変更前のアクセス判定の確認もできます（テナントには接続しません）。',
+    description: 'Entra ID の条件付きアクセスで、管理者を除外したままの穴や、レガシー認証（IMAP/POP3/SMTP）の MFA すり抜けが気になりませんか。CA Policy Analyzer はポリシーの JSON をローカルで分析し、管理者の除外、レガシー認証をブロックするポリシーの有無、全ユーザー・全アプリをブロックして除外が無いポリシーを確認します。NIST SP 800-53・DISA STIG・Microsoft の基準との差の洗い出しと、変更前のアクセス判定の確認もできる Windows 向けのツールです（テナントには接続しません）。',
     locale: 'ja_JP'
   },
   en: {
     title: 'Find Conditional Access admin exclusions, lockout risk and legacy auth gaps | CA Policy Analyzer',
-    description: 'Have you excluded admins from Conditional Access policies, or are you worried about lockouts and legacy authentication (IMAP/POP3/SMTP) bypassing MFA? CA Policy Analyzer is a Windows tool that analyzes your policy JSON locally to find those gaps, check them against NIST SP 800-53, DISA STIG and Microsoft baselines, and preview access decisions before you change anything. It does not connect to your tenant.',
+    description: 'Have you excluded admins from Conditional Access policies, or are you worried about legacy authentication (IMAP/POP3/SMTP) bypassing MFA? CA Policy Analyzer is a Windows tool that analyzes your policy JSON locally. It checks admin exclusions, whether any policy blocks legacy authentication, and policies that block all users and all apps with no exclusions. It also compares your policies with NIST SP 800-53, DISA STIG and Microsoft baselines and previews access decisions before you change anything. It does not connect to your tenant.',
     locale: 'en_US'
   }
 };

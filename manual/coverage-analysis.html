@@ -55,11 +55,11 @@
     <p>全ユーザーを対象にしたポリシーの多く（全体の 7 割〔小数点以下切り捨て〕以上、かつ 2 件以上）から同じグループが除外されている場合、そのグループを「除外グループ: グループ名」として表示します。「グループ『○○』が全ユーザー対象ポリシー 10 件中 8 件から除外されています」のように件数を示し、除外しているポリシー名と、そのグループが受けられていない保護も確認できます。個々のポリシーの除外は意図どおりでも、重なると一部のユーザーが MFA などをまとめて逃れる、という穴を見つけるための項目です。</p>
 
     <h2>管理者除外分析</h2>
-    <p>多くの組織では、管理者グループをセキュリティポリシーから除外しています。この分析では、以下の観点から管理者の保護状況を評価します:</p>
+    <p>多くの組織では、管理者グループをセキュリティポリシーから除外しています。この分析では、以下の観点から管理者の保護状況を評価します。数えるのはポリシーではなく、ギャップ分析の推奨項目です:</p>
     <ul>
-      <li>管理者が除外されているポリシーの数</li>
-      <li>そのうち、管理者専用の代替ポリシーでカバーされているものの数</li>
-      <li>カバーされていない（保護が不足している）ものの数</li>
+      <li>管理者グループの除外が見つかった推奨項目の数（全ユーザー向けポリシーの多くから除外されているグループの項目も含みます）</li>
+      <li>そのうち、管理者専用の代替ポリシーでカバーされている項目の数</li>
+      <li>カバーされていない（保護が不足している）項目の数</li>
       <li>管理者保護を追加した場合の準拠率の改善見込み</li>
     </ul>
     <div class="info-box">
@@ -67,9 +67,9 @@
     </div>
 
     <h2>改善見込みの読み方</h2>
-    <p>管理者を除外しているポリシーが 1 件以上あると、「分析」タブの結果に「管理者除外分析」の欄が表示され、次の内容を確認できます。</p>
+    <p>管理者グループの除外が見つかった推奨項目が 1 件以上あると、「分析」タブの結果に「管理者除外分析」の欄が表示され、次の内容を確認できます。</p>
     <ul>
-      <li>管理者グループを除外しているポリシーの件数と、そのうち専用ポリシーで補えている件数・補えていない件数</li>
+      <li>管理者グループの除外が見つかった推奨項目の件数（ポリシーの件数ではありません）と、そのうち専用ポリシーで補えている件数・補えていない件数。全ユーザー向けポリシーの多くから除外されているグループの項目も、この件数に含まれます</li>
       <li>管理者専用ポリシーで対策した場合の総合判定と準拠率の変化（例: 総合判定「改善が必要」→「概ね十分」、準拠率 65% → 82%）</li>
       <li>該当する推奨項目ごとの、現在のステータスと改善後のステータス、およびその詳細</li>
     </ul>
@@ -109,11 +109,11 @@
     <p>When the same group is excluded from most of your all-user policies (at least 70% of them, rounded down, and at least two), it is listed as "Excluded group: <em>group name</em>." The entry shows the count, for example "Group 'Contractors' is excluded from 8 out of 10 all-user policies," along with the names of the excluding policies and the protections the group is missing. Each exclusion may be intentional on its own, but together they can let some users skip MFA and other controls entirely. This item is designed to surface that kind of gap.</p>
 
     <h2>Admin Exclusion Analysis</h2>
-    <p>Many organizations exclude administrator groups from security policies. This analysis evaluates the protection status of administrators from the following perspectives:</p>
+    <p>Many organizations exclude administrator groups from security policies. This analysis evaluates the protection status of administrators from the following perspectives. It counts the recommendation items of the Gap Analysis, not policies:</p>
     <ul>
-      <li>Number of policies that exclude administrators</li>
-      <li>Of those, how many are covered by dedicated administrator-specific policies</li>
-      <li>How many are not covered (insufficient protection)</li>
+      <li>Number of recommendation items in which an administrator group exclusion was found (this includes the items for groups excluded from most of your all-user policies)</li>
+      <li>Of those, how many items are covered by dedicated administrator-specific policies</li>
+      <li>How many items are not covered (insufficient protection)</li>
       <li>Projected compliance rate improvement if administrator protection is added</li>
     </ul>
     <div class="info-box">
@@ -121,9 +121,9 @@
     </div>
 
     <h2>Understanding the Improvement Projection</h2>
-    <p>When at least one policy excludes administrators, the results in the Analysis tab include an "Admin Exclusion Analysis" panel showing:</p>
+    <p>When at least one recommendation item shows an administrator group exclusion, the results in the Analysis tab include an "Admin Exclusion Analysis" panel showing:</p>
     <ul>
-      <li>How many policies exclude the administrator group, and how many of those are or are not covered by a dedicated policy</li>
+      <li>How many recommendation items show an administrator group exclusion (a count of items, not of policies), and how many of those are or are not covered by a dedicated policy. Items for groups excluded from most of your all-user policies are included in this count</li>
       <li>How the overall verdict and compliance rate would change if you add dedicated administrator policies (for example, verdict "Needs Improvement" to "Mostly Sufficient", compliance rate 65% to 82%)</li>
       <li>For each affected recommendation, its current status, its status after the fix, and the details</li>
     </ul>

@@ -46,8 +46,11 @@
           <li><strong>変更理由</strong>（必須）: なぜこのインポートを行ったかの理由を記録します。</li>
         </ul>
       </li>
-      <li>「読み込み確定」ボタンをクリックすると、ポリシーが一覧に追加されます。</li>
+      <li>「読み込み確定」ボタンをクリックすると、読み込んだ内容が現在の登録内容と置き換わります。</li>
     </ol>
+    <div class="warning-box">
+      <p>JSON の読み込みは、ポリシーの追加ではなく、登録内容全体の置き換えです。ファイルに含まれないポリシーは削除されます。追加・削除・変更の件数は、変更履歴に記録されます。必要に応じて、読み込む前に JSON エクスポートでバックアップを取ってください。</p>
+    </div>
     <div class="info-box">
       <p>読み込めるのは、アプリの JSON 形式（<code>id</code>・<code>name</code>・<code>state</code>・<code>assignments</code>・<code>conditions</code>・<code>accessControls</code> を持つポリシー）を配列にしたファイルです。ポリシーが 1 件の場合も、配列（<code>[ ]</code>）で囲んでください。単一のポリシーだけの JSON は、読み込みエラーになります。Microsoft Entra 管理センターや Microsoft Graph の形式（<code>displayName</code>・<code>grantControls</code> など）は、アプリの形式に変換してから読み込んでください。</p>
     </div>
@@ -171,8 +174,11 @@
           <li><strong>Change Reason</strong> (required): Records the reason for this import.</li>
         </ul>
       </li>
-      <li>Click the "Confirm Load" button to add the policies to the list.</li>
+      <li>Click the "Confirm Load" button. The loaded content replaces your current registered policies.</li>
     </ol>
+    <div class="warning-box">
+      <p>Loading a JSON file replaces all registered policies; it does not add to them. Policies that are not in the file are deleted. The numbers of added, removed and modified policies are recorded in the change history. Create a backup with JSON export before you load a file if you need one.</p>
+    </div>
     <div class="info-box">
       <p>You can import only a file that contains an array of policies in the app's JSON format (each policy has <code>id</code>, <code>name</code>, <code>state</code>, <code>assignments</code>, <code>conditions</code>, and <code>accessControls</code>). Enclose even a single policy in an array (<code>[ ]</code>). A JSON file that contains only a single policy object causes a load error. Convert the Microsoft Entra admin center or Microsoft Graph format (<code>displayName</code>, <code>grantControls</code>, and so on) to the app's format before you import it.</p>
     </div>

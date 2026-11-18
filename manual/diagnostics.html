@@ -48,7 +48,7 @@
     </div>
 
     <h2>ロックアウトリスク（Critical）</h2>
-    <p>全ユーザー・全アプリを対象にアクセスをブロックするポリシーで、除外のユーザーも除外のグループも 1 件も無い場合に検出されます。緊急アクセス用アカウント（Break Glass Account）が除外されていないため、テナント全体のロックアウトにつながるおそれがあります。</p>
+    <p>全ユーザー・全アプリを対象にアクセスをブロックするポリシーで、除外のユーザーも除外のグループも 1 件も無い場合に検出されます。緊急アクセス用アカウント（Break Glass Account。ポリシーの設定ミスなどでサインインできなくなったときに備え、ポリシーから除外しておく緊急用の管理者アカウント）が除外されていないため、テナント全体のロックアウトにつながるおそれがあります。この診断が検出するのは、ここに書いた条件のポリシーだけです。これ以外の原因によるロックアウトは検出しません。</p>
     <div class="warning-box">
       <p>ロックアウトリスクは最も重要な診断項目です。管理者が自分自身をロックアウトすると、テナントへのアクセスが不可能になる場合があります。必ず「緊急アクセスアカウント（Break Glass Account）」を除外してください。</p>
     </div>
@@ -113,7 +113,7 @@
     </div>
 
     <h2>Lockout Risk (Critical)</h2>
-    <p>Detected when a policy blocks access for all users and all apps and has no excluded users and no excluded groups at all. Because no emergency access (break-glass) account is excluded, the policy could lock everyone out of the tenant.</p>
+    <p>Detected when a policy blocks access for all users and all apps and has no excluded users and no excluded groups at all. Because no emergency access (break-glass) account is excluded, the policy could lock everyone out of the tenant. A break-glass account is an emergency administrator account that you keep excluded from policies, so you can still sign in if a policy misconfiguration locks everyone out. This diagnostic detects only policies that match the condition above; it does not detect lockouts that have other causes.</p>
     <div class="warning-box">
       <p>Lockout risk is the most critical diagnostic item. If administrators lock themselves out, access to the tenant may become impossible. Always ensure that a "Break Glass Account" (emergency access account) is excluded from block policies.</p>
     </div>

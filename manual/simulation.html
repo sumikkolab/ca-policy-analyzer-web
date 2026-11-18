@@ -40,7 +40,8 @@
     <p>登録済みの条件付きアクセスポリシーに対して、仮想のアクセス条件（ユーザー、プラットフォーム〔OS〕、場所など）を入力し、その条件下でアクセスが <strong>BLOCK（ブロック）</strong> されるのか、<strong>ALLOW（許可）</strong> されるのかの判定結果を確認できます。</p>
     <p>これにより、ポリシーを実環境に適用する前に、意図した通りに動作するかを安全に検証できます。</p>
     <div class="info-box">
-      <p>サインインリスク・ユーザーリスクとデバイスの準拠状態は入力できません。リスクを条件にしたポリシーは「不適用」と判定されます。実際のサインインへの影響は測定しないため、ギャップ分析の詳細に示される KQL の例で確認してください。</p>
+      <p>サインインリスク・ユーザーリスクとデバイスの準拠状態は入力できません。リスクを条件にしたポリシーは「不適用」と判定されます。実際のサインインへの影響は測定しないため、ギャップ分析の詳細に示される KQL（Kusto Query Language。Log Analytics でサインインログを検索するためのクエリ言語）の例で確認してください。</p>
+      <p>ディレクトリロール（対象に含めるロール・除外するロール）とデバイスフィルターは評価しません。入力欄もありません。ロールやデバイスフィルターを条件にしたポリシーは、その条件を無視して評価されるため、結果が実際と異なる場合があります。ユーザーまたはグループで除外している場合は、シミュレーションで確認できます。</p>
     </div>
 
     <h2>シナリオの入力</h2>
@@ -195,7 +196,8 @@
     <p>The Simulation feature allows you to test hypothetical scenarios such as "What happens if a specific user tries to access a particular application?"</p>
     <p>By entering virtual access conditions (user, platform (OS), location, etc.) against your registered Conditional Access policies, you can verify whether access would be <strong>BLOCKED</strong> or <strong>ALLOWED</strong> under those conditions.</p>
     <div class="info-box">
-      <p>Sign-in risk, user risk and device compliance cannot be entered. Policies that use risk as a condition are reported as "Not applied." The simulation does not measure the impact on real sign-ins; use the sample KQL queries in the Gap Analysis details for that.</p>
+      <p>Sign-in risk, user risk and device compliance cannot be entered. Policies that use risk as a condition are reported as "Not applied." The simulation does not measure the impact on real sign-ins; use the sample KQL (Kusto Query Language, a query language for searching sign-in logs in Log Analytics) queries in the Gap Analysis details for that.</p>
+      <p>Directory roles (included and excluded roles) and device filters are not evaluated, and there is no input field for them. Policies that use roles or a device filter as a condition are evaluated without that condition, so the result may differ from the actual behavior. You can check exclusions made by user or by group in the simulation.</p>
     </div>
     <p>This allows you to safely verify that your policies work as intended before deploying them to a production environment.</p>
 
