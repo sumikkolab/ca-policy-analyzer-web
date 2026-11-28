@@ -22,7 +22,7 @@ CA Policy Analyzer is a Windows desktop app by Sumikko Lab, built as a tool to a
 - Policies are loaded from files or registered on screen (retrieving them from your tenant and changing tenant settings are out of scope).
 - The app loads policy JSON in its own format. Convert Entra admin center or Microsoft Graph output first. See the [sample file](sample-policies-for-review.json) for the format.
 - Simulation does not cover device compliance, role conditions or device filter conditions. It treats risk-based policies as not applied.
-- Use the results as reference information for reviewing your configuration (they are not official certification for any standard).
+- Use the results as reference information for reviewing your configuration (they are not official certification or assurance for any standard).
 
 ## Who it is for
 
