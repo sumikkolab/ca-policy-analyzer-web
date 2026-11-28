@@ -1,0 +1,21 @@
+# CA Policy Analyzer
+
+> 条件付きアクセスの管理者除外や設定の抜けを確認したい管理者向けに、Sumikko Lab が開発する Windows デスクトップアプリです。ポリシーの JSON をテナントに接続せず PC 内で分析します。
+> A Windows desktop app by Sumikko Lab for administrators who want to find Conditional Access gaps such as admin exclusions. It analyzes policy JSON on your PC without connecting to the tenant.
+
+## 概要 / Overview
+
+- 発行元 / Publisher: Sumikko Lab
+- 入力 / Input: アプリの形式のポリシー JSON(Entra 管理センターや Microsoft Graph の出力は変換が必要) / Policy JSON in the app's format (Entra admin center and Microsoft Graph output must be converted)
+- できること / Features: ギャップ分析、管理者除外分析、カバレッジ分析、変更履歴 / Gap, admin exclusion and coverage analysis, change history
+- Pro: シミュレーション、Excel 設計書と PDF レポートの出力 / Simulation, Excel and PDF export
+- プラン / Plans: 本体は無料で 15 日間試用(Pro の機能は試用不可)。以後は Standard か Pro のアドオン / Free app with a 15-day trial (Pro features not included), then the Standard or Pro add-on
+
+## リンク / Links
+
+- [トップ / Home](https://capolanalyzer.sumikkolab.com/)
+- [ユーザー マニュアル / User manual](https://capolanalyzer.sumikkolab.com/manual/)
+- [サポート / Support](https://capolanalyzer.sumikkolab.com/support.html)
+- [利用規約 / Terms of use](https://capolanalyzer.sumikkolab.com/terms-of-use.html)
+- [プライバシー ポリシー / Privacy policy](https://capolanalyzer.sumikkolab.com/privacy-policy.html)
+- [Microsoft Store](https://apps.microsoft.com/detail/9NR10PX75754)
