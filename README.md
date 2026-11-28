@@ -6,7 +6,7 @@
 
 ## What is this tool?
 
-CA Policy Analyzer is a Windows desktop app by Sumikko Lab. It is a tool to analyze Conditional Access policies: it loads policy JSON and analyzes it on your PC without connecting to your tenant. The app connects to Microsoft Store for license checks and purchases.
+CA Policy Analyzer is a Windows desktop app by Sumikko Lab, built as a tool to analyze Conditional Access policies. It loads policy JSON and analyzes it on your PC without connecting to your tenant. The app connects to Microsoft Store for license checks and purchases.
 
 ## What it does
 
@@ -17,12 +17,12 @@ CA Policy Analyzer is a Windows desktop app by Sumikko Lab. It is a tool to anal
 - Simulation (Pro): checks whether a sign-in is blocked for the users, apps and other conditions you specify.
 - Excel design document (8 sheets) and PDF report export (Pro), with automated diagnostics such as conflicts, duplicates, and policies that block all users and all apps with no exclusions. To include diagnostics, run Compare with Recommended Config before you export.
 
-## What it does not do
+## Out of scope
 
-- It does not retrieve policies from your tenant or change tenant settings.
-- It cannot load JSON exported by the Microsoft Entra admin center or Microsoft Graph as is. Convert it to the app's format first. See the [sample file](sample-policies-for-review.json).
-- Simulation has no input for device compliance. It treats risk-based policies as not applied, and does not evaluate role or device filter conditions.
-- Results are guidance, not official certification or assurance for any standard.
+- Policies are loaded from files or registered on screen (retrieving them from your tenant and changing tenant settings are out of scope).
+- The app loads policy JSON in its own format. Convert Entra admin center or Microsoft Graph output first. See the [sample file](sample-policies-for-review.json) for the format.
+- Simulation does not cover device compliance, role conditions or device filter conditions. It treats risk-based policies as not applied.
+- Use the results as reference information for reviewing your configuration (they are not official certification for any standard).
 
 ## Who it is for
 
